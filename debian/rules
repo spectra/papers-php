@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+# =========================================================================
+# debian/rules for papers
+# Common Debian Build System: (C) 2002 Colin Walters
+# =========================================================================
+
+# CDBS class
+include /usr/share/cdbs/1/rules/debhelper.mk
+

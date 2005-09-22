@@ -1,0 +1,4 @@
+h1 { text-align: center; } 
+div.portal { display: table-cell; text-align: center; }
+div.portal img { clear: both; border: none;}
+div.footer { text-align: center; font-style: italic; font-size: smaller; }

@@ -1,0 +1,84 @@
+Como instalar este sistema
+
+##############################################################################
+### Requisitos ###############################################################
+##############################################################################
+
+   * Smarty - http://smarty.php.net/
+   * ADODB  - http://php.weblogs.com/ADODB
+
+Smarty
+--------------
+Gerenciador de templates. Instalar seguindo a recomendação do próprio sistema.
+Não há o que configurar.
+
+Incluir o diretório de libs do Smarty no php.ini (no Debian Sarge, fica no
+/etc/php4/apache/php.ini) ao include_path do php:
+
+include_path=".:/usr/share/php/smarty/libs"
+
+ADODB
+--------------
+
+Biblioteca de acesso ao banco de dados. Não há o que configurar.
+
+Incluir o diretório do adodb ("/usr/share/adodb" no Debian Sarge) ao
+include_path no php.ini.
+
+##############################################################################
+### Instalação ###############################################################
+##############################################################################
+
+arquivos gerados
+----------------
+rodar `make` na raiz dos fontes.
+
+tabelas no banco
+----------------
+Criar as tabelas no banco de dados MySql, conforme os arquivos dentro do
+diretório sql do sistema.
+
+Apontar o servidor web para a aplicação
+---------------------------------------
+Exemplo:
+
+Instalar (ou criar um link para a instalação) em /usr/share/papers
+fazer um link /var/www/papers -> /usr/share/papers
+
+Ou:
+
+<VirtualHost *:80>
+  ....
+  ServerName papers.seu.dominio.dom
+  DocumentRoot /usr/share/papers
+  ....
+</VirtualHost>
+
+OU:
+
+
+Controle de acesso do /admin
+----------------------------
+
+Via apache, do jeito que você quiser. É bom que ao menos o /admin só seja
+acessível por HTTPS.
+
+Arquivo de configuração
+-----------------------
+copie o arquivo conf.php.in para o diretório /etc/papers/ com o nome
+correspondente ao site do evento (veja abaixo) e ajuste as entradas da
+configuração. Essa configuração inclui a configuração de acesso ao banco de
+dados _e_ a configuração do evento.
+
+O nome do arquivo de configuração é formado pelo hostname onde a aplicação
+vai rodar + o caminho da aplicação. Exemplos:
+
+Caminho da aplicação                   | Nome do arquivo de configuração
+---------------------------------------+--------------------------------
+http://www.blablabla.org/papers        | www.blablabla.org.papers
+http://blabla.org/~fulano/papers       | blablabla.org.fulano.papers
+
+A regra geral é: hostname (sem número de porta, se houver) + caminho até a raiz
+da aplicação, trocando barras por pontos. Til (~) é removido. Qualquer dúvida,
+veja admin/include/config.inc.php
+

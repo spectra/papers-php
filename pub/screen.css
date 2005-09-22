@@ -1,0 +1,346 @@
+body {
+  background-image: url(img/fisl-bg.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-color: white;
+
+  font-family: sans-serif;
+  font-size: 12px;
+
+  margin: 0px;
+  padding: 0px;
+}
+
+a:link, a:visited {
+  background: transparent;
+  color: black;
+  font-weight: bold;
+}
+
+a:hover {
+  background: transparent;
+  color: red;
+}
+
+img {
+  border: none;
+}
+
+
+/***** Cebeçalho ************************************/
+#header {
+  background-image: url(img/fisl-bg2.png);
+  background-color: #f0f0f0;
+  background-position: top right;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  height: 90px;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+#logo {
+  /*display: table-cell;*/
+  /* display: inline; */
+  float: left;
+  text-align: center;
+  padding-left: 20px;
+}
+
+#titulo {
+  /* display: table-cell; */
+  /* display: inline; */
+  float: left;
+  vertical-align: top;
+  padding-top: 10px;
+  padding-left: 40px;
+  text-align: left;
+  font-size: 140%;
+  background: transparent;
+  color: #666600;
+}
+
+span.softwarelivre {
+  font-weight: bold;
+}
+
+div#fisl6 {
+  font-style: italic;
+  font-weight: bold;
+}
+
+#periodo {
+  margin-left: 120px;
+  text-align: center;
+  font-weight: bold;
+}
+/****************************************************/
+
+
+/***** Menu *****************************************/
+#menu {
+  float: right;
+  width: 150px;
+  margin: 0.5em;
+}
+
+#menu a, #menu div {
+  display: block;
+  text-align: right;
+}
+
+#menu a:link, #menu a:visited {
+  color: black;
+  text-decoration: none;
+  font-weight: normal;
+  background: transparent;
+}
+
+#menu a:hover {
+  background: white;
+  color: red;
+}
+
+#menu div {
+  font-weight: bold;
+  font-style: italic;
+  border-bottom: 1px solid black;
+  margin-top: 1em;
+}
+
+.linksep {
+  display: none;
+  color: blue;
+}
+
+#remainingDays {
+  display: block;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 0.5em;
+}
+
+.remainingDaysCounter {
+  border: 1px solid #666600;
+  background: #FFFFCC;
+  color: black;
+  padding: 2px;
+}
+
+/****************************************************/
+
+/***** Credits **************************************/
+#credits {
+  float: left;
+  width: 110px;
+  clear: right;
+  text-align: center;
+  font-size: smaller;
+  margin-top: 1em;
+}
+
+#credits span {
+  font-size: 120%;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+#credits img {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+#credits a:link img, #credits a:visited img {
+  padding: 1px;
+  border: 1px solid white;
+}
+
+#credits a:hover img {
+  border: 1px solid #b0b0b0;
+  background: #f0f0f0;;
+}
+
+/****************************************************/
+
+
+/***** Conteudo *************************************/
+
+#content {
+  margin-left: 120px;
+  margin-right: 165px;
+
+  padding: 1em;
+
+  border-left: 1px dashed #d0d0d0;
+  border-right: 1px dashed #d0d0d0;
+
+}
+
+#content p, #content dd {
+  text-align: justify;
+}
+
+#content h1 {
+  text-align: center;
+}
+
+#footer {
+  padding-top: 1em;
+  border-top: 1px solid #d0d0d0;
+  text-align: center;
+  clear: both;
+  font-size: smaller;
+
+  display: none;
+}
+
+#languages {
+  text-align: right;
+}
+
+code {
+  background: transparent;
+  color: #ff3300;
+}
+
+.small {
+  font-size: smaller;
+}
+
+/****************************************************/
+
+/**** Notícias **************************************/
+
+div.news hr {
+  background: #f0f0f0;
+  height: 1px;
+  border: none;
+}
+
+div.newsItem {
+  margin-bottom: 3em;
+  vertical-align: top;
+}
+
+span.newsTitle {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+div.newsItem img {
+  float: left;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  border: 1px solid #f0f0f0;
+}
+
+/****************************************************/
+
+/******* Highlights *********************************/
+
+ul#highlights {
+  margin: 1em;
+  margin-bottom: 2em;
+  padding: 0px;
+  font-size: smaller;
+}
+
+ul#highlights li {
+  list-style: none;
+  display: block;
+  margin: 0.5em;
+  border: 1px solid black;
+  background: #fbfbb8;
+}
+
+ul#highlights li span
+{
+  display: block;
+  padding: 2px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  background: #eaeaa7;
+}
+
+ul#highlights p {
+  padding: 3px;
+  margin: 0px;
+}
+
+/****************************************************/
+
+
+/******* Calendario de mobilizacao ******************/
+#calendar table {
+  border: 1px solid #fff;
+  padding: 0;
+  margin: 5px; 
+  width: 100%;
+}
+#calendar th,
+#calendar td {
+  width: 14%;
+}
+#calendar th {
+  background: #565;
+  color: #fff;
+  margin: 3px;
+  padding: 2px 5px;
+}
+#calendar td {
+  background: #eee;
+  color: #000;
+  padding: 2px;
+  margin: 0;
+  height: 60px;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #fff;
+  font-size: x-small;
+}
+#calendar td.notInMonth {
+  background: #999;
+}
+#calendar li {
+  font-size: x-small;
+}
+#calendar ul {
+  margin-left: 0px;
+  padding-left: 2em;
+}
+
+.press {
+  border-collapse: collapse;
+  margin-top: 1em;
+  margin-left: 15%;
+  width: 70%;
+}
+
+table.press {
+  border-collapse: collapse;
+}
+
+table.press th,
+table.press td {
+  border: 1px solid #cccccc;
+  padding: 5px;
+}
+
+table.press th {
+ background: #cccccc;
+ border: 1px solid #666666;
+}
+
+div.error {
+  margin-top: 1em;
+  margin-left: 25%;
+  width: 50%;
+  border: 1px solid black;
+  background: #ffff99;
+  color: red;
+  padding: 1em;
+}

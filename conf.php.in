@@ -1,0 +1,29 @@
+<?php
+
+/* * * * * * * * * * * * * *
+ * database configuration  * 
+ * * * * * * * * * * * * * */
+
+// development database:
+$papers['development']['hostname']        = '';
+$papers['development']['database']        = '';
+$papers['development']['username']        = '';
+$papers['development']['password']        = '';
+
+// production database:
+$papers['production']['hostname']         = '';
+$papers['production']['database']         = '';
+$papers['production']['username']         = '';
+$papers['production']['password']         = '';
+
+/* * * * * * * * * * * * 
+ * event configuration *
+ * * * * * * * * * * * */
+
+$papers['event']['submission_first_day']  = '25 July 2005';
+$papers['event']['submission_last_day']   = '25 October 2005';
+$papers['event']['codename']              = 'myevent2005';
+$papers['event']['name']                  = 'My Event 2005';
+$papers['event']['contact_email']         = 'webmaster@localhost';
+
+?>

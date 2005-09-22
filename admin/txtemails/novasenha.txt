@@ -1,0 +1,31 @@
+Caro %%NOME%%,
+
+Uma nova senha para acesso ao sistema de trabalhos do Fórum
+Internacional Software Livre foi feita para você. Anote-a:
+
+%%SENHA%%
+
+Para acessar o seu cadastro, vá para:
+
+%%URL%%
+
+-- 
+GT-Temário
+Fórum Internacional Software Livre
+
+------------------------------------------------------------------------
+
+Dear %%NOME%%,
+
+A new password for accessing the FISL's papers system has been created
+to you. Take note:
+
+%%SENHA%%
+
+To access your data, drive to:
+
+%%URL%%
+
+-- 
+Program Body
+International Free Software Forum Brazil

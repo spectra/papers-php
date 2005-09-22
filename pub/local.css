@@ -1,0 +1,44 @@
+table.programacao {
+  width: 65%;
+  border-collapse: collapse;
+}
+
+table.programacao td,
+table.programacao th {
+  border: 1px solid #cccccc;
+}
+
+div#program table {
+  border-collapse: collapse;
+}
+
+div#program th,
+div#program td
+{
+  border: 1px solid #999999;
+  padding: 3px;
+  vertical-align: top;
+}
+
+div#program table.grade th,
+div#program table.grade td {
+  font-size: smaller;
+}
+
+div#program th {
+  background: #dddddd;
+  font-weight: bold;
+}
+
+
+div#program table.grade a:link,
+div#program table.grade a:visited {
+  text-decoration: none;
+  font-weight: normal;
+  display: block;
+}
+
+table.programacao a:hover,
+div#program a:hover {
+  background: #ffffdd;
+}

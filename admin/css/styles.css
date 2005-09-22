@@ -1,0 +1,195 @@
+/* $Id$ */
+
+body {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+pre, textarea {
+  font-family: monospace;
+}
+
+body, html {
+  background-color: white;
+}
+
+input, textarea {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CCCCCC;
+}
+
+A:hover { text-decoration: underline; }
+A { text-decoration: none; }
+
+h1 {
+  font-size: x-large;
+}
+
+h2 {
+  font-size: large;
+}
+
+p, th, td, div, input, select {
+  font-size: small;
+}
+
+.cl {
+  font-size: small;
+  font-style: italic;
+}
+
+.xsmall {
+  font-size: x-small;
+}
+
+.small {
+  font-size: small;
+}
+
+table.formulario td,
+table.formulario th
+{
+  border: 1px solid #b0b0b0;
+}
+
+table.formulario th {
+  background: #f0f0f0;
+}
+
+code {
+  color: #bb3333;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+table.grade a:link,
+table.grade a:visited
+{
+  display: block;
+  text-decoration: none;
+}
+
+table.grade a:hover {
+  background: #ffff99;
+  color: red;
+}
+
+table.grade td {
+  vertical-align: top;
+}
+
+table.grade th {
+  vertical-align: middle;
+}
+
+div.message,
+div.softMessage {
+  padding: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+div.message {
+  background: #ffff99;
+  border: 1px dashed red;
+}
+
+div.softMessage {
+  background: #f6f6f6;
+  border: 1px dashed #cccccc;
+}
+
+div.message span,
+div.softMessage span
+{
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+div.proposalBox {
+  margin-left: 3em;
+  margin-right: 3em;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 3px solid #999999;
+  border-bottom: 3px solid #999999;
+  
+  margin-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+span.check {
+  border: 1px solid #cccccc;
+  width: 20px;
+}
+
+table.reviewSheet
+{
+  width: 100%;
+}
+
+table.reviewSheet th {
+  width: 1em;
+}
+
+table.reviewSheet td, 
+table.reviewSheet th,
+div.reviewSheet
+{
+  border: 1px solid #dddddd;
+}
+
+div.reviewSheet {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+a.button:link,
+a.button:visited {
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 2px solid #999999;
+  border-bottom: 2px solid #999999;
+  padding: 3px;
+  margin: 1em;
+  background: #e0e0e0;
+  color: black;
+}
+
+a.button:hover {
+  background: #99ff99;
+  color: red;
+}
+
+span.status_a, 
+span.status_p {
+  background: #99ff99;
+}
+span.status_r {
+  background: #ff9999;
+}
+span.status_i {
+  background: #ffff99;
+}
+span.status_d {
+  background: #cccccc;
+}
+
+body.frivolo {
+  background-image: url(../img/fisl-bg.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-color: white;
+
+  margin: 0px;
+  padding: 10px;
+
+  height: 625px;
+}

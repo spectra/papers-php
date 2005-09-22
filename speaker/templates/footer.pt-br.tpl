@@ -1,0 +1,13 @@
+<hr/>
+<div align='center'>
+Dúvidas, perguntas, informações e bugs ;-) : escreva para
+<strong>{$event.contact_email}</strong>
+</div>
+
+<hr/>
+<div align="right" class="cl">Copyright &copy; 2005
+<a href="http://associacao.softwarelivre.org/">Associação Software Livre.Org</a>.
+<br/>
+<a href='http://papers.softwarelivre.org'>papers</a>
+é software livre distribuído sobre a GNU General Public License.
+</div>

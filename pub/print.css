@@ -1,0 +1,29 @@
+#logo, #credits, #menu {
+  display: none;
+}
+
+#fisl6, #titulo, h1 {
+  text-align: center;
+}
+
+#fisl6, #titulo {
+  font-weight: bold;
+}
+
+#seispontozero {
+  color: #666600;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: smaller;
+}
+
+h2 {
+  text-align: center;
+  background: #cccccc;
+}
+
+h3 { 
+  border-bottom: 1px solid black;
+}

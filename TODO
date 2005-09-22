@@ -1,0 +1,116 @@
+**********************************************
+* urgente - pra confirmação dos palestrantes,*
+* fechamento da grade,                       *
+* inclusão de convidados e edição da grade   *
+**********************************************
+
+[x] Sugestão do Pablo
+    > O fecharAvaliacao, alem de salvar no banco o status da proposta conforme
+    > o score, pode salvar o proprio score! Aih, fazemos uma pagina semelhante,
+    > soh com um box a mais para o status para podermos alterar as
+    > palestras.... pode ser no lugar do campo "Posicao" na atual pagina.
+    > 
+    > Assim, nosso fluxo seria beneficiado, jah que vemos o que estamos
+    > aprovando e decidimos qual palestra das que estavam aprovadas teremos de
+    > reprovar para auela entrar. O score, depois do julgamento, eh fixo, naum
+    > muda mais, e tambem eh uma informacao importante para sabermos se naum
+    > estamos reprovando uma palestra com alto score para beneficiar uma com
+    > baixo score.
+    > 
+    > Nessa nova pagina, o criterio de ordenacao (para cair dentro da area
+    > verde) eh ORDER BY status, score. Assim, uma palestra que tem score alto
+    > e teve o status mudado para reprovada passa a ser a primeira das que
+    > habitam a zona cinza.
+[x] confirmação do palestrante
+    1) o palestrante entra com e-mail e senha
+       (incluir opção de gerar nova senha e mandar por e-mail)
+    2) Para cada palestra dele que esteja como aprovada:
+       * solicitar confirmação da palestra
+       * solicitar cessão de direitos (vídeo)
+    3) palestrante pode alterar seus dados pessoais
+    4) palestrante pode conferir as avaliações realizadas com relação às suas
+       propostas.
+[x] mudar condição das palestras a serem alocadas para:
+    (status in ('a','p') and confirmada = 1)
+    * isso implica criar o campo 'confirmada') 
+[x] Inclusão de convidado:
+    * reusar templates/proponente.tpl
+    * alterar proponenteSave.php pra inserir caso o proponente não exista ainda
+      (ver salaSave.php), por exemplo.
+[x] Inclusão de palestras convidadas
+    * reusar proposta.tpl, mas listando possíveis 'proponentes' para escolha
+    * alterar propostaSave.php para inserir caso a proposta não exista ainda
+      (ver salaSave.php), por exemplo.
+[x] Migrar desenvolvimento para SVK
+
+videos (muito urgente)
+==========================
+[x] incluir autorização no formulário
+[x] informar sobre a autorização no e-mail enviado
+[ ] alterar flag de autorização no /papers/admin/proposta.php
+[ ] fechar o texto da autorização no formulário
+[ ] fechar o texto do "Leia mais" para a autorização
+[x] incluir RG, CPF e Passaporte
+
+**********************************************
+* não urgente (para avaliação das propostas) *
+**********************************************
+
+[ ] javascript em /admin/proposta.php dando pau:
+    Erro: checkEspaco is not defined
+    Arquivo-fonte: javascript:checkEspaco()
+    Linha: 1
+[ ] não está salvando "Espaço na grade:"
+    -> inclusão da grade é diferente agora, retirar isso
+      
+**********************************************
+* menos urgente ainda (pro ano que vem ;-))  * 
+**********************************************
+
+[ ] BUG: TODOS os campos da avaliacao teem que tem um valor default!!!!!
+    (isso quase lasca a gente me 2005)
+[x] datas e prazos controlados automaticamente pelo sistema
+[ ] incluir data do final da avaliação pra poder liberar as propostas
+    (antes disso não faz sentido mostrar o status da proposta)
+[ ] incluir um campo 'tipo' na proposta, pra indicar se é:
+    - submissão normal (default)
+    - convidado (inclusão via /admin)
+    - patrocinador (inclusão via /admin)
+    - palestra paga (inclusão via /admin)
+[x] alteração de propostas pelos proponentes (dentro do prazo de submissão)
+[ ] suporte para múltiplos eventos.
+[ ] possibilidade de cadastrar mais de um autor. Refazer o cadastro de
+    propostas, na real.
+[ ] avisar pras pessoas que para propor algo "extravagante", que não seja uma
+    palestra, pra não fazer isso no papers senão a gente se perde. :-)
+[ ] incluir explicações que incentivem as pessoas a preencherem os campos
+    (principalmente "resumo" e "descrição" com mais carinho.
+[x] repensar os macro-temas
+   * Incluir um macrotema "admin" (??).
+   Sugestão do PiterPunk (ver tíquete #3792 no RT):
+    > Independente do meu caso, acho que seria interessante uma
+    > palestra sobre "admin", pois como estão os macro-temas, o
+    > administrador de sistemas fica reduzido a "Redes" e "Segurança".
+[ ] Sugestão do Caio Begotti (1):
+    > No mini-currículo do autor, já que eles podem não dar
+    > detalhes sobre eles mesmos, poderia ter um expressão regular que
+    > geraria um link pro Google com o nome do autor, tema da proposta ou
+    > sei lá mais o quê, pra usarmos como referência (eu fiz isso "by
+    > hand").
+[ ] Sugestão do Caio Begotti (2):
+    > A outra idéia seria termos acesso na hora de comentar internamente
+    > uma palestra, ao que os outros avaliadores já escreveram sobre a
+    > proposta. Digo isso porque honestamente não temos obrigação de
+    > conhecer todos os palestrantes e pra não correr o risco de alguma
+    > injustiça (pois sempre há), assim poderíamos nos policiar na hora de
+    > avaliar alguém e isso também ajuda a não ficarmos perdidos em algumas
+    > avaliações.
+[ ] e-mail de "confirmação da confirmação" para palestrantes que confirmam
+    presença.
+[ ] incluir sexo nos dados dos palestrantes
+[ ] incluir campo nickname para palestrantes
+[ ] suportar mais de uma grade
+[ ] checar conflitos de horário
+[ ] separar a avaliação do admin
+    ("Canto dos avaliadores")
+[ ] separar uma área pros avaliadores. Fazer um /reviewer, tipo o /speaker
