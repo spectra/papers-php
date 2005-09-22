@@ -1,4 +1,4 @@
-COMMON=mysql.inc.php basic.inc.php config.inc.php
+COMMON=mysql.inc.php basic.inc.php config.inc.php mysmarty.inc.php
 
 all: $(COMMON)
 

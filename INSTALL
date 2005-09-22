@@ -79,6 +79,7 @@ http://www.blablabla.org/papers        | www.blablabla.org.papers
 http://blabla.org/~fulano/papers       | blablabla.org.fulano.papers
 
 A regra geral é: hostname (sem número de porta, se houver) + caminho até a raiz
-da aplicação, trocando barras por pontos. Til (~) é removido. Qualquer dúvida,
-veja admin/include/config.inc.php
+da aplicação, trocando barras por pontos. Depois disso  qualquer coisa que não
+seja [a-zA-Z0-9.] é removido. Qualquer dúvida, veja
+admin/include/config.inc.php
 

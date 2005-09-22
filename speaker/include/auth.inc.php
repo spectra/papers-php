@@ -1,7 +1,7 @@
 <?
 
 require_once 'include/mysql.inc.php';
-require_once 'include/mysmarty.php';
+require_once 'include/mysmarty.inc.php';
 
 
 $smarty = new MySmarty;
