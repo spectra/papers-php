@@ -38,6 +38,10 @@ tabelas no banco
 Criar as tabelas no banco de dados MySql, conforme os arquivos dentro do
 diretório sql do sistema.
 
+Pode ser:
+
+$ cat sql/cria-banco.sh | mysql nome_do_banco
+
 Apontar o servidor web para a aplicação
 ---------------------------------------
 Exemplo:
