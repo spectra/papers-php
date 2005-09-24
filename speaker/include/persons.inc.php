@@ -24,7 +24,7 @@ class Persons {
   function newPassword($db, $cod) {
     $passwd = str_replace("\n", '', `makepasswd --chars=8`);
 
-    return setPassword($db, $cod, $passwd);
+    return Persons::setPassword($db, $cod, $passwd);
   }
 
   function setPassword($db, $cod, $passwd) {
