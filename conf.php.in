@@ -4,17 +4,11 @@
  * database configuration  * 
  * * * * * * * * * * * * * */
 
-// development database:
-$papers['development']['hostname']        = '';
-$papers['development']['database']        = '';
-$papers['development']['username']        = '';
-$papers['development']['password']        = '';
-
-// production database:
-$papers['production']['hostname']         = '';
-$papers['production']['database']         = '';
-$papers['production']['username']         = '';
-$papers['production']['password']         = '';
+// database configuration:
+$papers['db']['hostname']         = '';
+$papers['db']['database']         = '';
+$papers['db']['username']         = '';
+$papers['db']['password']         = '';
 
 /* * * * * * * * * * * * 
  * event configuration *

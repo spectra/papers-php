@@ -6,6 +6,11 @@ require_once 'include/mysql.inc.php';
 require_once 'include/persons.inc.php';
 require_once 'include/pathinfo.inc.php';
 
+if (!$_POST['nome'] || !$_POST['email']) {
+  echo "Name and e-mail are mandatory!";
+  return ;
+}
+
 $mysql = new Mysql;
 $person = Persons::find($mysql, $user);
 Persons::update($mysql, $person['cod'], $_POST);
