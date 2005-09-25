@@ -13,7 +13,7 @@ $mysql = new Mysql;
 $person = Persons::find($mysql, $user);
 $smarty->assign('person',$person);
 
-if ($SUBMISSION_PERIOD == $PERIOD_SUBMISSION) {
+if ($PERIOD_SUBMISSION) {
 
   $smarty->assign('content', "submit.tpl");
   $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
@@ -34,7 +34,6 @@ if ($SUBMISSION_PERIOD == $PERIOD_SUBMISSION) {
   echo "Not in submission period.";
   return;
 }
-
 
 $smarty->display('index.tpl');
 

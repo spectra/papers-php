@@ -11,18 +11,14 @@ $mysql = new Mysql;
 $person = Persons::find($mysql, $user);
 $smarty->assign('person',$person);
 
-switch ($SUBMISSION_PERIOD) {
-  case $PERIOD_BEFORE_SUBMISSION:
+if ($PERIOD_BEFORE_SUBMISSION) {
     $smarty->assign('content', "beforeSubmission.$language.tpl");
-    break;
-  case $PERIOD_SUBMISSION:
+} elseif ($PERIOD_SUBMISSION) {
     $smarty->assign('content', "submission.$language.tpl");
     $smarty->assign('proposals', Proposals::load($mysql, $person['cod']));
-    break;
-  case $PERIOD_REVIEW:
+} elseif ($PERIOD_REVIEW) {
     $smarty->assign('content', "proposals.tpl");
     $smarty->assign('proposals', Proposals::load($mysql, $person['cod']));
-    break;
 }
 
 // TODO: achar uma forma melhor de mostrar o estado das propostas.

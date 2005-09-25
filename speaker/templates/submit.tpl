@@ -3,18 +3,33 @@
 <form name="form1" action="submitSave" method="POST">
   {if $proposal}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
   <table class='formulario' align='center'>
-    <tbody><tr>
+    <tbody>
+    {if $mandatoryMissing}
+      <tr>
+        <th bgcolor="#dddddd" align="center" colspan="2">
+          <span class='warn'>{#mandatoryMissing#}</span>
+        </th>
+      </tr>
+    {/if}
+    <tr>
       <th bgcolor="#dddddd" align="center" colspan="2">{#proposalInfo#}
       </th>
     </tr>
     <tr>
-      <th>{#title#}:
+      <th bgcolor="#dddddd" align="center" colspan="2">
+        <span class='warn'>*</span>
+        {#mandatoryFields#}
+      </th>
+    </tr>
+    <tr>
+      <th>{#title#}: <span class='warn'>*</span>
       </th>
       <td><input size="40" maxlength="80" name="titulo" type="text" value="{$proposal.titulo}">
       </td>
     </tr>
     <tr>
-      <th>{#track#}:<br>
+      <th>{#track#}:<span class='warn'>*</span>
+      <br/>
       <font size="-1"><i><a href="tracks">{#readMore#}...</a></i></font>
       </th>
       <td>
@@ -25,7 +40,7 @@
       </td>
     </tr>
     <tr>
-      <th>{#language#}:
+      <th>{#language#}:<span class='warn'>*</span>
       </th>
       <td><select name="idioma">
       <option value="pt" {if $proposal.idioma == 'pt'}selected{/if}>{#language_pt#}</option>
@@ -35,9 +50,10 @@
       </td>
     </tr>
     <tr>
-      <th>{#intendedAudience#}:
+      <th>{#intendedAudience#}:<span class='warn'>*</span>
       </th>
-      <th>{#lectureDescription#}:<br>
+      <th>{#lectureDescription#}:<span class='warn'>*</span>
+      <br/>
       <font size="-1"><i>{#lectureDescriptionExplanation#}</i></font>
       </th>
     <tr>
@@ -47,7 +63,8 @@
       </td>
     </tr>
     <tr>
-      <th>{#lectureAbstract#}:<br>
+      <th>{#lectureAbstract#}:<span class='warn'>*</span>
+      <br/>
       <font size="-1"><i>{#lectureAbstractExplanation#}</i></font>
       </th>
       <th>{#comments#}:

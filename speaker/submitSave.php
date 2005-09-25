@@ -5,15 +5,33 @@ require_once 'include/basic.inc.php';
 require_once 'include/mysql.inc.php';
 require_once 'include/persons.inc.php';
 require_once 'include/pathinfo.inc.php';
+require_once 'include/event_dates.inc.php';
 require_once 'include/proposals.inc.php';
+require_once 'include/tracks.inc.php';
 
 $mysql = new Mysql;
 $person = Persons::find($mysql, $user);
 
-
-if ($SUBMISSION_PERIOD == $PERIOD_SUBMISSION) {
+if ($PERIOD_SUBMISSION) {
 
   $fields = $_POST;
+
+  $mandatoryMissing = false;
+  foreach (array('titulo','tema','idioma','descricao','resumo','publicoalvo') as $f) {
+    if (! $fields[$f]) {
+      $mandatoryMissing = true;
+    }
+  }
+  if ($mandatoryMissing) {
+    $smarty->assign('mandatoryMissing', 1);
+    $smarty->assign('proposal', $fields);
+    $smarty->assign('content', 'submit.tpl');
+    $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
+    $smarty->display('index.tpl');
+    return;
+  }
+
+  
   if ($fields['cod']) {
     // existing proposal
 
