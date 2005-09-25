@@ -19,6 +19,9 @@ if ($PERIOD_BEFORE_SUBMISSION) {
 } elseif ($PERIOD_REVIEW) {
     $smarty->assign('content', "proposals.tpl");
     $smarty->assign('proposals', Proposals::load($mysql, $person['cod']));
+} elseif ($PERIOD_RESULT) {
+    $smarty->assign('content', "proposals.tpl");
+    $smarty->assign('proposals', Proposals::load($mysql, $person['cod']));
 }
 
 // TODO: achar uma forma melhor de mostrar o estado das propostas.

@@ -14,10 +14,26 @@ $papers['db']['password']         = '';
  * event configuration *
  * * * * * * * * * * * */
 
-$papers['event']['submission_first_day']  = '25 July 2005';
+$papers['event']['submission_first_day']  = '25 Setember 2005';
 $papers['event']['submission_last_day']   = '25 October 2005';
+$papers['event']['result_publication']    = '25 November 2005';
+$papers['event']['last_day_for_update']   = '25 December 2005';
 $papers['event']['codename']              = 'myevent2005';
 $papers['event']['name']                  = 'My Event 2005';
 $papers['event']['contact_email']         = 'webmaster@localhost';
+
+/* * * * * * * * * * * *
+ * system testing      *
+ * * * * * * * * * * * */
+// set $papers['today'] to some not-null date and the system will consider
+// today as being that day (for checking deadlines, etc). Otherwise, today
+// will be considered as being ... today (as told us by the system clock)!
+
+$papers['today'] = null;
+// $papers['today'] = '20 Setember 2005'; // before submission
+// $papers['today'] = '20 October'; // during submission
+// $papers['today'] = '20 November 2005'; // after submission, before result
+// $papers['today'] = '20 December 2005'; // after result, before last chance for update
+// $papers['today'] = '20 January 2006'; // after last day for updates
 
 ?>

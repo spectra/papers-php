@@ -193,3 +193,8 @@ body.frivolo {
 
   height: 625px;
 }
+
+.warn { 
+  color: red;
+  font-weight: bold;
+}
