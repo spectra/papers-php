@@ -1,11 +1,13 @@
-**********************************************
+*'********************************************
 * urgente (pra submissão)                    * 
 **********************************************
 
+[x] suporte à obrigar o cidadão a aceitar termos arbitrários
+    (definidos na configuração) antes de submeter.
 [x] datas e prazos controlados automaticamente pelo sistema
-[ ] incluir data do final da avaliação pra poder liberar as propostas
+[x] incluir data do final da avaliação pra poder liberar as propostas
     (antes disso não faz sentido mostrar o status da proposta)
-[ ] incluir um campo 'tipo' na proposta, pra indicar se é:
+[x] incluir um campo 'tipo' na proposta, pra indicar se é:
     - submissão normal (default)
     - convidado (inclusão via /admin)
     - patrocinador (inclusão via /admin)

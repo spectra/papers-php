@@ -14,18 +14,15 @@ $person = Persons::find($mysql, $user);
 
 
 if (Persons::find($mysql,$_POST['email'])) {
-  echo "existing e-mail!";
-  return;
+  $smarty->fatal('existingEmail');
 }
 
 if ($_POST['newPassword'] == "") {
-  echo "Password is mandatory!";
-  return;
+  $smarty->fatal('mandatoryFieldsMissing');
 }
 
 if ($_POST['newPassword'] != $_POST['repeatPassword']) {
-  echo "passwords doesn't match!";
-  return;
+  $smarty->fatal('passwordsDontMatch');
 }
 
 Persons::create($mysql, $_POST);

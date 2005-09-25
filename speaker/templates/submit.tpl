@@ -39,13 +39,6 @@ function accepted() {
   {if $proposal}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
   <table class='formulario' align='center'>
     <tbody>
-    {if $mandatoryMissing}
-      <tr>
-        <th bgcolor="#dddddd" align="center" colspan="2">
-          <span class='warn'>{#mandatoryMissing#}</span>
-        </th>
-      </tr>
-    {/if}
     <tr>
       <th bgcolor="#dddddd" align="center" colspan="2">{#proposalInfo#}
       </th>

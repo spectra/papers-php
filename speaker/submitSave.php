@@ -23,7 +23,7 @@ if ($PERIOD_SUBMISSION) {
     }
   }
   if ($mandatoryMissing) {
-    $smarty->assign('mandatoryMissing', 1);
+    $smarty->assign('message', 'mandatoryFieldsMissing');
     $smarty->assign('proposal', $fields);
     $smarty->assign('content', 'submit.tpl');
     $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
@@ -40,8 +40,7 @@ if ($PERIOD_SUBMISSION) {
 
     $proposal = Proposals::find($mysql,$cod);
     if (!Proposals::owns($person,$proposal)) {
-      echo "You can only update your own proposals!";
-      return;
+      $smarty->fatal('onlyProposalOwnerCanUpdate');
     }
     
     unset($fields['cod']);
@@ -60,7 +59,7 @@ if ($PERIOD_SUBMISSION) {
   }
 
 } else {
-  echo "Not in submission period.";
+  $smarty->fatal('notInSubmissionPeriod');
   return;
 }
 

@@ -13,6 +13,12 @@ class MySmarty extends Smarty {
     $this->assign('event', $papers['event']);
   }
 
+  function fatal($msg = 'unamedFatalError') {
+    $this->assign('message', $msg);
+    $this->display('index.tpl');
+    exit;
+  }
+
 }
 
 ?>

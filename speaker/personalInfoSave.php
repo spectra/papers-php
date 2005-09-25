@@ -7,8 +7,7 @@ require_once 'include/persons.inc.php';
 require_once 'include/pathinfo.inc.php';
 
 if (!$_POST['nome'] || !$_POST['email']) {
-  echo "Name and e-mail are mandatory!";
-  return ;
+  $smarty->fatal('mandatoryFieldsMissing');
 }
 
 $mysql = new Mysql;
@@ -17,12 +16,10 @@ Persons::update($mysql, $person['cod'], $_POST);
 
 if ($_POST['newPassword']) {
   if ($_POST['newPassword'] != $_POST['repeatPassword']) {
-    echo "passwords doesn't match!";
-    return;
+    $smarty->fatal('passwordsDontMatch');
   }
   if (md5($_POST['currentPassword']) != $person['passwd']) {
-    echo "current password incorrect";
-    return;
+    $smarty->fatal("currentPasswordIncorrect");
   }
   Persons::setPassword($mysql, $person['cod'], $_POST['newPassword']);
 }

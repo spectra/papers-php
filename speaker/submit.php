@@ -23,16 +23,14 @@ if ($PERIOD_SUBMISSION) {
     $proposal = Proposals::find($mysql, $cod);
 
     if (! Proposals::owns($person, $proposal)) {
-      echo "You can only edit your own proposals!";
-      return;
+      $smarty->fatal('onlyProposalOwnerCanUpdate');
     }
     
     $smarty->assign('proposal', $proposal);
   }
   
 } else {
-  echo "Not in submission period.";
-  return;
+  $smarty->fatal('notInSubmissionPeriod');
 }
 
 $smarty->display('index.tpl');

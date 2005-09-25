@@ -7,16 +7,20 @@
 
   <tr>
     <td colspan='4' align='center'>
-      <span style='color: red'>*</span> for Brazilians only, don't care if you
+      <span style='color: green'><sup>BR</sup></span> for Brazilians only, don't care if you
       are not Brazilian.
+      <br/>
+      <span class='warn'>*</span> {#mandatoryFields#}.
     </td>
   </tr>
 
   <tr>
-    <th>{#name#}:</th>
+    <th>{#name#}:<span class='warn'>*</span>
+    </th>
     <td><input size="30" maxlength="50" name="nome" type="text"
     value="{$person.nome}"></td>
-    <th>E-mail:</th>
+    <th>E-mail:<span class='warn'>*</span>
+    </th>
     <td><input size="30" maxlength="50" name="email" type="text"
     value="{$person.email}"></td>
   </tr>
@@ -40,19 +44,19 @@
   </tr>
 
   <tr>
-    <th>RG: <span style='color: red'>*</span></th>
+    <th>RG: <span style='color: green'><sup>BR</sup></span></th>
     <td>
       <input type="text" size="15" maxlength="15"
              name="rg" value="{$person.rg}"/>
     </td>
-    <th>Órgão Expeditor: <span style='color: red'>*</span></th>
+    <th>Órgão Expeditor: <span style='color: green'><sup>BR</sup></span></th>
     <td>
       <input type="text" name="rg_orgao" value="{$person.rg_orgao}"
              size="15" maxlength="15"/>
     </td>
   </tr>
   <tr>
-    <th>CPF: <span style='color: red'>*</span></th>
+    <th>CPF: <span style='color: green'><sup>BR</sup></span></th>
     <td>
       <input type="text" name="cpf" value="{$person.cpf}"
              size="15" maxlength="11" />
