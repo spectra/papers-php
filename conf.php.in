@@ -22,6 +22,20 @@ $papers['event']['codename']              = 'myevent2005';
 $papers['event']['name']                  = 'My Event 2005';
 $papers['event']['contact_email']         = 'webmaster@localhost';
 
+/*****************************************************
+ * agreement: if your event requires that submitters *
+ * accept some terms before submissions, you must    *
+ * uncomment these and fill the terms they should    *
+ * read and accept before being able to submit a     *
+ * proposal. One entry for each available language   *
+ *****************************************************/
+// $papers['event']['agreement']['en'] = "
+// You accept the following terms ...
+// ";
+// $papers['event']['agreement']['pt-br'] = "
+// Voce tem que aceitar esses termos ...
+// ";
+
 /* * * * * * * * * * * *
  * system testing      *
  * * * * * * * * * * * */

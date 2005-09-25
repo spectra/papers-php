@@ -57,13 +57,13 @@ class Proposals {
   }
 
   function create($db, $fields) {
-    $rs = $db->conn->Execute("select * from propostas where cod = -1");
+    $rs = $db->conn->Execute("select cod,titulo,tema,idioma,publicoalvo,descricao,resumo,comentarios,ip,ip_proxy,browser,dthora,pessoa from propostas where cod = -1");
     $sql = $db->conn->GetInsertSQL($rs, $fields, false, true);
     $db->conn->Execute($sql);
   }
 
   function real_update($db, $cod, $fields) {
-    $rs = $db->conn->Execute("select * from propostas where cod = $cod");
+    $rs = $db->conn->Execute("select cod,titulo,tema,idioma,publicoalvo,descricao,resumo,comentarios from propostas where cod = $cod");
     $sql = $db->conn->GetUpdateSQL($rs, $fields, false, true);
     $db->conn->Execute($sql);
   }

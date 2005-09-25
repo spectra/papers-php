@@ -49,6 +49,13 @@ if ($PERIOD_SUBMISSION) {
   } else {
     // new proposal
     $fields['pessoa'] =  $person['cod'];
+
+    $fields['ip']       = $_SERVER['REMOTE_ADDR'];
+    $fields['ip_proxy'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    $fields['browser']  = $_SERVER["HTTP_USER_AGENT"];
+    $fields['dthora']   = time();
+
+    
     Proposals::create($mysql, $fields);
   }
 

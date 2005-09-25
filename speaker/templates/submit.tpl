@@ -1,5 +1,40 @@
 <h2>{#proposalSubmission#}</h2>
 
+{if (! $proposal) && ($event.agreement) }
+{literal}
+<style type="text/css">
+  div#submissionForm { display: none; }
+  div#terms {
+     margin-left: 15%; width: 70%; height: 10em;
+     overflow: scroll-auto; margin-top: 1em; margin-bottom: 1em;
+     border: 1px solid #CCC;
+     padding: 0.5em;
+  }
+</style>
+<script language='Javascript'>
+
+function accepted() {
+  var agreement = document.getElementById('agreement');
+  var form = document.getElementById('submissionForm');
+  agreement.style.display = 'none';
+  form.style.display = 'block';
+}
+
+</script>
+{/literal}
+<div id='agreement'>
+<div id='terms'>
+{$event.agreement[$language]}
+</div>
+<center>
+  <form name='agreement'>
+    <input type='button' onclick='javascript: accepted();' value='{#iAccept#}'>
+  </form>
+</center>
+</div>
+{/if}
+
+<div id='submissionForm'>
 <form name="form1" action="submitSave" method="POST">
   {if $proposal}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
   <table class='formulario' align='center'>
@@ -82,4 +117,5 @@
     </tr>
   </tbody></table>
 </form>
+</div>
 
