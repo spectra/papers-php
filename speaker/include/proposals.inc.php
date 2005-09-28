@@ -72,6 +72,31 @@ class Proposals {
     $db->conn->Execute("delete from propostas where cod = $cod");
   }
 
+  function findSpeakers($db, $cod) {
+    $rs = $db->conn->Execute("
+        select pessoas.*, 1 as main
+        from pessoas
+          join propostas on pessoas.cod = propostas.pessoa
+        where propostas.cod = $cod
+        union
+        select pessoas.*, 0 as main
+        from pessoas
+          join copalestrantes on copalestrantes.pessoa = pessoas.cod
+        where copalestrantes.proposta = $cod
+        ");
+     return $rs->GetArray();
+  }
+
+  function addSpeaker($db, $pcod, $scod) {
+    $sql = ("insert into copalestrantes (proposta,pessoa) values ($pcod,$scod)");
+    $db->conn->Execute($sql);
+  }
+
+  function removeSpeaker($db, $pcod, $scod) {
+    $sql = ("delete from  copalestrantes where proposta = $pcod and pessoa = $scod");
+    $db->conn->Execute($sql);
+  }
+
 }
 
 ?>

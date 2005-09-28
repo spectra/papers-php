@@ -15,8 +15,7 @@ $smarty->assign('person',$person);
 
 if ($PERIOD_SUBMISSION) {
 
-  $smarty->assign('content', "submit.tpl");
-  $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
+  $smarty->assign('content', "addSpeaker.tpl");
 
   $cod = PathInfo::getInteger();
   if ($cod) {
@@ -28,9 +27,15 @@ if ($PERIOD_SUBMISSION) {
     
     $smarty->assign('proposal', $proposal);
 
-    $speakers = Proposals::findSpeakers($mysql, $cod);
-    $smarty->assign('speakers', $speakers);
+    $search = $_GET['search'];
+    if ($search) {
+      $smarty->assign('search', Persons::search($mysql, $search));
+    }
+  } else {
+    header('Location: .');
+    exit;
   }
+
   
 } else {
   $smarty->fatal('notInSubmissionPeriod');

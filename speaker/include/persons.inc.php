@@ -15,6 +15,11 @@ class Persons {
     return $rsa[0];
   }
 
+  function search($db, $search) {
+    $rs = $db->conn->Execute("select * from pessoas where email like concat('%',concat(?,'%')) or nome like concat('%',concat(?,'%'))", array($search, $search));
+    return $rs->GetArray();
+  }
+
   function update($db, $cod, $fields) {
     $rs = $db->conn->Execute("select nome,email,rg,rg_orgao,cpf,passaporte,org,cidade,estado,pais,fone,fotourl,biografia,coment,sexo,nickname  from pessoas where cod = $cod");
     $sql = $db->conn->GetUpdateSQL($rs, $fields, false, true);

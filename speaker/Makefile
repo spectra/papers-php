@@ -12,5 +12,5 @@ css:
 	ln -s ../admin/css .
 
 clean:
-	rm -rf templates_c css
+	rm -rf templates_c css img
 	make clean -C include

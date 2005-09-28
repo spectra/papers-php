@@ -1,6 +1,5 @@
 <h2>{#personalInfo#}</h2>
 
-<center>
 <form action='{if $user}personalInfoSave{else}accountSave{/if}' method='POST'>
 <table class='formulario'>
 
@@ -137,4 +136,3 @@
   </tr>
 </table>
 </form>
-</center>

@@ -57,6 +57,11 @@ table.formulario th {
   background: #f0f0f0;
 }
 
+table.formulario {
+  margin-left: 15%;
+  width: 70%;
+}
+
 code {
   color: #bb3333;
   font-family: monospace;
@@ -201,7 +206,7 @@ body.frivolo {
 
 div#terms {
    height: 10em;
-   overflow: scroll-auto;
+   overflow: auto;
    border: 1px solid #CCC;
    padding: 0.5em;
 }

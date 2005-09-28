@@ -13,7 +13,7 @@
     - patrocinador (inclusão via /admin)
     - palestra paga (inclusão via /admin)
 [x] alteração de propostas pelos proponentes (dentro do prazo de submissão)
-[ ] possibilidade de cadastrar mais de um autor. Refazer o cadastro de
+[x] possibilidade de cadastrar mais de um autor. Refazer o cadastro de
     propostas, na real.
 [ ] avisar pras pessoas que para propor algo "extravagante", que não seja uma
     palestra, pra não fazer isso no papers senão a gente se perde. :-)

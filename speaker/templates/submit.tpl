@@ -13,7 +13,7 @@ function toggleSubmission(status) {
 
 <div>
 <form name="form1" action="submitSave" method="POST">
-  {if $proposal}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
+  {if $proposal.cod}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
   <table class='formulario' align='center'>
     <tbody>
     {if ($event.agreement) }
@@ -34,6 +34,26 @@ function toggleSubmission(status) {
       <th bgcolor="#dddddd" align="center" colspan="2">{#proposalInfo#}
       </th>
     </tr>
+    {if $proposal.cod}
+      <tr>
+        <th>{#proponents#}:</th>
+        <td>
+          <ul>
+          {section loop=$speakers name=s}
+            <li>
+              {$speakers[s].nome}
+              {if !$speakers[s].main}
+                (<a href="addSpeakerRemove?cod={$proposal.cod}&scod={$speakers[s].cod}" onclick="return confirm('{#removeConfirm#}')">{#remove#}</a>)
+              {/if}
+            </li>
+          {/section}
+          </li>
+          <br/>
+          <br/>
+          <a href="addSpeaker/{$proposal.cod}">{#addSpeaker#}</a>
+        </td>
+      </tr>
+    {/if}
     <tr>
       <th bgcolor="#dddddd" align="center" colspan="2">
         <span class='warn'>*</span>

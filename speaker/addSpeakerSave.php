@@ -15,27 +15,29 @@ $smarty->assign('person',$person);
 
 if ($PERIOD_SUBMISSION) {
 
-  $smarty->assign('content', "submit.tpl");
-  $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
+  $smarty->assign('content', "addSpeaker.tpl");
 
-  $cod = PathInfo::getInteger();
-  if ($cod) {
+  $cod = preg_replace('/[^0-9]/','',$_GET['cod']);
+  $scod = preg_replace('/[^0-9]/','',$_GET['scod']);
+
+  if ($cod && $scod) {
     $proposal = Proposals::find($mysql, $cod);
 
     if (! Proposals::owns($person, $proposal)) {
       $smarty->fatal('onlyProposalOwnerCanUpdate');
     }
-    
-    $smarty->assign('proposal', $proposal);
 
-    $speakers = Proposals::findSpeakers($mysql, $cod);
-    $smarty->assign('speakers', $speakers);
+    Proposals::addSpeaker($mysql, $cod, $scod);
+
+    header("Location: submit/$cod");
+    
+  } else {
+    header("Location: .");
+    exit;
   }
   
 } else {
   $smarty->fatal('notInSubmissionPeriod');
 }
-
-$smarty->display('index.tpl');
 
 ?>
