@@ -1,44 +1,35 @@
 <h2>{#proposalSubmission#}</h2>
 
-{if (! $proposal) && ($event.agreement) }
 {literal}
-<style type="text/css">
-  div#submissionForm { display: none; }
-  div#terms {
-     margin-left: 15%; width: 70%; height: 10em;
-     overflow: scroll-auto; margin-top: 1em; margin-bottom: 1em;
-     border: 1px solid #CCC;
-     padding: 0.5em;
-  }
-</style>
-<script language='Javascript'>
+<script language="Javascript">
 
-function accepted() {
-  var agreement = document.getElementById('agreement');
-  var form = document.getElementById('submissionForm');
-  agreement.style.display = 'none';
-  form.style.display = 'block';
+function toggleSubmission(status) {
+  var button = document.getElementById('submitButton');
+  button.disabled = status;
 }
+{/literal}
 
 </script>
-{/literal}
-<div id='agreement'>
-<div id='terms'>
-{$event.agreement[$language]}
-</div>
-<center>
-  <form name='agreement'>
-    <input type='button' onclick='javascript: accepted();' value='{#iAccept#}'>
-  </form>
-</center>
-</div>
-{/if}
 
-<div id='submissionForm'>
+<div>
 <form name="form1" action="submitSave" method="POST">
   {if $proposal}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
   <table class='formulario' align='center'>
     <tbody>
+    {if ($event.agreement) }
+      <tr>
+        <th colspan='2'>
+          {#termsForSubmission#}
+        </th>
+      </tr>
+      <tr>
+      <td colspan='2'>
+      <div id='terms'>
+      {$event.agreement[$language]}
+      </div>
+      </td>
+      </tr>
+    {/if}
     <tr>
       <th bgcolor="#dddddd" align="center" colspan="2">{#proposalInfo#}
       </th>
@@ -104,8 +95,20 @@ function accepted() {
       <td><textarea cols="46" rows="5" name="comentarios">{$proposal.comentarios}</textarea>
       </td>
     </tr>
+    {if ($event.agreement)}
+      <tr>
+        <td colspan="2">
+          <div style='margin-left: 30%; margin-right: 30%;'>
+            <input type="radio" name="accept" value="1" onclick='javascript:toggleSubmission(false);' {if $proposal}checked{/if}> {#iAcceptTheTerms#}
+            <br/>
+            <input type="radio" name="accept" value="0" onclick='javascript:toggleSubmission(true);'> {#iDontAcceptTheTerms#}
+          </div>
+        </td>
+      </tr>
+    {/if}
     <tr>
-      <td bgcolor="#eeeeee" align="center" colspan="4"><input value="{#save#}" type="submit">
+      <td bgcolor="#eeeeee" align="center" colspan="2">
+        <input value="{#save#}" type="submit" id='submitButton' {if !$proposal}disabled='1'{/if}>
       </td>
     </tr>
   </tbody></table>

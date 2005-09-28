@@ -16,7 +16,7 @@ class Persons {
   }
 
   function update($db, $cod, $fields) {
-    $rs = $db->conn->Execute("select nome,email,rg,rg_orgao,cpf,passaporte,org,cidade,estado,pais,fone,fotourl,biografia,coment  from pessoas where cod = $cod");
+    $rs = $db->conn->Execute("select nome,email,rg,rg_orgao,cpf,passaporte,org,cidade,estado,pais,fone,fotourl,biografia,coment,sexo,nickname  from pessoas where cod = $cod");
     $sql = $db->conn->GetUpdateSQL($rs, $fields, false, true);
     $db->conn->Execute($sql);
   }
@@ -34,7 +34,7 @@ class Persons {
   }
   
   function create($db, $fields) {
-    $rs = $db->conn->Execute("select nome,email,rg,rg_orgao,cpf,passaporte,org,cidade,estado,pais,fone,fotourl,biografia,coment,passwd  from pessoas where cod = -1");
+    $rs = $db->conn->Execute("select nome,email,rg,rg_orgao,cpf,passaporte,org,cidade,estado,pais,fone,fotourl,biografia,coment,sexo,nickname,passwd  from pessoas where cod = -1");
 
     $fields['passwd'] = md5($fields['newPassword']);
 

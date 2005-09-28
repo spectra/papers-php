@@ -27,6 +27,8 @@ CREATE TABLE pessoas (
   coment text,
   fotourl varchar(255) default NULL,
   biografia text,
+  sexo enum('m','f') not null default 'm',
+  nickname varchar(30),
   comentadm text,
   status enum('i','a','r','d','p') NOT NULL default 'i',
   pago tinyint(3) unsigned NOT NULL default '0',

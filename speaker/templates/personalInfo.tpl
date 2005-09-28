@@ -1,7 +1,7 @@
 <h2>{#personalInfo#}</h2>
 
 <center>
-<form action='{if $person}personalInfoSave{else}accountSave{/if}' method='POST'>
+<form action='{if $user}personalInfoSave{else}accountSave{/if}' method='POST'>
 <table class='formulario'>
 
 
@@ -25,21 +25,33 @@
     value="{$person.email}"></td>
   </tr>
 
-  {if $person}
+  <tr>
+    <th>{#gender#}:</th>
+    <td> 
+       {#female#} <input type="radio" name="sexo" value="f" {if $person.sexo == 'f'}checked{/if} />
+       {#male#}   <input type="radio" name="sexo" value="m" {if $person.sexo != 'f'}checked{/if} />
+    </td>
+    <th>{#nickname#}</th>
+    <td><input type="text" name="nickname" size="30" maxlength="30" value='{$person.nickname}'/></td>
+  </tr>
+
+  {if $user}
   <tr>
     <th colspan='4'>Change password</th>
   </tr>
   <tr>
-    <th>{#currentPassword#}</th>
+    <th>{#currentPassword#}
+    </th>
     <td colspan="3"><input size="30" maxlength="50" name="currentPassword" type="password" value=""></td>
   </tr>
   {/if}
   <tr>
-    <th>{if $person}{#newPassword#}{else}{#password#}{/if}</th>
+    <th>{if $user}{#newPassword#}{else}{#password#}{/if} {if !$user}<span class='warn'>*</span>{/if}  </th>
     <td colspan="3"><input size="30" maxlength="50" name="newPassword" type="password" value=""></td>
   </tr>
   <tr>
-    <th>{#repeatPassword#}</th>
+    <th>{#repeatPassword#}{if !$user}<span class='warn'>*</span>{/if}
+    </th>
     <td colspan="3"><input size="30" maxlength="50" name="repeatPassword" type="password" value=""></td>
   </tr>
 

@@ -8,7 +8,7 @@
       <!-- start of SUBMISSION -->
       <!-- ***************************************** -->
       <a style='font-size: smaller' href="submit/{$proposals[pr].cod}">({#edit#})</a>
-      <a style='font-size: smaller' href="submitRemove/{$proposals[pr].cod}">({#remove#})</a>
+      <a style='font-size: smaller' href="submitRemove/{$proposals[pr].cod}" onclick="return confirm('{#removeConfirm#}');">({#remove#})</a>
       <!-- ***************************************** -->
       <!-- start of SUBMISSION -->
       <!-- ***************************************** -->

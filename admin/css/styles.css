@@ -198,3 +198,10 @@ body.frivolo {
   color: red;
   font-weight: bold;
 }
+
+div#terms {
+   height: 10em;
+   overflow: scroll-auto;
+   border: 1px solid #CCC;
+   padding: 0.5em;
+}

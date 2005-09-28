@@ -16,14 +16,21 @@ if ($PERIOD_SUBMISSION) {
 
   $fields = $_POST;
 
+  $error = null;
+
+  if (! $fields['accept']) {
+    $error = 'youMustAcceptTheTerms';
+  }
+
   $mandatoryMissing = false;
   foreach (array('titulo','tema','idioma','descricao','resumo','publicoalvo') as $f) {
     if (! $fields[$f]) {
-      $mandatoryMissing = true;
+      $error = 'mandatoryFieldsMissing';
     }
   }
-  if ($mandatoryMissing) {
-    $smarty->assign('message', 'mandatoryFieldsMissing');
+
+  if ($error) {
+    $smarty->assign('message', $error);
     $smarty->assign('proposal', $fields);
     $smarty->assign('content', 'submit.tpl');
     $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));

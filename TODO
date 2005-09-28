@@ -27,8 +27,8 @@
     > administrador de sistemas fica reduzido a "Redes" e "Segurança".
 [-] e-mail de "confirmação da confirmação" para palestrantes que confirmam
     presença.
-[ ] incluir sexo nos dados dos palestrantes
-[ ] incluir campo nickname para palestrantes
+[x] incluir sexo nos dados dos palestrantes
+[x] incluir campo nickname para palestrantes
 
 **********************************************
 * não urgente (para avaliação das propostas) *

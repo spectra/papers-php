@@ -10,19 +10,25 @@ $smarty = new MySmarty;
 require_once 'include/language.inc.php'; // already starts the session
 
 $mysql = new Mysql;
-$person = Persons::find($mysql, $user);
 
-
+$error = null;
 if (Persons::find($mysql,$_POST['email'])) {
-  $smarty->fatal('existingEmail');
+  $error = 'existingEmail';
 }
 
-if ($_POST['newPassword'] == "") {
-  $smarty->fatal('mandatoryFieldsMissing');
+if (! $_POST['newPassword'] || !$_POST['nome'] || !$_POST['email']|| !$_POST['newPassword'] || !$_POST['repeatPassword'] ) {
+  $error = 'mandatoryFieldsMissing';
 }
 
 if ($_POST['newPassword'] != $_POST['repeatPassword']) {
-  $smarty->fatal('passwordsDontMatch');
+  $error = 'passwordsDontMatch';
+}
+
+if ($error) {
+  $smarty->assign('content', 'personalInfo.tpl');
+  $smarty->assign('message', $error);
+  $smarty->assign('person', $_POST);
+  $smarty->display('index.tpl');
 }
 
 Persons::create($mysql, $_POST);

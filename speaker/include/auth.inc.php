@@ -13,6 +13,7 @@ require_once 'include/language.inc.php'; // already starts the session
 $user = $_SESSION['papersauth'];
 $smarty->assign('user', $user);
 
+// checks authentication
 if (!$_SESSION['papersauth']) {
   if (isset ($_POST['username']) && isset ($_POST['password'])) {
     $email = $_POST['username'];
@@ -33,6 +34,7 @@ if (!$_SESSION['papersauth']) {
     exit;
   }
 }
+
 
 function login($email, $password) {
   $mysql = new Mysql;
