@@ -1,8 +1,7 @@
 <h2>{#lostMyPassword#}</h2>
 
-<center>
+  <table class='formulario' align='center'>
   <form action="lostPassword" method="POST" style='width: 40%;'>
-    <table class='formulario'>
       <tr>
         <td colspan='2'>
           {#fillYourEmail#}
@@ -21,6 +20,5 @@
           <input type='submit' value='OK'/>
         </td>
       </tr>
-    </table>
-  </form>
-</center>
+    </form>
+  </table>

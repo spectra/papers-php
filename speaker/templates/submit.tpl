@@ -14,7 +14,7 @@ function toggleSubmission(status) {
 <div>
 <form name="form1" action="submitSave" method="POST">
   {if $proposal.cod}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
-  <table class='formulario' align='center'>
+  <table class='formulario' align='center' width='70%'>
     <tbody>
     {if ($event.agreement) }
       <tr>

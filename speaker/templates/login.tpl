@@ -1,5 +1,4 @@
-<center>
-  <table class='formulario'>
+  <table class='formulario' align='center'>
     <form action="" method='POST'>
       <tr>
         <th colspan='2'>Login</th>
@@ -31,4 +30,3 @@
         </td>
       </tr>
   </table>
-</center>

@@ -17,23 +17,28 @@ if (!$cod) {
 }
 
 
-$person = Persons::find($mysql, $user);
-$proposal = Proposals::find($mysql, $cod);
+if ($PERIOD_RESULT) {
 
-if (! Proposals::owns($person, $proposal)) {
-  $smarty->assign('message', 'onlyProposalOwnerCanCheckReviews');
+  $person = Persons::find($mysql, $user);
+  $proposal = Proposals::find($mysql, $cod);
+  
+  if (! Proposals::owns($person, $proposal)) {
+    $smarty->assign('message', 'onlyProposalOwnerCanCheckReviews');
+  } else {
+    $smarty->assign('content', 'reviews2.tpl');
+    $smarty->assign('proposal', $proposal);
+    $smarty->assign('person', $person);
+  
+    $track = Tracks::find($mysql, $proposal['tema'], $language);
+    $smarty->assign('track', $track);
+  
+    $reviews = Proposals::reviews($mysql, $proposal['cod']);
+    $smarty->assign('reviews', $reviews);
+  }
+  
+  $smarty->display('index.tpl');
 } else {
-  $smarty->assign('content', 'reviews2.tpl');
-  $smarty->assign('proposal', $proposal);
-  $smarty->assign('person', $person);
-
-  $track = Tracks::find($mysql, $proposal['tema'], $language);
-  $smarty->assign('track', $track);
-
-  $reviews = Proposals::reviews($mysql, $proposal['cod']);
-  $smarty->assign('reviews', $reviews);
+  $smarty->fatal('resultNotReleasedYet');
 }
-
-$smarty->display('index.tpl')
 
 ?>

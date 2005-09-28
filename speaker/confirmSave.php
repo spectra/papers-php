@@ -15,16 +15,21 @@ if (! preg_match('/^[0-9]+$/',$cod)) {
   exit;
 }
 
-$person = Persons::find($mysql, $user);
-$proposal = Proposals::find($mysql, $cod);
+if ($PERIOD_RESULT) {
 
-if (! Proposals::owns($person, $proposal)) {
-  $smarty->assign('message', 'onlyProposalOwnerCanConfirm');
-  $smarty->display('index.tpl');
+  $person = Persons::find($mysql, $user);
+  $proposal = Proposals::find($mysql, $cod);
+  
+  if (! Proposals::owns($person, $proposal)) {
+    $smarty->assign('message', 'onlyProposalOwnerCanConfirm');
+    $smarty->display('index.tpl');
+  } else {
+    // salvar e redirecionar pra lista de propostas
+    Proposals::update($mysql, $cod, $_POST);
+    header('Location: proposals');
+  }
 } else {
-  // salvar e redirecionar pra lista de propostas
-  Proposals::update($mysql, $cod, $_POST);
-  header('Location: proposals');
+  $smarty->fatal('resultNotReleasedYet');
 }
 
 

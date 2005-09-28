@@ -16,17 +16,22 @@ if (!$cod) {
   exit;
 }
 
-$person = Persons::find($mysql, $user);
-$proposal = Proposals::find($mysql, $cod);
+if ($PERIOD_RESULT) {
 
-if (! Proposals::owns($person, $proposal)) {
-  $smarty->assign('message', 'onlyProposalOwnerCanConfirm');
+  $person = Persons::find($mysql, $user);
+  $proposal = Proposals::find($mysql, $cod);
+
+  if (! Proposals::owns($person, $proposal)) {
+    $smarty->assign('message', 'onlyProposalOwnerCanConfirm');
+  } else {
+    $smarty->assign('proposal', $proposal);
+    $smarty->assign('person', $person);
+    $smarty->assign('content', 'confirm.tpl');
+  }
+  
+  $smarty->display('index.tpl');
 } else {
-  $smarty->assign('proposal', $proposal);
-  $smarty->assign('person', $person);
-  $smarty->assign('content', 'confirm.tpl');
+  $smarty->fatal('resultNotReleasedYet');
 }
-
-$smarty->display('index.tpl')
 
 ?>
