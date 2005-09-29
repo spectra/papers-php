@@ -22,7 +22,7 @@ if ($PERIOD_RESULT) {
   $person = Persons::find($mysql, $user);
   $proposal = Proposals::find($mysql, $cod);
   
-  if (! Proposals::owns($person, $proposal)) {
+  if (! Proposals::owns($person, $proposal, $mysql)) {
     $smarty->assign('message', 'onlyProposalOwnerCanCheckReviews');
   } else {
     $smarty->assign('content', 'reviews2.tpl');

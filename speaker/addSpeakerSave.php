@@ -23,7 +23,7 @@ if ($PERIOD_SUBMISSION) {
   if ($cod && $scod) {
     $proposal = Proposals::find($mysql, $cod);
 
-    if (! Proposals::owns($person, $proposal)) {
+    if (! Proposals::owns($person, $proposal, $mysql)) {
       $smarty->fatal('onlyProposalOwnerCanUpdate');
     }
 

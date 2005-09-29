@@ -8,6 +8,11 @@ class Proposals {
       from propostas
       join pessoas on pessoas.cod = propostas.pessoa
       where pessoas.cod = $cod
+      union
+      select propostas.*
+      from propostas
+      join copalestrantes on copalestrantes.proposta = propostas.cod
+      where copalestrantes.pessoa = $cod
     ";
     $rs = $db->conn->Execute($sql);
     return $rs->GetArray();
@@ -19,6 +24,12 @@ class Proposals {
       from propostas
       join pessoas on pessoas.cod = propostas.pessoa
       where pessoas.cod = $cod
+            and propostas.status in ('a','p','c')
+      union
+      select propostas.*
+      from propostas
+      join copalestrantes on copalestrantes.proposta = propostas.cod
+      where copalestrantes.pessoa = $cod
             and propostas.status in ('a','p','c')
     ";
     $rs = $db->conn->Execute($sql);
@@ -36,8 +47,26 @@ class Proposals {
     return $rsa[0];
   }
 
-  function owns($person, $proposal) {
-    return ($person['cod'] == $proposal['pessoa']);
+  function owns($person, $proposal, $db) {
+    if ($person['cod'] == $proposal['pessoa']) {
+      return true;
+    } else {
+      return Proposals::isCoSpeaker($db, $person['cod'], $proposal['cod']);
+    }
+  }
+  
+  function isCoSpeaker($db, $scod, $pcod) {
+    
+    $sql = "
+      select 1
+      from copalestrantes
+      where pessoa = $scod
+      and proposta = $pcod
+      ";
+
+    $rs = $db->conn->Execute($sql);
+    return ($rs->RecordCount() > 0);
+      
   }
 
   function reviews($db, $cod) {

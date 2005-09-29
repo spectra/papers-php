@@ -26,3 +26,4 @@ clean:
 	rm -f $(PHP)
 	cd templates; rm -f $(TEMPLATES)
 	cd include; rm -f $(INCLUDES)
+	rm -f img

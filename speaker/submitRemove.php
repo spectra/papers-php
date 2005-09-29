@@ -22,7 +22,7 @@ if ($PERIOD_SUBMISSION) {
     return;
   }
   $proposal = Proposals::find($mysql, $cod);
-  if (! Proposals::owns($person, $proposal)) {
+  if (! Proposals::owns($person, $proposal, $mysql)) {
     $smarty->assign('message', 'onlyProposalOwnerCanRemove');
     $smarty->display('index.tpl');
     return;

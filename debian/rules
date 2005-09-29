@@ -6,5 +6,6 @@
 # =========================================================================
 
 # CDBS class
+include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 
