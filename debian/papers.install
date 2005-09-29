@@ -4,3 +4,4 @@ misc/                  usr/share/papers/
 pub/                   usr/share/papers/
 speaker/               usr/share/papers/
 conf.php.in            etc/papers/
+debian/README.config   etc/papers/
