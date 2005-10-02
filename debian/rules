@@ -9,3 +9,6 @@
 include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 
+# CDBS options
+DEB_MAKE_BUILD_TARGET := build
+DEB_COMPRESS_EXCLUDE := .sql

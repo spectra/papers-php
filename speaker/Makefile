@@ -1,8 +1,12 @@
-all: templates_c css img
+all: build runtime
+
+build: css img
 	make -C include/
 
 img:
 	ln -sf ../img .
+
+runtime: templates_c
 
 templates_c:
 	mkdir $@

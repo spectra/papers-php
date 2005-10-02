@@ -55,11 +55,13 @@ Ou:
   ....
   ServerName papers.seu.dominio.dom
   DocumentRoot /usr/share/papers
+  <Directory /usr/share/papers>
+    Options +MultiViews
+  </Directory>
   ....
 </VirtualHost>
 
-OU:
-
+(note: Options +MultiViews é necessário)
 
 Controle de acesso do /admin
 ----------------------------

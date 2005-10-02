@@ -3,10 +3,17 @@ VERSION = 0.3
 
 IMG=$(patsubst %.svg,%.png,$(wildcard *.svg))
 
-all: $(IMG)
-	make -C pub/
-	make -C speaker/
-	make -C admin/
+all: build runtime
+
+build: $(IMG)
+	make build -C pub/
+	make build -C speaker/
+	make build -C admin/
+
+runtime:
+	make runtime -C pub/
+	make runtime -C speaker/
+	make runtime -C admin/
 
 %.png: %.svg
 	rsvg $< $@

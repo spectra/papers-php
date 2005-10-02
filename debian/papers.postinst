@@ -1,0 +1,28 @@
+#!/bin/sh
+
+USER=www-data
+GROUP=www-data
+INSTALLDIR=/usr/share/papers
+VARDIR=/var/lib/papers
+SUBDIRS="speaker/templates_c
+         admin/templates_c
+         pub/templates_c"
+
+for each in $SUBDIRS; do
+  TARGET=$VARDIR/$each
+  if [ ! -d $TARGET ]; then
+    mkdir -p $TARGET
+    chown $USER:$GROUP $TARGET
+    chmod 750 $TARGET
+    ln -sf $TARGET $INSTALLDIR/$each
+  fi
+done
+
+# log directory
+LOGDIR=/var/log/papers/admin
+if [ ! -d $LOGDIR ]; then
+  mkdir -p $LOGDIR
+  chown $USER:$GROUP $LOGDIR
+  chmod 750 $LOGDIR
+  ln -sf $LOGDIR $INSTALLDIR/admin/log
+fi

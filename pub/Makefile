@@ -2,8 +2,12 @@
 INCLUDES=mysql.inc.php basic.inc.php grade.inc.php dias.inc.php horarios.inc.php salas.inc.php propostas.inc.php pessoas.inc.php macrotemas.inc.php press.inc.php config.inc.php
 TEMPLATES=grade.tpl
 
-all: templates_c $(PHP) $(TEMPLATES) includes img
+all: build runtime
+
+build: $(PHP) $(TEMPLATES) includes img
 	if [ ! -e index.php ]; then ln -s programacao.php index.php; fi
+
+runtime: templates_c 
 
 img:
 	ln -sf ../img .

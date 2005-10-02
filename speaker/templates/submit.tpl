@@ -128,7 +128,7 @@ function toggleSubmission(status) {
     {/if}
     <tr>
       <td bgcolor="#eeeeee" align="center" colspan="2">
-        <input value="{#save#}" type="submit" id='submitButton' {if !$proposal}disabled='1'{/if}>
+        <input value="{#save#}" type="submit" id='submitButton' {if $event.agreement && !$proposal}disabled='1'{/if}>
       </td>
     </tr>
   </tbody></table>

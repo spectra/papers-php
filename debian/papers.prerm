@@ -1,0 +1,17 @@
+#!/bin/sh
+INSTALLDIR=/usr/share/papers
+VARDIR=/var/lib/papers
+SUBDIRS="speaker/templates_c
+         admin/templates_c
+         admin/log
+         pub/templates_c"
+
+rm -rf $VARDIR/*
+
+for each in $SUBDIRS; do
+  LINK=$INSTALLDIR/$each
+  if [ -h $LINK ]; then
+    rm -rf $LINK
+  fi
+done
+

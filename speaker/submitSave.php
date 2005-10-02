@@ -8,6 +8,7 @@ require_once 'include/pathinfo.inc.php';
 require_once 'include/event_dates.inc.php';
 require_once 'include/proposals.inc.php';
 require_once 'include/tracks.inc.php';
+require_once 'include/config.inc.php';
 
 $mysql = new Mysql;
 $person = Persons::find($mysql, $user);
@@ -18,7 +19,7 @@ if ($PERIOD_SUBMISSION) {
 
   $error = null;
 
-  if (! $fields['accept']) {
+  if ($event['agreement'] &&  !$fields['accept']) {
     $error = 'youMustAcceptTheTerms';
   }
 
