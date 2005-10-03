@@ -1,0 +1,252 @@
+-- MySQL dump 9.11
+--
+-- Host: localhost    Database: papers
+-- ------------------------------------------------------
+-- Server version	4.0.24_Debian-10-log
+
+--
+-- Table structure for table `avaliacoes`
+--
+
+CREATE TABLE `avaliacoes` (
+  `proposta` int(10) unsigned NOT NULL default '0',
+  `avaliador` varchar(16) NOT NULL default '',
+  `confianca` float NOT NULL default '0',
+  `relevancia` int(11) NOT NULL default '0',
+  `qualidade` int(11) NOT NULL default '0',
+  `experiencia` int(11) NOT NULL default '0',
+  `recomendacao` float NOT NULL default '0',
+  `comentarios_autor` text,
+  `comentarios_comite` text,
+  PRIMARY KEY  (`proposta`,`avaliador`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `avaliacoes`
+--
+
+
+--
+-- Table structure for table `copalestrantes`
+--
+
+CREATE TABLE `copalestrantes` (
+  `proposta` int(10) unsigned NOT NULL default '0',
+  `pessoa` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`proposta`,`pessoa`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `copalestrantes`
+--
+
+
+--
+-- Table structure for table `dias`
+--
+
+CREATE TABLE `dias` (
+  `numero` int(10) unsigned NOT NULL default '0',
+  `descricao` char(30) NOT NULL default '',
+  PRIMARY KEY  (`numero`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `dias`
+--
+
+
+--
+-- Table structure for table `grade`
+--
+
+CREATE TABLE `grade` (
+  `dia` int(11) NOT NULL default '0',
+  `sala` int(11) NOT NULL default '0',
+  `horario` int(11) NOT NULL default '0',
+  `proposta` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`dia`,`sala`,`horario`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `grade`
+--
+
+
+--
+-- Table structure for table `horarios`
+--
+
+CREATE TABLE `horarios` (
+  `numero` int(10) unsigned NOT NULL default '0',
+  `inicio` time NOT NULL default '00:00:00',
+  `final` time NOT NULL default '00:00:00',
+  PRIMARY KEY  (`numero`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `horarios`
+--
+
+
+--
+-- Table structure for table `macrotemas`
+--
+
+CREATE TABLE `macrotemas` (
+  `cod` int(10) unsigned NOT NULL auto_increment,
+  `tstamp` timestamp(14) NOT NULL,
+  `titulo` varchar(40) default NULL,
+  `titulo_en` varchar(40) default NULL,
+  `descr` text,
+  `descr_en` text,
+  `espacos` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`cod`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `macrotemas`
+--
+
+
+--
+-- Table structure for table `mesa`
+--
+
+CREATE TABLE `mesa` (
+  `proposta` int(10) unsigned NOT NULL default '0',
+  `pessoa` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`proposta`,`pessoa`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `mesa`
+--
+
+
+--
+-- Table structure for table `pessoas`
+--
+
+CREATE TABLE `pessoas` (
+  `cod` int(10) unsigned NOT NULL auto_increment,
+  `tstamp` timestamp(14) NOT NULL,
+  `dthora` datetime NOT NULL default '0000-00-00 00:00:00',
+  `nome` varchar(50) NOT NULL default '',
+  `email` varchar(50) NOT NULL default '',
+  `passwd` varchar(64) default NULL,
+  `org` varchar(50) default NULL,
+  `cidade` varchar(30) default NULL,
+  `estado` varchar(30) default NULL,
+  `pais` varchar(30) default NULL,
+  `fone` varchar(30) default NULL,
+  `rg` varchar(15) default NULL,
+  `rg_orgao` varchar(15) default NULL,
+  `cpf` varchar(11) default NULL,
+  `passaporte` varchar(30) default NULL,
+  `coment` text,
+  `fotourl` varchar(255) default NULL,
+  `biografia` text,
+  `sexo` enum('m','f') NOT NULL default 'm',
+  `nickname` varchar(30) default NULL,
+  `comentadm` text,
+  `status` enum('i','a','r','d','p') NOT NULL default 'i',
+  `pago` tinyint(3) unsigned NOT NULL default '0',
+  `vl_viagem` float unsigned NOT NULL default '0',
+  `vl_hotel` float unsigned NOT NULL default '0',
+  `vl_alimen` float unsigned NOT NULL default '0',
+  `vl_outros` float NOT NULL default '0',
+  PRIMARY KEY  (`cod`),
+  UNIQUE KEY `email` (`email`),
+  KEY `nome` (`nome`),
+  KEY `status` (`status`),
+  KEY `pago` (`pago`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `pessoas`
+--
+
+
+--
+-- Table structure for table `press`
+--
+
+CREATE TABLE `press` (
+  `cod` int(10) unsigned NOT NULL auto_increment,
+  `nome` varchar(50) NOT NULL default '',
+  `veiculo` varchar(50) NOT NULL default '',
+  `cargo` varchar(30) default NULL,
+  `registro_profissional` varchar(30) default NULL,
+  `endereco_profissional` varchar(100) default NULL,
+  `pais` varchar(30) NOT NULL default '',
+  `estado` varchar(30) NOT NULL default '',
+  `cidade` varchar(30) NOT NULL default '',
+  `email` varchar(50) NOT NULL default '',
+  `moderado` int(1) NOT NULL default '0',
+  PRIMARY KEY  (`cod`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `press`
+--
+
+
+--
+-- Table structure for table `propostas`
+--
+
+CREATE TABLE `propostas` (
+  `cod` int(10) unsigned NOT NULL auto_increment,
+  `tstamp` timestamp(14) NOT NULL,
+  `dthora` datetime NOT NULL default '0000-00-00 00:00:00',
+  `titulo` varchar(200) NOT NULL default '',
+  `descricao` text NOT NULL,
+  `tema` int(10) unsigned NOT NULL default '0',
+  `pessoa` int(10) unsigned NOT NULL default '0',
+  `publicoalvo` text NOT NULL,
+  `comentarios` text,
+  `coapresentadores` text,
+  `resumo` text NOT NULL,
+  `browser` varchar(255) default NULL,
+  `ip_proxy` varchar(15) default NULL,
+  `idioma` char(2) NOT NULL default '',
+  `ip` varchar(15) default NULL,
+  `status` enum('i','a','r','d') NOT NULL default 'i',
+  `tipo` enum('s','p','v','c') NOT NULL default 's',
+  `espaco` int(10) unsigned default NULL,
+  `comadm` text,
+  `aprovado` tinyint(4) default NULL,
+  `autoriza_video` tinyint(4) default NULL,
+  `confirmada` tinyint(4) default NULL,
+  `score` float default NULL,
+  PRIMARY KEY  (`cod`),
+  UNIQUE KEY `espaco` (`espaco`),
+  KEY `tema` (`tema`),
+  KEY `pessoa` (`pessoa`),
+  KEY `dthora` (`dthora`),
+  KEY `idioma` (`idioma`),
+  KEY `status` (`status`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `propostas`
+--
+
+
+--
+-- Table structure for table `salas`
+--
+
+CREATE TABLE `salas` (
+  `numero` int(10) unsigned NOT NULL default '0',
+  `descricao` varchar(30) NOT NULL default '',
+  `detalhes` text,
+  PRIMARY KEY  (`numero`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `salas`
+--
+
+

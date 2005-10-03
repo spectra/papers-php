@@ -6,6 +6,8 @@ Como instalar este sistema
 
    * Smarty - http://smarty.php.net/
    * ADODB  - http://php.weblogs.com/ADODB
+   * MySQL  - http://www.mysql.org/
+
 
 Smarty
 --------------
@@ -17,6 +19,7 @@ Incluir o diretório de libs do Smarty no php.ini (no Debian Sarge, fica no
 
 include_path=".:/usr/share/php/smarty/libs"
 
+
 ADODB
 --------------
 
@@ -25,25 +28,86 @@ Biblioteca de acesso ao banco de dados. Não há o que configurar.
 Incluir o diretório do adodb ("/usr/share/adodb" no Debian Sarge) ao
 include_path no php.ini.
 
+
+MySQL
+--------------
+Instalar seguindo a recomendação do próprio sistema.
+
+
 ##############################################################################
 ### Instalação ###############################################################
 ##############################################################################
 
-arquivos gerados
+
+Arquivos Gerados
 ----------------
 rodar `make` na raiz dos fontes.
 
-tabelas no banco
-----------------
-Criar as tabelas no banco de dados MySql, conforme os arquivos dentro do
-diretório sql do sistema.
 
-Pode ser:
+Criando o banco de dados
+------------------------
 
-$ sh sql/cria-banco.sh | mysql nome_do_banco
+As seguintes instruções são para a criação do banco de dados a partir da
+linha de comando, e somente para o banco de dados MySQL. Se você utiliza
+outr banco de dados, ou o acessa através de uma interface diferente
+consulte a documentação do seu banco. Nos exemplos a seguir 'db_root' é um
+usuário MySQL com privilégios GRANT e CREATE. Use o nome de usuário
+apropriado para o seu sistema.
+
+Primeiro você deve criar um novo banco de dados para a sua instalação do
+papers (aqui, 'papers' é o nome do seu novo banco de dados):
+
+  mysqladmin -u db_root -p create papers
+
+O MySQL vai pedir a senha do usuário 'db_root' e então criará os
+arquivos iniciais do banco de dados. A seguir você deve configurar as
+permissões de acesso:
+
+  mysql -u db_root -p
+
+Novamente você será pergundado pela senha de 'db_root'. No linha de
+comando do MySQL, entre com o seguinte comando:
+
+  GRANT ALL PRIVILEGES ON papers.*
+    TO nobody@localhost IDENTIFIED BY 'password';
+
+onde
+
+  'papers' é o nome do seu banco de dados
+  'nobody@localhost' é o nome do usuário usado para acessar o banco
+  'password' é a senha necessária para acessar o banco
+
+Se tiver sucesso, o MySQL vai responder com:
+
+  Query OK, 0 rows affected
+
+Para ativar as novas permissoes você deve entrar com o comando:
+
+  flush privileges;
+
+e então saia da linha de comando do MySQL com '\q'.
+
+
+Criando as tabelas no banco
+---------------------------
+
+Uma vez que você tenha o banco de dados, você deve carregar as tabelas
+dentro dele.
+
+Se você utiliza uma aplicação web para acessar o banco (tal como o
+phpMyAdmin), você deve conseguir carregar as tabelas enviando o arquivo
+database/database.mysql na seção apropriada da interface ou então
+copiando-e-colando seu conteúdo como comandos SQL diretamente.
+
+Da linha de comando (substituindo 'nobody' e 'papers' pelo nome de
+usuário do MySQL e pelo nome do seu banco de dados), use:
+
+  mysql -u nobody -p papers < database/database.mysql
+  
 
 Apontar o servidor web para a aplicação
 ---------------------------------------
+
 Exemplo:
 
 Instalar (ou criar um link para a instalação) em /usr/share/papers
@@ -51,23 +115,25 @@ fazer um link /var/www/papers -> /usr/share/papers
 
 Ou:
 
-<VirtualHost *:80>
-  ....
-  ServerName papers.seu.dominio.dom
-  DocumentRoot /usr/share/papers
-  <Directory /usr/share/papers>
-    Options +MultiViews
-  </Directory>
-  ....
-</VirtualHost>
+  <VirtualHost *:80>
+    ....
+    ServerName papers.seu.dominio.dom
+    DocumentRoot /usr/share/papers
+    <Directory /usr/share/papers>
+      Options +MultiViews
+    </Directory>
+    ....
+  </VirtualHost>
 
-(note: Options +MultiViews é necessário)
+(nota: Options +MultiViews é necessário)
+
 
 Controle de acesso do /admin
 ----------------------------
 
 Via apache, do jeito que você quiser. É bom que ao menos o /admin só seja
 acessível por HTTPS.
+
 
 Arquivo de configuração
 -----------------------
@@ -88,4 +154,20 @@ A regra geral é: hostname (sem número de porta, se houver) + caminho até a raiz
 da aplicação, trocando barras por pontos. Depois disso  qualquer coisa que não
 seja [a-zA-Z0-9.] é removido. Qualquer dúvida, veja
 admin/include/config.inc.php
+
+
+Conectando ao banco de dados
+----------------------------
+
+No arquivo 'config.inc.php' configure as variáveis da seção $papers[db]
+com os dados do seu banco de dados. Seguindo nosso exemplo a
+configuração ficaria assim:
+
+  ....  
+  // database configuration:
+  $papers['db']['hostname']         = 'localhost';
+  $papers['db']['database']         = 'papers';
+  $papers['db']['username']         = 'nobody';
+  $papers['db']['password']         = 'password';
+  ....
 
