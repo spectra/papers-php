@@ -9,5 +9,5 @@ Dúvidas, perguntas, informações e bugs ;-) : escreva para
 <a href="http://associacao.softwarelivre.org/">Associação Software Livre.Org</a>.
 <br/>
 <a href='http://papers.softwarelivre.org'>papers</a>
-é software livre distribuído sobre a GNU General Public License.
+é software livre distribuído sob a GNU General Public License.
 </div>
