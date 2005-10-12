@@ -12,6 +12,7 @@ function toggleSubmission(status) {
 </script>
 
 <div>
+
 <form name="form1" action="submitSave" method="POST">
   {if $proposal.cod}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
   <table class='formulario' align='center' width='70%'>
@@ -33,6 +34,11 @@ function toggleSubmission(status) {
     <tr>
       <th bgcolor="#dddddd" align="center" colspan="2">{#proposalInfo#}
       </th>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+      <em>{#tipForSubmission#}</em>
+      </td>
     </tr>
     {if $proposal.cod}
       <tr>
