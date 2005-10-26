@@ -1,41 +1,8 @@
-*'********************************************
-* urgente (pra submissão)                    * 
-**********************************************
+TODO em forma de roadmap
 
-[x] suporte à obrigar o cidadão a aceitar termos arbitrários
-    (definidos na configuração) antes de submeter.
-[x] datas e prazos controlados automaticamente pelo sistema
-[x] incluir data do final da avaliação pra poder liberar as propostas
-    (antes disso não faz sentido mostrar o status da proposta)
-[x] incluir um campo 'tipo' na proposta, pra indicar se é:
-    - submissão normal (default)
-    - convidado (inclusão via /admin)
-    - patrocinador (inclusão via /admin)
-    - palestra paga (inclusão via /admin)
-[x] alteração de propostas pelos proponentes (dentro do prazo de submissão)
-[x] possibilidade de cadastrar mais de um autor. Refazer o cadastro de
-    propostas, na real.
-[ ] avisar pras pessoas que para propor algo "extravagante", que não seja uma
-    palestra, pra não fazer isso no papers senão a gente se perde. :-)
-[x] incluir explicações que incentivem as pessoas a preencherem os campos
-    (principalmente "resumo" e "descrição" com mais carinho.
-    (manual do proponente)
-[x] repensar os macro-temas
-   * Incluir um macrotema "admin" (??).
-   Sugestão do PiterPunk (ver tíquete #3792 no RT):
-    > Independente do meu caso, acho que seria interessante uma
-    > palestra sobre "admin", pois como estão os macro-temas, o
-    > administrador de sistemas fica reduzido a "Redes" e "Segurança".
-[-] e-mail de "confirmação da confirmação" para palestrantes que confirmam
-    presença.
-[x] incluir sexo nos dados dos palestrantes
-[x] incluir campo nickname para palestrantes
+Release 0.3.1 -- avaliação p/ o FISL
+------------------------------------
 
-**********************************************
-* não urgente (para avaliação das propostas) *
-**********************************************
-
-[ ] nova formula para o escore ponderado
 [ ] separar a avaliação do admin
     ("Canto dos avaliadores": fazer um /reviewer, tipo o /speaker)
 [ ] BUG: TODOS os campos da avaliacao teem que tem um valor default!!!!!
@@ -55,9 +22,12 @@
     > avaliar alguém e isso também ajuda a não ficarmos perdidos em algumas
     > avaliações.
 
-************************************************
-* menos urgente (para alocação na grade)       *
-************************************************
+Release 0.3.2 -- p/ fechamento dos aprovados do FISL
+----------------------------------------------------
+
+[ ] nova formula para o escore ponderado (ver com Pablo)
+
+Release 0.3.3 -- p/ criação da grade de programação do FISL
+-----------------------------------------------------------
+
 [ ] checar conflitos de horário
-
-
