@@ -29,6 +29,11 @@ $temp = getdate($SUBMISSION_LAST_DAY);
 $SUBMISSION_START = $SUBMISSION_FIRST_DAY;
 $SUBMISSION_END = mktime( $temp['hours'], $temp['minutes'], $temp['seconds'], $temp['mon'], $temp['mday'] + 1,  $temp['year'] ); // zero hora do "dia seguinte"
 
+// review period dates:
+$temp = getdate($RESULT_PUBLICATION);
+$REVIEW_FIRST_DAY = $SUBMISSION_END;
+$REVIEW_LAST_DAY = mktime( $temp['hours'], $temp['minutes'], $temp['seconds'], $temp['mon'], $temp['mday'] - 1,  $temp['year'] ); // zero hora do "dia seguinte"
+
 // unless configuration sets today for testing purposes, today is ... today!
 $today = ($papers['today'])?(strtotime($papers['today'])):(time());
 

@@ -1,20 +1,24 @@
 <?
 
-  include('include/mysql.inc.php');
-  include('include/basic.inc.php');
+  require_once ('include/mysql.inc.php');
+  require_once ('include/basic.inc.php');
+  require_once ('include/auth.inc.php');
+  require_once ('include/reviewer_auth.inc.php');
+  require_once ('include/persons.inc.php');
 
   expires(0);
   header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
   header('Content-Type: text/plain');
   
-  $user = $_SERVER['PHP_AUTH_USER'];
   $proposta = $_POST['proposta'];
  
+  $mysql = new Mysql;
+
   // incluir o nome do avaliador entre os campos
   $campos = $_POST;
-  $campos['avaliador'] = $user;
+  $person = Persons::find($mysql, $user);
+  $campos['avaliador'] = $person['cod'];
 
-  $mysql = new Mysql;
 
   $sql = "select *
           from avaliacoes
@@ -35,6 +39,6 @@
   $mysql->conn->Execute($sql);
   
   // voltar para a lista de propostas para avaliar:
-  header("Location: avaliacao");
+  header("Location: review");
 
 ?>

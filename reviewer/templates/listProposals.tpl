@@ -1,5 +1,4 @@
 <!-- $id -->
-{config_load file=papers.conf}
 As propostas já avaliadas aparecem <span style='background: #99ff99;'>em
 verde</span> na lista abaixo.
 <hr/>
@@ -10,7 +9,7 @@ verde</span> na lista abaixo.
     {assign var="proposta" value=$propostas[$tema][pr].cod}
     {if $avaliada[$proposta]}{assign var='bg' value='#99ff99'}{else}{assign var='bg' value='transparent'}{/if}
     <div style='background: {$bg};'>
-      <a style='display: block;' href="avaliacao/{$proposta}">{$propostas[$tema][pr].titulo}</a> 
+      <a style='display: block;' href="review/{$proposta}">{$propostas[$tema][pr].titulo}</a> 
     </div>
   {/section}
 {/section}

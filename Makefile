@@ -8,11 +8,13 @@ all: build runtime
 build: $(IMG)
 	make build -C pub/
 	make build -C speaker/
+	make build -C reviewer/
 	make build -C admin/
 
 runtime:
 	make runtime -C pub/
 	make runtime -C speaker/
+	make runtime -C reviewer/
 	make runtime -C admin/
 
 %.png: %.svg
@@ -53,4 +55,5 @@ clean:
 	rm -rf $(IMG)
 	make clean -C pub/
 	make clean -C speaker/
+	make clean -C reviewer/
 	make clean -C admin/

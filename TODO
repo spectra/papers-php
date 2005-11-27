@@ -4,9 +4,12 @@ TODO em forma de roadmap. No final tem coisas atemporais. :)
 Release 0.3.1 -- avaliação p/ o FISL
 ------------------------------------
 
-[ ] separar a avaliação do admin
+[x] separar a avaliação do admin
     ("Canto dos avaliadores": fazer um /reviewer, tipo o /speaker)
-[ ] BUG: TODOS os campos da avaliacao teem que tem um valor default!!!!!
+  [ ] mostrar detalhes do palestrante
+  [ ] 
+    
+[x] BUG: TODOS os campos da avaliacao teem que tem um valor default!!!!!
     (isso quase lasca a gente em 2005)
 [ ] Sugestão do Caio Begotti (1):
     > No mini-currículo do autor, já que eles podem não dar

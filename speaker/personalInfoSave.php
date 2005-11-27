@@ -29,6 +29,6 @@ if ($_POST['email'] != $user) {
   $_SESSION['papersauth'] = $_POST['email'];
 }
 
-header('Location: proposals');
+header('Location: .');
 
 ?>

@@ -4,19 +4,20 @@ require 'Smarty.class.php';
 $smarty = new Smarty;
 $smarty->compile_check = true;
 
-include('include/mysql.inc.php');
-include('include/basic.inc.php');
+require_once ('include/mysql.inc.php');
+require_once ('include/basic.inc.php');
+require_once ('include/auth.inc.php');
+require_once ('include/reviewer_auth.inc.php');
+require_once ('include/pathinfo.inc.php');
 
 expires(0);
 
-$smarty->assign('title', 'Avaliação de propostas');
-
-$cod = str_replace('/', '', $_SERVER['PATH_INFO']);
-$user = $_SERVER['PHP_AUTH_USER'];
-
-$smarty->assign('user', $user);
+$cod = PathInfo::getInteger();
 
 $mysql = new Mysql;
+$person = Persons::find($mysql, $user);
+$pcod = $person['cod'];
+$smarty->assign('person',$person);
 
 if ($cod) {
   // Avaliar uma proposta
@@ -32,16 +33,21 @@ if ($cod) {
   $rs_proposta = $mysql->conn->Execute($sql);
   $smarty->assign('proposta', $rs_proposta->fields);
 
+  $sql = "select
+            pessoas.cod, pessoas.nome
+          from pessoas join copalestrantes on copalestrantes.pessoa = pessoas.cod
+          where copalestrantes.proposta = $cod";
+  $rs_copalestrantes = $mysql->conn->Execute($sql);
+  $smarty->assign('copalestrantes', $rs_copalestrantes->GetArray());
+
   $sql = "select *
           from avaliacoes
           where proposta = $cod
-                and avaliador = '$user'";
+                and avaliador = $pcod";
   $rs_avaliacao = $mysql->conn->Execute($sql);
   $smarty->assign('avaliacao', $rs_avaliacao->fields);
 
-  $smarty->assign('central', 'avaliacao.tpl');
-  
-  $smarty->assign('linkup', 'avaliacao');
+  $smarty->assign('content', 'review.tpl');
   
   $smarty->display('index.tpl');
   
@@ -64,7 +70,7 @@ if ($cod) {
     $propostas[$mt] = $rs->GetArray();
   }
 
-  $sql = "select proposta from avaliacoes where avaliador = '$user'";
+  $sql = "select proposta from avaliacoes where avaliador = $pcod";
   $rs = $mysql->conn->Execute($sql);
   while (! $rs->EOF) {
     $avaliada[$rs->fields['proposta']] = 1;
@@ -76,8 +82,8 @@ if ($cod) {
   $smarty->assign('macrotemas', $macrotemas);
   $smarty->assign('propostas', $propostas);
 
-  $smarty->assign('central', 'avaliacao_propostas.tpl');
-  $smarty->assign('linkup', '.');
+  $smarty->assign('content', 'listProposals.tpl');
+
   $smarty->display('index.tpl');
 }
 

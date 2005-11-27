@@ -10,7 +10,7 @@
 
 CREATE TABLE `avaliacoes` (
   `proposta` int(10) unsigned NOT NULL default '0',
-  `avaliador` varchar(16) NOT NULL default '',
+  `avaliador` int(10) unsigned NOT NULL default '0',
   `confianca` float NOT NULL default '0',
   `relevancia` int(11) NOT NULL default '0',
   `qualidade` int(11) NOT NULL default '0',
@@ -249,4 +249,15 @@ CREATE TABLE `salas` (
 -- Dumping data for table `salas`
 --
 
+--
+-- Table structure for table `avaliador`
+--
+
+CREATE TABLE `avaliador` (
+  `pessoa` int(11) default NULL
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `avaliador`
+--
 
