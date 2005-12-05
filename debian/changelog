@@ -1,3 +1,9 @@
+papers (0.3.1-1) unstable; urgency=low
+
+  * New "upstream" release.
+
+ -- Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>  Sun,  4 Dec 2005 22:50:36 -0200
+
 papers (0.3.0-1) unstable; urgency=low
 
   * Initial release.
