@@ -16,7 +16,7 @@ $cod = PathInfo::getInteger();
 
 $mysql = new Mysql;
 $person = Persons::find($mysql, $user);
-$pcod = $person['cod'];
+$user_pcod = $person['cod'];
 $smarty->assign('person',$person);
 
 if ($cod) {
@@ -25,7 +25,7 @@ if ($cod) {
   $sql = "select
             propostas.titulo, propostas.cod, propostas.descricao, propostas.resumo,
             propostas.publicoalvo, propostas.comentarios, propostas.pessoa,
-            macrotemas.titulo as macrotema
+            macrotemas.titulo as macrotema, macrotemas.cod as tcod
           from propostas
             join macrotemas on propostas.tema = macrotemas.cod
           where propostas.cod = $cod";
@@ -33,6 +33,10 @@ if ($cod) {
   $arr = $rs_proposta->GetArray();
   $proposta = $arr[0];
   $smarty->assign('proposta', $proposta);
+
+  if (! canReviewTrack($mysql, $user_pcod, $proposta['tcod'])) {
+    $smarty->fatal('cannotReviewThisTrack');
+  }
 
   $pcod = $proposta['pessoa'];
   $sql = "select
@@ -70,17 +74,21 @@ if ($cod) {
   foreach ($macrotemas as $macrotema) {
     $mt = $macrotema['cod'];
 
-    $sql = "select cod, titulo
-            from propostas
-            where propostas.tema = $mt
-                  and status = 'i'
-            order by titulo";
-    $rs = $mysql->conn->Execute($sql);
+    // check if the user can review this track
+    if (canReviewTrack($mysql, $user_pcod, $mt)) {
 
-    $propostas[$mt] = $rs->GetArray();
+      $sql = "select cod, titulo
+              from propostas
+              where propostas.tema = $mt
+                    and status = 'i'
+              order by titulo";
+      $rs = $mysql->conn->Execute($sql);
+
+      $propostas[$mt] = $rs->GetArray();
+    }
   }
 
-  $sql = "select proposta from avaliacoes where avaliador = $pcod";
+  $sql = "select proposta from avaliacoes where avaliador = $user_pcod";
   $rs = $mysql->conn->Execute($sql);
   while (! $rs->EOF) {
     $avaliada[$rs->fields['proposta']] = 1;
