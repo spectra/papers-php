@@ -13,7 +13,7 @@ Release 0.3.1 -- avaliação p/ o FISL
 [x] separar a avaliação do admin
     ("Canto dos avaliadores": fazer um /reviewer, tipo o /speaker)
   [x] mostrar detalhes do palestrante
-  [ ] proibir de avaliar trilha em que o cara está como proponente
+  [x] proibir de avaliar trilha em que o cara está como proponente
   [x] tentar dar uma melhorada na UI pra agilizar a avaliação
       (por exemplo, usando DHTML pra mostrar/esconder detalhes
        na própria tela de avaliação).
