@@ -17,13 +17,14 @@
   // incluir o nome do avaliador entre os campos
   $campos = $_POST;
   $person = Persons::find($mysql, $user);
+  $user_pcod = $person['cod'];
   $campos['avaliador'] = $person['cod'];
 
 
   $sql = "select *
           from avaliacoes
           where proposta = $proposta
-                and avaliador = '$user'";
+                and avaliador = $user_pcod";
   $rs = $mysql->conn->Execute($sql);
   $count = $rs->RecordCount();
 
