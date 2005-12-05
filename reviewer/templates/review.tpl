@@ -72,6 +72,23 @@ function toggle(id) {
     </td>
   </tr>
   <tr>
+    <th colspan='2'>
+      Comentátios de outros avaliadores: (<a href="javascript: toggle('comments')">mostrar/esconder comentários</a>)
+    </th>
+  </tr>
+  <tr>
+    <td colspan='2'>
+      <div id='comments' style='display: none;'>
+      {section loop=$comentarios name=com}
+        <strong>Avaliador #{$smarty.section.com.rownum}:</strong>
+        <br/>
+        {$comentarios[com].comentarios_comite|regex_replace:"/\r\n\r\n|\n\n/":"<p/>"}
+        <hr/>
+      {/section}
+      </div>
+    </td>
+  </tr>
+  <tr>
     <th colspan="2">Avaliação</th>
   </tr>
   <tr>

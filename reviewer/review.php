@@ -57,9 +57,14 @@ if ($cod) {
   $sql = "select *
           from avaliacoes
           where proposta = $cod
-                and avaliador = $pcod";
+                and avaliador = $user_pcod";
   $rs_avaliacao = $mysql->conn->Execute($sql);
   $smarty->assign('avaliacao', $rs_avaliacao->fields);
+
+
+  $sql = "select comentarios_comite from avaliacoes where proposta = $cod";
+  $rs_comentarios = $mysql->conn->Execute($sql);
+  $smarty->assign('comentarios', $rs_comentarios->GetArray());
 
   $smarty->assign('content', 'review.tpl');
   
