@@ -6,7 +6,7 @@
   {if $title}
     <title>{$title} - {$event.codename}</title>
   {else}
-    <title>{#speaker#} - {$event.codename}</title>
+    <title>{#reviewer#} - {$event.codename}</title>
   {/if}
   {php}
      $protocol = ($_SERVER['SERVER_PORT']==443)?('https://'):('http://');
@@ -21,7 +21,6 @@
   {if $linkup}<link rel="up" href="{$linkup}">{/if}
   {if $linknext}<link rel="next" href="{$linknext}">{/if}
   {if $linkprevious}<link rel="previous" href="{$linkprevious}">{/if}
-  <!-- $Id: /local/papers/speaker/templates/index.tpl 9363 2005-09-22T02:33:51.608056Z terceiro  $ -->
 </head>
 
 <body class='frivolo'>
