@@ -67,6 +67,13 @@ function toggleSubmission(status) {
       </th>
     </tr>
     <tr>
+      <th colspan="2">
+        <span style='color: red'>
+        {#multipleSpeakersMessage#}
+       </span>
+      </th>
+    </tr>
+    <tr>
       <th>{#title#}: <span class='warn'>*</span>
       </th>
       <td><input size="40" maxlength="80" name="titulo" type="text" value="{$proposal.titulo}">
