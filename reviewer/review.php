@@ -23,22 +23,32 @@ if ($cod) {
   // Avaliar uma proposta
 
   $sql = "select
-            propostas.titulo, propostas.cod,
-            pessoas.nome, pessoas.cod as cod_pessoa,
+            propostas.titulo, propostas.cod, propostas.descricao, propostas.resumo,
+            propostas.publicoalvo, propostas.comentarios, propostas.pessoa,
             macrotemas.titulo as macrotema
           from propostas
-            join pessoas on propostas.pessoa = pessoas.cod
             join macrotemas on propostas.tema = macrotemas.cod
           where propostas.cod = $cod";
   $rs_proposta = $mysql->conn->Execute($sql);
-  $smarty->assign('proposta', $rs_proposta->fields);
+  $arr = $rs_proposta->GetArray();
+  $proposta = $arr[0];
+  $smarty->assign('proposta', $proposta);
 
+  $pcod = $proposta['pessoa'];
   $sql = "select
-            pessoas.cod, pessoas.nome
+            pessoas.nome, pessoas.cod, pessoas.biografia, pessoas.email,
+            pessoas.cidade, pessoas.estado, pessoas.pais, pessoas.coment,
+            pessoas.org, pessoas.nickname
+          from pessoas where cod = $pcod
+          union
+          select
+            pessoas.nome, pessoas.cod, pessoas.biografia, pessoas.email,
+            pessoas.cidade, pessoas.estado, pessoas.pais, pessoas.coment,
+            pessoas.org, pessoas.nickname
           from pessoas join copalestrantes on copalestrantes.pessoa = pessoas.cod
           where copalestrantes.proposta = $cod";
-  $rs_copalestrantes = $mysql->conn->Execute($sql);
-  $smarty->assign('copalestrantes', $rs_copalestrantes->GetArray());
+  $rs_palestrantes = $mysql->conn->Execute($sql);
+  $smarty->assign('palestrantes', $rs_palestrantes->GetArray());
 
   $sql = "select *
           from avaliacoes

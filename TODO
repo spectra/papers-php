@@ -3,7 +3,7 @@ TODO em forma de roadmap. No final tem coisas atemporais. :)
 BUGS - atemporal
 ----------------
 
-[ ] destacar que para mais de um autor o cidadão tem que primeiro salvar a
+[x] destacar que para mais de um autor o cidadão tem que primeiro salvar a
     palestra, e depois incluir eventuais copalestrantes
 
 
@@ -12,9 +12,9 @@ Release 0.3.1 -- avaliação p/ o FISL
 
 [x] separar a avaliação do admin
     ("Canto dos avaliadores": fazer um /reviewer, tipo o /speaker)
-  [ ] mostrar detalhes do palestrante
+  [x] mostrar detalhes do palestrante
   [ ] proibir de avaliar trilha em que o cara está como proponente
-  [ ] tentar dar uma melhorada na UI pra agilizar a avaliação
+  [x] tentar dar uma melhorada na UI pra agilizar a avaliação
       (por exemplo, usando DHTML pra mostrar/esconder detalhes
        na própria tela de avaliação).
 [x] BUG: TODOS os campos da avaliacao teem que tem um valor default!!!!!

@@ -1,29 +1,75 @@
-<h2>Avaliação de Proposta</h2>
+{literal}
+<script language="javascript">
+function toggle(id) {
+  var element = document.getElementById(id);
+  if (element.style.display == 'none') {
+    element.style.display = 'block';
+  } else {
+    element.style.display = 'none';
+  }
+}
+</script>
+{/literal}
+
+
+<h2>Avaliação de Proposta: {$proposta.titulo}</h2>
 
 <form action="reviewSave" method="POST">
 <input type="hidden" name="proposta" value="{$proposta.cod}"/>
 <table width="100%" class='formulario'>
   <tr>
-    <th colspan="2">Proposta</th>
+    <th colspan='2'>Detalhes da proposta
+    </th>
   </tr>
   <tr>
-    <th>Autores</th>
-    <td>
-      <ul>
-          <li><a href="speaker/{$proposta.cod_pessoa}">{$proposta.nome}</a></li>
-        {section loop=$copalestrantes name=cp}
-          <li><a href="speaker/{$copalestrantes[cp].cod}">{$copalestrantes[cp].nome}</a></li>
-        {/section}
-      </ul>
+    <td colspan="2">
+      <div>
+        <center>
+        (<a href="javascript: toggle('proposal')">mostrar/esconder detalhes da proposta</a>)
+        </center>
+      </div>
+      <div id='proposal' style='display: none;'>
+        {include file=proposal.tpl}
+      </div>
     </td>
   </tr>
   <tr>
-    <th>Título</th>
-    <td><a href="proposal/{$proposta.cod}">{$proposta.titulo}</a></td>
+    <th colspan='2'>Macro-tema: <a href="tracks">{$proposta.macrotema}</a></th>
   </tr>
   <tr>
-    <th>Macro-tema</th>
-    <td><a href="tracks">{$proposta.macrotema}</a></td>
+    <th colspan='2'>Autores</th>
+  </tr>
+  <tr>
+    <td colspan='2'>
+      <ul>
+        {section loop=$palestrantes name=cp}
+          <li>
+            <div>
+              <a href="speaker/{$palestrantes[cp].cod}">{$palestrantes[cp].nome}</a>
+              (<a href="javascript: toggle('speaker_{$palestrantes[cp].cod}')">mostrar/esconder detalhes</a>)
+            </div>
+            <div id='speaker_{$palestrantes[cp].cod}' style='display: none;'>
+              <strong>Apelido(nickname):</strong>
+              {$palestrantes[cp].nickname}
+              <br/>
+              <strong>e-mail:</strong>
+              {$palestrantes[cp].email}
+              <br/>
+              <strong>Cidade/Estado/País:</strong>
+              {$palestrantes[cp].cidade}/{$palestrantes[cp].estado}/{$palestrantes[cp].pais}
+              <br/>
+              <strong>Organização:</strong>
+              {$palestrantes[cp].org}
+              <hr/>
+              <h3>Minicurrículo</h3>
+              {$palestrantes[cp].biografia|regex_replace:"/\r\n\r\n|\n\n/":"<p/>"}
+              <h3>Comentários</h3>
+              {$palestrantes[cp].coment|regex_replace:"/\r\n\r\n|\n\n/":"<p/>"}
+            </div>
+          </li>
+        {/section}
+      </ul>
+    </td>
   </tr>
   <tr>
     <th colspan="2">Avaliação</th>
