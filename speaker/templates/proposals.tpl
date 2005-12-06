@@ -1,4 +1,10 @@
+{if !$PERIOD_SUBMISSION}
+<p><em style='color:red;'>{#submissionIsOver#}</em></p>
+{/if}
 <h2>{#yourProposals#}</h2>
+{if !count($proposals)}
+<p><em>{#noProposalsFound#}</em></p>
+{/if}
 {section loop=$proposals name=pr}
 <div class='proposalBox'>
   <h3>
