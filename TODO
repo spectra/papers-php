@@ -5,6 +5,7 @@ BUGS - atemporal
 
 [x] destacar que para mais de um autor o cidadão tem que primeiro salvar a
     palestra, e depois incluir eventuais copalestrantes
+[ ] quando a sessão expira, formulários enviados não deveriam ser perdidos.
 
 
 Release 0.3.1 -- avaliação p/ o FISL
