@@ -1,4 +1,4 @@
-TEMPLATES=login.tpl footer.pt-br.tpl footer.en.tpl personalInfo.tpl tracks.tpl
+TEMPLATES=login.tpl footer.pt-br.tpl footer.en.tpl personalInfo.tpl tracks.tpl lostPassword1.tpl lostPassword2.pt-br.tpl lostPassword2.en.tpl newPassword.pt-br.tpl newPassword.en.tpl
 
 build: $(TEMPLATES)
 

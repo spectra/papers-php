@@ -1,6 +1,6 @@
 all: build runtime
 
-PHPS=logout.php account.php accountSave.php tracks.php personalInfo.php personalInfoSave.php
+PHPS=logout.php account.php accountSave.php tracks.php personalInfo.php personalInfoSave.php lostPassword.php
 
 build: css img configs include $(PHPS)
 	make build -C templates/
