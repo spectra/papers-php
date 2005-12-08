@@ -5,6 +5,7 @@ GROUP=www-data
 INSTALLDIR=/usr/share/papers
 VARDIR=/var/lib/papers
 SUBDIRS="speaker/templates_c
+         reviewer/templates_c
          admin/templates_c
          pub/templates_c"
 

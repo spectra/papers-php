@@ -2,6 +2,7 @@
 INSTALLDIR=/usr/share/papers
 VARDIR=/var/lib/papers
 SUBDIRS="speaker/templates_c
+         reviewer/templates_c
          admin/templates_c
          admin/log
          pub/templates_c"
