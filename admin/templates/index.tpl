@@ -4,9 +4,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   {if $title}
-    <title>{$title} - FISL 2005</title>
+    <title>{$title} - papers</title>
   {else}
-    <title>Temário FISL 2005</title>
+    <title>papers</title>
   {/if}
   {php}
      $protocol = ($_SERVER['SERVER_PORT']==443)?('https://'):('http://');
@@ -26,7 +26,7 @@
 
 <body>
 
-<h1>Temário FISL 2005</h1>
+<h1>papers - admin</h1>
 
 {if $title}
 <h2>{$title}</h2>
