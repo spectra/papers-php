@@ -5,7 +5,7 @@
   <li><a href="propostas">Propostas</a></li>
   <li>Avaliação de Propostas
     <ul>
-      <li><a href="avaliacao">Por avaliador</a> [acesso restrito]</li>
+      <li><a href="avaliadores">Avaliadores</a></li>
       <li><a href="acompanhamentoAvaliacao">Acompanhamento da avaliação</a> (pra cobrar os avaliadores ;-))</li>
       <li><a href="macrotemas">Macrotemas</a> (número de espaços na grade por macro-tema)</li>
       <li><a href="fecharAvaliacao">Fechar avaliação</a> (define o status das propostas a partir de sua avaliação) [acesso restrito]</li>
