@@ -2,21 +2,101 @@
 
 class Avaliacoes {
 
-  /* Calculo do escore composto (score)
-
-     parametros:  confianca     1.0, 1.5, 2.0
-                  recomendacao  1.0, 1.5, 1.75, 2.0
-                  relevancia    1, 2, 3, 4, 5
-                  qualidade     1, 2, 3, 4, 5
-                  experiencia   1, 2, 3, 4, 5
-
-     e_bruto = (relevancia * 0.5) + (qualidade * 0.25) + (experiencia * 0.25)
-
-     score = (confianca * recomendacao * e_bruto)
-
-     Conforme: http://twiki.softwarelivre.org/bin/view/Fisl6/Crit%E9rioDeJulgamento
-
+  /* Calculo do escore padrao
+     Conforme
+     http://twiki.softwarelivre.org/bin/view/Fisl7/ClassificaçãoDasPropostas
   */
+
+  function _n_propostas_por_trilha($db, $trilha) {
+    $sql = "
+        select COUNT(*)
+        from `propostas`
+        where tema = '$trilha'
+        ";
+    $count = $db->conn->GetOne($sql);
+    return $count;
+  }
+
+  function _n_por_avaliador_por_trilha($db, $trilha, $avaliador) {
+    $sql = "
+        select COUNT(*)
+        from `avaliacoes`
+        join propostas on avaliacoes.proposta = propostas.cod
+        where propostas.tema = '$trilha'
+          and avaliacoes.avaliador = '$avaliador'
+        ";
+    $count = $db->conn->CacheGetOne($sql);
+    return $count;
+  }
+
+  function _incluidas_por_trilha($db, $trilha) {
+    $completas = Array();
+    $incluidas = Array();
+    $piores_escores = Array();
+    $piores_avaliacoes = Array();
+    $melhores_escores = Array();
+    $melhores_avaliacoes = Array();
+    $n_avaliacoes = Array();
+    $n_propostas = _n_propostas_por_trilha($db, $trilha);
+
+    $sql = "
+        select
+          proposta,
+          avaliador,
+          (confianca * recomendacao * ((relevancia * 0.2) + (qualidade * 0.5) + (experiencia * 0.3)) ) as escore_composto
+        from `avaliacoes`
+        join propostas on avaliacoes.proposta = propostas.cod
+        where propostas.tema = '$trilha'
+        ";
+    $rs = $db->conn->Execute($sql);
+    $avaliacoes = $rs->GetArray();
+
+    # O avaliador avaliou completamente a proposta?
+    foreach($avaliacoes as $avaliacao) {
+      if (_n_por_avaliador_por_trilha($db, $trilha, $avaliacao['avaliador']) == $n_propostas) {
+        $completas[] = $avaliacao;
+      }
+    }
+
+    # Identifica avaliacoes aberrantes
+    foreach($completas as $avaliacao) {
+      $n_avaliacoes[$avaliacao['proposta']] += 1;
+      if ($piores_escores[$avaliacao['proposta']] > $avaliacao['escore_composto']) {
+        $piores_escores[$avaliacao['proposta']] = $avaliacao['escore_composto'];
+        $piores_avaliacoes[$avaliacao['proposta']] = $avaliacao;
+      }        
+      if ($melhores[$avaliacao['proposta']] < $avaliacao['escore_composto']) {
+        $melhores_escores[$avaliacao['proposta']] = $avaliacao['escore_composto'];
+        $melhores_avaliacoes[$avaliacao['proposta']] = $avaliacao;
+      }
+    }
+
+    # Remove avaliacoes aberrantes
+    foreach($completas as $avaliacao) {
+      # Naum remove nada se menos de 4 avaliacoes
+      if ($n_avaliacoes[$avaliacao['proposta']] >= 4) {
+        if (($avaliacao != $piores_avaliacoes[$avaliacao['proposta']]) and
+            ($avaliacao != $melhores_avaliacoes[$avaliacao['proposta']]) )
+          $incluidas[] = $avaliacao;
+      } else {
+        $incluidas[] = $avaliacao;
+      }
+    }
+
+    return $incluidas;
+  }
+
+  function _escore_medio_por_proposta($incluidas, $proposta) {
+    $counter = 0;
+    $sum = 0;
+    foreach($incluidas as $avaliacao) {
+      if ($avaliacao['proposta'] == $proposta) {
+        $sum += $avaliacao['escore_composto'];
+        $counter += 1;
+      }
+    }
+    return ($sum / $counter);
+  }
 
   function ranking($db, $macrotema) {
     $sql = "
