@@ -125,8 +125,10 @@ Ou:
     ....
   </VirtualHost>
 
-(nota: Options +MultiViews é necessário)
-
+(nota: Options +MultiViews é necessário para que se possa fazer referência aos
+scripts PHP sem extensão, por exemplo, para que requisições a "script" sejam
+processadas através do "script.php". Você vai notar que todo o sistema está
+feito com referências aos scripts sem a extensão.)
 
 Controle de acesso do /admin
 ----------------------------
