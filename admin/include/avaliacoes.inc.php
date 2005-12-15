@@ -31,11 +31,6 @@ class Avaliacoes {
 
   function _incluidas_por_trilha($db, $trilha) {
     $completas = Array();
-    $incluidas = Array();
-    $piores_escores = Array();
-    $piores_avaliacoes = Array();
-    $melhores_escores = Array();
-    $melhores_avaliacoes = Array();
     $n_avaliacoes = Array();
     $n_propostas = _n_propostas_por_trilha($db, $trilha);
 
@@ -58,32 +53,7 @@ class Avaliacoes {
       }
     }
 
-    # Identifica avaliacoes aberrantes
-    foreach($completas as $avaliacao) {
-      $n_avaliacoes[$avaliacao['proposta']] += 1;
-      if ($piores_escores[$avaliacao['proposta']] > $avaliacao['escore_composto']) {
-        $piores_escores[$avaliacao['proposta']] = $avaliacao['escore_composto'];
-        $piores_avaliacoes[$avaliacao['proposta']] = $avaliacao;
-      }        
-      if ($melhores[$avaliacao['proposta']] < $avaliacao['escore_composto']) {
-        $melhores_escores[$avaliacao['proposta']] = $avaliacao['escore_composto'];
-        $melhores_avaliacoes[$avaliacao['proposta']] = $avaliacao;
-      }
-    }
-
-    # Remove avaliacoes aberrantes
-    foreach($completas as $avaliacao) {
-      # Naum remove nada se menos de 4 avaliacoes
-      if ($n_avaliacoes[$avaliacao['proposta']] >= 4) {
-        if (($avaliacao != $piores_avaliacoes[$avaliacao['proposta']]) and
-            ($avaliacao != $melhores_avaliacoes[$avaliacao['proposta']]) )
-          $incluidas[] = $avaliacao;
-      } else {
-        $incluidas[] = $avaliacao;
-      }
-    }
-
-    return $incluidas;
+    return $completas;
   }
 
   function _escore_medio_por_proposta($incluidas, $proposta) {
