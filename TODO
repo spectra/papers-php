@@ -6,39 +6,16 @@ BUGS - atemporal
 [x] destacar que para mais de um autor o cidadão tem que primeiro salvar a
     palestra, e depois incluir eventuais copalestrantes
 [ ] quando a sessão expira, formulários enviados não deveriam ser perdidos.
-
-
-Release 0.3.1 -- avaliação p/ o FISL
-------------------------------------
-
-[x] separar a avaliação do admin
-    ("Canto dos avaliadores": fazer um /reviewer, tipo o /speaker)
-  [x] mostrar detalhes do palestrante
-  [x] proibir de avaliar trilha em que o cara está como proponente
-  [x] tentar dar uma melhorada na UI pra agilizar a avaliação
-      (por exemplo, usando DHTML pra mostrar/esconder detalhes
-       na própria tela de avaliação).
-[x] BUG: TODOS os campos da avaliacao teem que tem um valor default!!!!!
-    (isso quase lasca a gente em 2005)
-[ ] Sugestão do Caio Begotti (1):
-    > No mini-currículo do autor, já que eles podem não dar
-    > detalhes sobre eles mesmos, poderia ter um expressão regular que
-    > geraria um link pro Google com o nome do autor, tema da proposta ou
-    > sei lá mais o quê, pra usarmos como referência (eu fiz isso "by
-    > hand").
-[x] Sugestão do Caio Begotti (2):
-    > A outra idéia seria termos acesso na hora de comentar internamente
-    > uma palestra, ao que os outros avaliadores já escreveram sobre a
-    > proposta. Digo isso porque honestamente não temos obrigação de
-    > conhecer todos os palestrantes e pra não correr o risco de alguma
-    > injustiça (pois sempre há), assim poderíamos nos policiar na hora de
-    > avaliar alguém e isso também ajuda a não ficarmos perdidos em algumas
-    > avaliações.
+    (ISSO AQUI NUNCA VAI SER RESOLVIDO nessa versão em PHP)
 
 Release 0.3.2 -- p/ fechamento dos aprovados do FISL
 ----------------------------------------------------
 
 [ ] nova formula para o escore ponderado (ver com Pablo)
+[ ] adequar o /admin ao novo campo 'tipo', i.e., "Incluir convidado"
+    vira "incluir palestra", palestra tem que entrar com status pré-aprovado e
+    o tipo deve ser escolhido entre 'c' (convidado), 'v' (vendida - salas M*),
+    e 'p' (patrocinador).
 
 Release 0.3.3 -- p/ criação da grade de programação do FISL
 -----------------------------------------------------------
