@@ -7,6 +7,15 @@ BUGS - atemporal
     palestra, e depois incluir eventuais copalestrantes
 [ ] quando a sessão expira, formulários enviados não deveriam ser perdidos.
     (ISSO AQUI NUNCA VAI SER RESOLVIDO nessa versão em PHP)
+[ ] fernanda@softwarelivre.org: Quando peco para reenviar senha no campo
+    "Esqueci minha senha", manda um email dizendo que eh do "Speakers' Corner", nao
+    Reviewers' corner.
+[ ] fernanda@softwarelivre.org:  Quando entro em uma palestra, e clico no NOME do
+    palestrante, por exemplo, eu cliquei em Pia Waugh e recebi:
+
+    Not Found
+
+    The requested URL /7.0/papers/reviewer/speaker/325 was not found on this server.
 
 Release 0.3.2 -- p/ fechamento dos aprovados do FISL
 ----------------------------------------------------
