@@ -43,10 +43,15 @@ while (! $rs->EOF) {
   $rs->MoveNext();
 }
 
+// avalidores
+$rs = $mysql->conn->Execute('select cod, nome from pessoas join avaliador on avaliador.pessoa = pessoas.cod');
+$nomes = $rs->GetAssoc();
+
 $smarty->assign('macrotemas', $macrotemas);
 $smarty->assign('avaliadores', $avaliadores);
 $smarty->assign('propostas', $propostas);
 $smarty->assign('avaliacoes', $avaliacoes);
+$smarty->assign('nomes', $nomes);
 
 $smarty->assign('title', 'Acompanhamento de Avaliações');
 $smarty->assign('linkup', '.');

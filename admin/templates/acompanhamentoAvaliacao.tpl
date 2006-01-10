@@ -15,7 +15,7 @@ realizadas.
     {section loop=$avaliadores[$tema] name=av}
       {assign var="aval" value=$avaliadores[$tema][av].avaliador}
       <tr>
-        <td>{$aval}</td>
+        <td><a href='proponente/{$aval}'>{$nomes[$aval]}</a></td>
         {section loop=$propostas[$tema] name=pr}
           {assign var="prop" value=$propostas[$tema][pr].cod}
           <td {if $avaliacoes[$aval][$prop] == 1}style='background: #99ff99;'{/if}>&nbsp;</td>
