@@ -8,7 +8,8 @@
       <li><a href="avaliadores">Avaliadores</a></li>
       <li><a href="acompanhamentoAvaliacao">Acompanhamento da avaliação</a> (pra cobrar os avaliadores ;-))</li>
       <li><a href="macrotemas">Macrotemas</a> (número de espaços na grade por macro-tema)</li>
-      <li><a href="fecharAvaliacao">Fechar avaliação</a> (define o status das propostas a partir de sua avaliação) [acesso restrito]</li>
+      <li><a href="fecharAvaliacao">Fechar avaliação</a> (define o status das propostas a partir de sua avaliação) [acesso restrito] <br/> <em>(dá pau se não tiver pelo menos um avaliador que tenha avaliado todas as propostas em cada trilha)</em>
+      </li>
       <li><a href="marcarDesistencias">Marca as desistencias</a> [acesso restrito]</li>
     </ul>
   </li>
