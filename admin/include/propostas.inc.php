@@ -53,7 +53,7 @@ class Propostas {
   }
 
   function carregarPorMacrotemaParaAlocacao($db) {
-    return Propostas::_carregarPorMacrotemaImpl($db, "and ((status in('a','p') and confirmada = 1) or status ='c')");
+    return Propostas::_carregarPorMacrotemaImpl($db, "and (tipo = 's' and (status in('a','p') and confirmada = 1) or tipo in ('c','v','p'))");
   }
   
   function carregarPorMacrotema($db, $status) {
@@ -91,7 +91,7 @@ class Propostas {
   }
 
   function incluirPalestraConvidada($db, $fields) {
-    $rs = $db->conn->Execute('select dthora,titulo,descricao,tema,pessoa,publicoalvo,resumo,idioma,status,confirmada from propostas where cod = -1');
+    $rs = $db->conn->Execute('select dthora,titulo,descricao,tema,pessoa,publicoalvo,resumo,idioma,status,tipo,confirmada from propostas where cod = -1');
     $fields['dthora'] = time();
     $sql = $db->conn->GetInsertSQL($rs,$fields);
     if (! $db->conn->Execute($sql)) {

@@ -17,7 +17,7 @@
       <li><a href="notificacao">Notificações</a> (notificações diversas) [acesso restrito]</li>
   <li>Convidados
     <ul>
-      <li><a href="convidado">Incluir convidado</a> (inclui o convidado, a palestra e já possibilita inserir na grade)</li>
+      <li><a href="convidado">Incluir palestra</a> (inclui o convidado/patrocinador/etc, a palestra e já possibilita inserir na grade)</li>
     </ul>
   </li>
   <li>Programação

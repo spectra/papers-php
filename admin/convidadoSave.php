@@ -26,7 +26,8 @@ $r['pessoa'] = $cod;
 $r['publicoalvo'] = '';
 $r['descricao'] = '';
 $r['idioma'] = $_POST['idioma'];
-$r['status'] = 'c';
+$r['status'] = 'a';
+$r['tipo'] = $_POST['tipo'];
 $r['confirmada'] = null;
 
 $codp = Propostas::incluirPalestraConvidada($mysql,$r);

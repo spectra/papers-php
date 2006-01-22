@@ -39,7 +39,7 @@ Release 0.3.2 -- p/ fechamento dos aprovados do FISL
 ----------------------------------------------------
 
 [x] nova formula para o escore ponderado (ver com Pablo)
-[ ] adequar o /admin ao novo campo 'tipo', i.e., "Incluir convidado"
+[x] adequar o /admin ao novo campo 'tipo', i.e., "Incluir convidado"
     vira "incluir palestra", palestra tem que entrar com status pré-aprovado e
     o tipo deve ser escolhido entre 'c' (convidado), 'v' (vendida - salas M*),
     e 'p' (patrocinador).

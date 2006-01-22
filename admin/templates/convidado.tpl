@@ -13,24 +13,27 @@
     <td><textarea name="biografia" cols='60' rows='10'></textarea></td>
   </tr>
   <tr>
-    <th>Título</th>
+    <th>Título da palestra</th>
     <td><input type="text" name="titulo"/></td>
+  </tr>
+  <tr>
+    <th>Tipo da palestra</th>
+    <td>
+      <select name='tipo'>
+        <option value='c'>Convidado</option>
+        <option value='p'>Patrocinador</option>
+        <option value='v'>Venda (palestra comercial)</option>
+      </select>
+    </td>
   </tr>
   <tr>
     <th>Macro-tema</th>
       <td>
         <select name="tema">
           <option></option>
-          <option value="1">Desenvolvimento</option>
-          <option value="2">Bancos de Dados</option>
-          <option value="3">Desktop</option>
-          <option value="4">Redes</option>
-          <option value="5">Segurança</option>
-          <option value="6">Cases</option>
-          <option value="7">Comunidade</option>
-          <option value="8">Software Livre em Governos</option>
-          <option value="9">Política/Filosofia</option>
-          <option value="10">Inclusão Social/Digital</option>
+          {section loop=$macrotemas name=m}
+            <option value='{$macrotemas[m].cod}'>{$macrotemas[m].titulo}</option>
+          {/section}
         </select>
       </td>
   </tr>
