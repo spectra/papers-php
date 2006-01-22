@@ -1,38 +1,25 @@
-<h1>Confirmar notificação</h1>
+<h1>Notificação em massa</h1>
 
 <p>
-Selecione o tipo de mensagem a ser enviada.
+Selecione o grupo de proposstas a serem notificadas.
 </p>
 <ul>
   <li>
-    <strong>Aceitação:</strong>
-    Os autores de propostas aceitas serão notificados para confirmar.
+    <strong>Aceitas:</strong>
+    Os autores de propostas aceitas.
   </li>
   <li>
-    <strong>Stand-by (aguardo):</strong>
-    Os autores de propostas recusadas serão notificados pra esperar
-    (pois poderão ser chamados ainda caso haja desistência).
+    <strong>Recusadas:</strong>
+    Os autores de propostas recusadas. Para
+    <em>avisá-los para esperar mais um pouco ;-)</em>
+    ou 
+    <em>para avisá-los que já era</em>
+    .
   </li>
   <li>
-    <strong>Recusa:</strong>
-    Autores de propostas recusadas serão notificados que já era.
-  </li>
-  <li>
-    <strong>Prorrogação:</strong>
-    Notificação de prorrogação de prazo para confirmação.
-  </li>
-  <li>
-    <strong>Desistência:</strong>
-    Notificacao de desistencia.
-  </li>
-  <li>
-    <strong>Convidado:</strong>
-    Convidado
-  </li>
-  <li>
-    <strong>Coordenador de mesa:</strong>
-    Avisa os coordenadores de mesa alocados sobre as palestras onde
-    eles estão estão alocados.
+    <strong>Aceitas e Não confirmadas:</strong>
+    Para <em>Notificação de prorrogação de prazo para confirmação</em> ou para
+    <em>informar que estão sendo consideradas com desistência</em>.
   </li>
 </ul>
 
@@ -44,50 +31,38 @@ problemas sérios! :-)
 </p>
 
 <center>
-<form action="" method="GET">
+<form action="" method="POST">
   <table>
     <tr>
       <td>
-        <input type='radio' name='tipo' value='a' checked/> Aceitação <br/>
+        <input type='radio' name='tipo' value='aceitas' checked/> Aceitas <br/>
       </td>
     </tr>
     <tr>
       <td>
-        <input type='radio' name='tipo' value='s'/> Stand-by (aguardo) <br/>
+        <input type='radio' name='tipo' value='recusadas'/> Recusadas <br/>
       </td>
     </tr>
     <tr>
       <td>
-        <input type='radio' name='tipo' value='r'/> Recusa <br/>
+        <input type='radio' name='tipo' value='nao_confirmadas'/> Aceitas e Não confirmadas <br/>
       </td>
     </tr>
     <tr>
-      <td>
-        <input type='radio' name='tipo' value='p'/> Prorrogada <br/>
-      </td>
+      <tr>
+        <td>
+          <strong>Mensagem a ser enviada.</strong> As seguinte variáveis serão substituídas no texto:
+          <ul>
+             <li><code>$nome</code>: nome do proponente</li>
+             <li><code>$titulo</code>: título da proposta</li>
+             <li><code>$cod</code>: código da proposta</li>
+          </ul>
+          <textarea name="texto" rows='20' cols='80'></textarea>
+        </td>
+      </tr>
     </tr>
     <tr>
-      <td>
-        <input type='radio' name='tipo' value='d'/> Desistência <br/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input type='radio' name='tipo' value='n'/> Novas Aprovadas <br/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input type='radio' name='tipo' value='c'/> Convidado <br/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input type='radio' name='tipo' value='m'/> Coordenador de mesa <br/>
-      </td>
-    </tr>
-    <tr>
-      <td>
+      <td align='center'>
         <input type="hidden" name="confirm" value="1"/>
         <input type="submit" value="Enviar!"/>
       </td>

@@ -22,23 +22,15 @@ class Notificacoes {
   }
 
   function aprovadas($db) {
-    return Notificacoes::_load($db,"('a','p')");
+    return Notificacoes::_load($db,"('a','p')","and tipo = 's'");
   }
 
   function recusadas($db) {
-    return Notificacoes::_load($db,"('r')");
+    return Notificacoes::_load($db,"('r')", "and tipo = 's'");
   }
 
-  function prorrogadas($db) {
+  function aceitas_nao_confirmadas($db) {
     return Notificacoes::_load($db, "('a','p')", "and tipo = 's' and ISNULL(propostas.confirmada)");
-  }
-
-  function desistencias($db) {
-    return Notificacoes::prorrogadas($db);
-  }
-
-  function novas_aprovadas($db) {
-    return Notificacoes::prorrogadas($db);
   }
   
   function convidados($db) {
@@ -62,25 +54,6 @@ class Notificacoes {
               ";
     $rs = $db->conn->Execute($sql);
     return $rs->GetArray();
-  }
-
-  function coordenadoresDeMesa($db) {
-    $sql = "select distinct
-              propostas.cod as cod,
-              propostas.titulo as title,
-              pessoas.cod as pcod,
-              pessoas.nome as name,
-              pessoas.email as email,
-              propostas.idioma as language
-            from
-              propostas
-              join grade on grade.proposta = propostas.cod
-              join mesa on mesa.proposta = propostas.cod
-              join pessoas on pessoas.cod = mesa.pessoa
-    ";
-    $rs = $db->conn->Execute($sql);
-    return $rs->GetArray();
-
   }
 
 }
