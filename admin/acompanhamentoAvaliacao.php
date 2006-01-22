@@ -24,19 +24,19 @@ foreach($macrotemas as $macrotema) {
   $rs = $mysql->conn->Execute($sql);
   $avaliadores[$mt] = $rs->GetArray();
 
-  // propostas do macrotema:
+  // propostas a serem avaliadas no macrotema:
   $sql = "select cod
           from propostas
-          where tema = $mt
-          and status = 'i'";
+          where tema = $mt and
+          tipo = 's' and
+          status in ('p','a','i')";
   $rs = $mysql->conn->Execute($sql);
   $propostas[$mt] = $rs->GetArray();
 }
 
   // avaliações:
 $sql = "select proposta, avaliador
-        from avaliacoes
-             join propostas on propostas.cod = avaliacoes.proposta";
+        from avaliacoes";
 $rs = $mysql->conn->Execute($sql);
 while (! $rs->EOF) {
   $avaliacoes[$rs->fields['avaliador']][$rs->fields['proposta']] = 1;
