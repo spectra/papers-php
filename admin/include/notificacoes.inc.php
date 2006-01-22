@@ -30,7 +30,7 @@ class Notificacoes {
   }
 
   function prorrogadas($db) {
-    return Notificacoes::_load($db, "('a','p')", "and ISNULL(propostas.confirmada)");
+    return Notificacoes::_load($db, "('a','p')", "and tipo = 's' and ISNULL(propostas.confirmada)");
   }
 
   function desistencias($db) {
@@ -55,7 +55,7 @@ class Notificacoes {
               join pessoas on propostas.pessoa = pessoas.cod
               left outer join copalestrantes on (propostas.cod = copalestrantes.proposta)
             where
-              propostas.status = 'c'
+              propostas.tipo in ('c','v','p')
               and propostas.confirmada is null
               group by propostas.cod
               having count(copalestrantes.proposta) = 0
