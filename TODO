@@ -16,7 +16,7 @@ BUGS - atemporal
     Not Found
 
     The requested URL /7.0/papers/reviewer/speaker/325 was not found on this server.
-[ ] bug trash na avaliação. Pra reproduzir:
+[x] bug trash na avaliação. Pra reproduzir:
     * carregar um dump do banco do fisl7
     * ir em "Fechar avaliação" e salvar
     * depois, via console do mysql:
@@ -28,11 +28,17 @@ BUGS - atemporal
     interpolados no SQL em admin/include/avaliacoes.inc.php, método ranking(),
     gera um SQL inválido.
 
+    Na verdade descobri que é porque existem palestras com status 'd'
+    (desistência), e quando eu faço status = 'i' essas palestras passam a ser
+    consideradas. 
+
+    Ou seja: se não existir pelo menos um avaliador que tenha avaliado a trilha toda,
+    o fecharAvaliacao dá pau! (por enquanto, nada a ser feito)
 
 Release 0.3.2 -- p/ fechamento dos aprovados do FISL
 ----------------------------------------------------
 
-[ ] nova formula para o escore ponderado (ver com Pablo)
+[x] nova formula para o escore ponderado (ver com Pablo)
 [ ] adequar o /admin ao novo campo 'tipo', i.e., "Incluir convidado"
     vira "incluir palestra", palestra tem que entrar com status pré-aprovado e
     o tipo deve ser escolhido entre 'c' (convidado), 'v' (vendida - salas M*),
