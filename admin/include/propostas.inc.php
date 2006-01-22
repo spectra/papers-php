@@ -17,7 +17,6 @@ $TODOS_STATUS = array(
 
 $STATUS_DESCRIPTIONS = array (
                           'p' => 'Pré-aprovado',
-                          'c' => 'Convidado',
                           'a' => 'Aprovado',
                           'i' => 'Indefinido',
                           'r' => 'Recusado',
