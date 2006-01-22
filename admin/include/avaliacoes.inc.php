@@ -19,13 +19,13 @@ from avaliacoes a1
      join pessoas pe1 on pe1.cod = p1.pessoa
 where p1.tema = $macrotema and
       p1.tipo = 's' and
-      p1.status in ('p','a','i') and
+      p1.status in ('p','a','i','r') and
       (select count(*)
        from avaliacoes
             join propostas p2 on p2.cod = avaliacoes.proposta
        where p2.tema = p1.tema and
              p2.tipo = 's' and
-             p2.status in ('p','a','i') and
+             p2.status in ('p','a','i','r') and
              avaliador = a1.avaliador
        )
        =
@@ -33,7 +33,7 @@ where p1.tema = $macrotema and
         from propostas p3
         where p3.tema = p1.tema and
               p3.tipo = 's' and
-              p3.status in ('p','a','i')
+              p3.status in ('p','a','i','r')
        )
 ";
 
@@ -69,14 +69,14 @@ where p1.tema = $macrotema and
             join propostas p2 on p2.cod = avaliacoes.proposta
        where p2.tema = p1.tema and
              p2.tipo = 's' and
-             p2.status in ('p','a','i') and
+             p2.status in ('p','a','i','r') and
              avaliador = a1.avaliador)
        =
        (select count(*)
         from propostas p3
         where p3.tema = p1.tema and
               p3.tipo = 's' and 
-              p3.status in ('p','a','i')
+              p3.status in ('p','a','i','r')
        )
 group by a1.proposta
 order by score desc
@@ -104,20 +104,20 @@ from avaliacoes a1
      join pessoas pe1 on pe1.cod = p1.pessoa
 where p1.tema = $macrotema and
       p1.tipo = 's' and
-      p1.status in ('p','a','i') and
+      p1.status in ('p','a','i','r') and
       (select count(*)
        from avaliacoes
             join propostas p2 on p2.cod = avaliacoes.proposta
        where p2.tema = p1.tema and
              p2.tipo = 's' and
-             p2.status in ('p','a','i') and
+             p2.status in ('p','a','i','r') and
              avaliador = a1.avaliador)
        =
        (select count(*)
         from propostas p3
         where p3.tema = p1.tema and
               p3.tipo = 's' and 
-              p3.status in ('p','a','i')
+              p3.status in ('p','a','i','r')
        )
 group by a1.proposta
 order by score desc
