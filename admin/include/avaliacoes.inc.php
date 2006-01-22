@@ -2,67 +2,127 @@
 
 class Avaliacoes {
 
-  /* Calculo do escore composto (score)
-
-     parametros:  confianca     1.0, 1.5, 2.0
-                  recomendacao  1.0, 1.5, 1.75, 2.0
-                  relevancia    1, 2, 3, 4, 5
-                  qualidade     1, 2, 3, 4, 5
-                  experiencia   1, 2, 3, 4, 5
-
-     e_bruto = (relevancia * 0.5) + (qualidade * 0.25) + (experiencia * 0.25)
-
-     score = (confianca * recomendacao * e_bruto)
-
-     Conforme: http://twiki.softwarelivre.org/bin/view/Fisl6/Crit%E9rioDeJulgamento
-
+  /* Calculo do escore: veja
+     http://twiki.softwarelivre.org/bin/view/Fisl7/Classifica%e7%e3oDasPropostas
+     para detalhes.
   */
 
-  function ranking($db, $macrotema) {
+  function media_e_desvio($db, $macrotema) {
     $sql = "
-        select
-          proposta as cod,
-          titulo,
-          pessoas.nome as autor,
-          avg(confianca * recomendacao *
-              ((relevancia * 0.5 ) +
-               (qualidade * 0.25 ) +
-               (experiencia * 0.25 )
-               )
-              ) as score,
-          propostas.status as status
-          from avaliacoes
-          join propostas on avaliacoes.proposta = propostas.cod
-          join pessoas on propostas.pessoa = pessoas.cod
-          where propostas.tema = $macrotema
-                and propostas.status = 'i'
-          group by proposta
-          order by score desc
-          ";
+select
+  avg(a1.confianca * a1.recomendacao *
+      (a1.relevancia * 0.2 + a1.qualidade * 0.5 + a1.experiencia * 0.3 )) as average,
+  stddev(a1.confianca * a1.recomendacao *
+      (a1.relevancia * 0.2 + a1.qualidade * 0.5 + a1.experiencia * 0.3 )) as standard_deviation
+from avaliacoes a1
+     join propostas p1 on p1.cod = a1.proposta
+     join pessoas pe1 on pe1.cod = p1.pessoa
+where p1.tema = $macrotema and
+      p1.tipo = 's' and
+      p1.status in ('p','a','i') and
+      (select count(*)
+       from avaliacoes
+            join propostas p2 on p2.cod = avaliacoes.proposta
+       where p2.tema = p1.tema and
+             p2.tipo = 's' and
+             p2.status in ('p','a','i') and
+             avaliador = a1.avaliador
+       )
+       =
+       (select count(*)
+        from propostas p3
+        where p3.tema = p1.tema and
+              p3.tipo = 's' and
+              p3.status in ('p','a','i')
+       )
+";
+
+    $rs= $db->conn->Execute($sql);
+    $rsa = $rs->GetArray();
+    $avg = $rsa[0]['average'];
+    $stddev = $rsa[0]['standard_deviation'];
+    return array($avg, $stddev);
+  }
+
+  function ranking($db, $macrotema) {
+    
+    $md = Avaliacoes::media_e_desvio($db, $macrotema);
+    $avg = $md[0];
+    $stddev = $md[1];
+
+    $sql = "
+select
+  a1.proposta as cod,
+  p1.titulo as titulo,
+  pe1.nome as autor,
+  (avg( a1.confianca * a1.recomendacao *
+       (a1.relevancia * 0.2 + a1.qualidade * 0.5 + a1.experiencia * 0.3 )
+     ) - $avg ) / $stddev as score
+from avaliacoes a1
+     join propostas p1 on p1.cod = a1.proposta
+     join pessoas pe1 on pe1.cod = p1.pessoa
+where p1.tema = $macrotema and
+      p1.tipo = 's' and
+      p1.status = 'i' and
+      (select count(*)
+       from avaliacoes
+            join propostas p2 on p2.cod = avaliacoes.proposta
+       where p2.tema = p1.tema and
+             p2.tipo = 's' and
+             p2.status in ('p','a','i') and
+             avaliador = a1.avaliador)
+       =
+       (select count(*)
+        from propostas p3
+        where p3.tema = p1.tema and
+              p3.tipo = 's' and 
+              p3.status in ('p','a','i')
+       )
+group by a1.proposta
+order by score desc
+";
     $rs = $db->conn->Execute($sql);
     return $rs->GetArray();
   }
 
   function ranking_todas($db, $macrotema) {
+
+    $md = Avaliacoes::media_e_desvio($db, $macrotema);
+    $avg = $md[0];
+    $stddev = $md[1];
+
     $sql = "
-        select
-          proposta as cod,
-          titulo,
-          pessoas.nome as autor,
-          avg(confianca * recomendacao *
-              ((relevancia * 0.5 ) +
-               (qualidade * 0.25 ) +
-               (experiencia * 0.25 )
-               )
-              ) as score,
-          propostas.status as status
-          from avaliacoes
-          join propostas on avaliacoes.proposta = propostas.cod
-          join pessoas on propostas.pessoa = pessoas.cod
-          where propostas.tema = $macrotema
-          group by proposta
-          order by score desc
-          ";
+select
+  a1.proposta as cod,
+  p1.titulo as titulo,
+  pe1.nome as autor,
+  (avg( a1.confianca * a1.recomendacao *
+       (a1.relevancia * 0.2 + a1.qualidade * 0.5 + a1.experiencia * 0.3 )
+     ) - $avg ) / $stddev as score
+from avaliacoes a1
+     join propostas p1 on p1.cod = a1.proposta
+     join pessoas pe1 on pe1.cod = p1.pessoa
+where p1.tema = $macrotema and
+      p1.tipo = 's' and
+      p1.status in ('p','a','i') and
+      (select count(*)
+       from avaliacoes
+            join propostas p2 on p2.cod = avaliacoes.proposta
+       where p2.tema = p1.tema and
+             p2.tipo = 's' and
+             p2.status in ('p','a','i') and
+             avaliador = a1.avaliador)
+       =
+       (select count(*)
+        from propostas p3
+        where p3.tema = p1.tema and
+              p3.tipo = 's' and 
+              p3.status in ('p','a','i')
+       )
+group by a1.proposta
+order by score desc
+";
+  
     $rs = $db->conn->Execute($sql);
     return $rs->GetArray();
   }
