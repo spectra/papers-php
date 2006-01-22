@@ -16,6 +16,18 @@ BUGS - atemporal
     Not Found
 
     The requested URL /7.0/papers/reviewer/speaker/325 was not found on this server.
+[ ] bug trash na avaliação. Pra reproduzir:
+    * carregar um dump do banco do fisl7
+    * ir em "Fechar avaliação" e salvar
+    * depois, via console do mysql:
+      update propostas set status = 'i', score = null
+    * depois "Fechar avaliação" de novo
+
+    alguma coisa está fazendo com que nessa segunda vez o cálculo da média e
+    desvio padrão saia errado e os dois voltam null. Daí quando são
+    interpolados no SQL em admin/include/avaliacoes.inc.php, método ranking(),
+    gera um SQL inválido.
+
 
 Release 0.3.2 -- p/ fechamento dos aprovados do FISL
 ----------------------------------------------------
