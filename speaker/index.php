@@ -16,7 +16,7 @@ if ($PERIOD_BEFORE_SUBMISSION) {
 } elseif ($PERIOD_SUBMISSION) {
     $smarty->assign('content', "submission.$language.tpl");
     $smarty->assign('proposals', Proposals::load($mysql, $person['cod']));
-} elseif ($PERIOD_REVIEW) {
+} elseif ($PERIOD_REVIEW || !$PERIOD_RESULT) {
     $smarty->assign('content', "proposals.tpl");
     $smarty->assign('proposals', Proposals::load($mysql, $person['cod']));
 } elseif ($PERIOD_RESULT) {

@@ -6,6 +6,7 @@ include_once('include/config.inc.php');
 // templates):
 $SUBMISSION_FIRST_DAY = strtotime($papers['event']['submission_first_day']);
 $SUBMISSION_LAST_DAY = strtotime($papers['event']['submission_last_day']);
+$REVIEW_LAST_DAY = strtotime($papers['event']['review_last_day']);
 $RESULT_PUBLICATION = strtotime($papers['event']['result_publication']);
 $UPDATES_LAST_DAY = strtotime($papers['event']['last_day_for_update']);
 
@@ -30,16 +31,16 @@ $SUBMISSION_START = $SUBMISSION_FIRST_DAY;
 $SUBMISSION_END = mktime( $temp['hours'], $temp['minutes'], $temp['seconds'], $temp['mon'], $temp['mday'] + 1,  $temp['year'] ); // zero hora do "dia seguinte"
 
 // review period dates:
-$temp = getdate($RESULT_PUBLICATION);
-$REVIEW_FIRST_DAY = $SUBMISSION_END;
-$REVIEW_LAST_DAY = mktime( $temp['hours'], $temp['minutes'], $temp['seconds'], $temp['mon'], $temp['mday'] - 1,  $temp['year'] ); // zero hora do "dia seguinte"
+$temp = getdate($REVIEW_LAST_DAY);
+$REVIEW_START = $SUBMISSION_END;
+$REVIEW_END = mktime( $temp['hours'], $temp['minutes'], $temp['seconds'], $temp['mon'], $temp['mday'] +1,  $temp['year'] ); // zero hora do "dia seguinte"
 
 // unless configuration sets today for testing purposes, today is ... today!
 $today = ($papers['today'])?(strtotime($papers['today'])):(time());
 
 $PERIOD_BEFORE_SUBMISSION = ($today < $SUBMISSION_START);
 $PERIOD_SUBMISSION        = ($today >= $SUBMISSION_START && $today <= $SUBMISSION_END);
-$PERIOD_REVIEW            = ($today > $SUBMISSION_END && $today <= $RESULT_PUBLICATION);
+$PERIOD_REVIEW            = ($today > $REVIEW_START && $today <= $REVIEW_END);
 $PERIOD_RESULT            = ($today > $RESULT_PUBLICATION);
 $PERIOD_UPDATES           = ($today < $UPDATES_LAST_DAY);
 
