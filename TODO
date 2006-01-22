@@ -43,7 +43,7 @@ Release 0.3.2 -- p/ fechamento dos aprovados do FISL
     vira "incluir palestra", palestra tem que entrar com status pré-aprovado e
     o tipo deve ser escolhido entre 'c' (convidado), 'v' (vendida - salas M*),
     e 'p' (patrocinador).
-[ ] revisar as notificações por e-mail do papers
+[x] revisar as notificações por e-mail do papers
 
 
 Release 0.3.3 -- p/ criação da grade de programação do FISL
