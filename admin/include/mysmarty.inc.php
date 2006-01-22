@@ -10,6 +10,8 @@ class MySmarty extends Smarty {
 
     parent::Smarty();
 
+    $this->compile_check = true;
+
     $this->assign('event', $papers['event']);
   }
 
