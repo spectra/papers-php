@@ -35,17 +35,6 @@ BUGS - atemporal
     Ou seja: se não existir pelo menos um avaliador que tenha avaliado a trilha toda,
     o fecharAvaliacao dá pau! (por enquanto, nada a ser feito)
 
-Release 0.3.2 -- p/ fechamento dos aprovados do FISL
-----------------------------------------------------
-
-[x] nova formula para o escore ponderado (ver com Pablo)
-[x] adequar o /admin ao novo campo 'tipo', i.e., "Incluir convidado"
-    vira "incluir palestra", palestra tem que entrar com status pré-aprovado e
-    o tipo deve ser escolhido entre 'c' (convidado), 'v' (vendida - salas M*),
-    e 'p' (patrocinador).
-[x] revisar as notificações por e-mail do papers
-
-
 Release 0.3.3 -- p/ criação da grade de programação do FISL
 -----------------------------------------------------------
 
