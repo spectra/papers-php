@@ -212,7 +212,7 @@ CREATE TABLE `propostas` (
   `ip_proxy` varchar(15) default NULL,
   `idioma` char(2) NOT NULL default '',
   `ip` varchar(15) default NULL,
-  `status` enum('i','a','r','d') NOT NULL default 'i',
+  `status` enum('i','a','r','d','p') NOT NULL default 'i',
   `tipo` enum('s','p','v','c') NOT NULL default 's',
   `espaco` int(10) unsigned default NULL,
   `comadm` text,
