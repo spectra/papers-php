@@ -35,6 +35,10 @@ BUGS - atemporal
     Ou seja: se não existir pelo menos um avaliador que tenha avaliado a trilha toda,
     o fecharAvaliacao dá pau! (por enquanto, nada a ser feito)
 
+[ ] se o avaliador entra na tela de avaliação e não tem propostas com status
+    indefinido na trilha, a ele é dito que ele não pode avaliar porque ele tem
+    proposta naquela trilha.
+
 Release 0.3.3 -- p/ criação da grade de programação do FISL
 -----------------------------------------------------------
 
