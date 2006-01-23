@@ -39,7 +39,13 @@ BUGS - atemporal
     indefinido na trilha, a ele é dito que ele não pode avaliar porque ele tem
     proposta naquela trilha.
 
-Release 0.3.3 -- p/ criação da grade de programação do FISL
+Release 0.3.3 -- para divulgação dos resultados
+-----------------------------------------------
+
+[ ] erro ao checar período: mesmo no período de resultados, diz que "Os
+    resultados de aceitação não foram lançados ainda."
+
+Release 0.3.4 -- p/ criação da grade de programação do FISL
 -----------------------------------------------------------
 
 [ ] checar conflitos de horário
