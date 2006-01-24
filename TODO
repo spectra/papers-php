@@ -45,6 +45,9 @@ Release 0.3.3 -- para divulgação dos resultados
 [x] erro ao checar período: mesmo no período de resultados, diz que "Os
     resultados de aceitação não foram lançados ainda."
 [ ] não mostrar avaliações que foram desconsideradas ao proponente.
+[ ] divulgar o escore junto com os comentarios para os autores.
+[x] multiplicar por 100 e somar 500 ao escore padrao para aumentar os
+numeros (e evitar numeros negativos).
 
 
 Release 0.3.4 -- p/ criação da grade de programação do FISL

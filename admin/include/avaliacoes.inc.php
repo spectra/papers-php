@@ -55,9 +55,9 @@ select
   a1.proposta as cod,
   p1.titulo as titulo,
   pe1.nome as autor,
-  (avg( a1.confianca * a1.recomendacao *
+  (((avg( a1.confianca * a1.recomendacao *
        (a1.relevancia * 0.2 + a1.qualidade * 0.5 + a1.experiencia * 0.3 )
-     ) - $avg ) / $stddev as score
+     ) - $avg ) / $stddev) * 100) + 500 as score
 from avaliacoes a1
      join propostas p1 on p1.cod = a1.proposta
      join pessoas pe1 on pe1.cod = p1.pessoa
