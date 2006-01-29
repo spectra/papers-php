@@ -50,7 +50,7 @@ $(DEBIAN_BUILD):
 	mkdir -p $@
 
 clean:
-	rm -rf $(TARBALL) $(DEBIAN_BUILD)
+	rm -rf *.tar.gz $(DEBIAN_BUILD)
 	for each in `find -type d -name templates_c`; do rm -f $$each/*; done
 	rm -rf $(IMG)
 	make clean -C pub/
