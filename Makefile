@@ -37,12 +37,15 @@ dist: clean
 
 DEBIAN_ORIG = $(PACKAGE)_$(VERSION).orig.tar.gz
 DEBIAN_BUILD = debian-build-area
+DEBIAN_OPTS=-us -uc
 
 deb: dist $(DEBIAN_BUILD)
 	cp $(TARBALL) $(DEBIAN_BUILD)/$(DEBIAN_ORIG)
 	(cd $(DEBIAN_BUILD) ; tar xzf $(DEBIAN_ORIG))
 	cp -r debian $(DEBIAN_BUILD)/$(DISTDIR)/
 	(cd $(DEBIAN_BUILD)/$(DISTDIR)/; dpkg-buildpackage -rfakeroot $(DEBIAN_OPTS))
+	(cd $(DEBIAN_BUILD); lintian -iI *.changes)
+	(cd $(DEBIAN_BUILD); linda -C E,W *.changes)
 	@echo -e "\033[41;01mDebian package is under $(DEBIAN_BUILD)/ directory!\033[m"
 
 $(DEBIAN_BUILD):

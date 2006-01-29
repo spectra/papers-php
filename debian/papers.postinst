@@ -27,3 +27,5 @@ if [ ! -d $LOGDIR ]; then
   chmod 750 $LOGDIR
   ln -sf $LOGDIR $INSTALLDIR/admin/log
 fi
+
+#DEBHELPER#

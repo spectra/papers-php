@@ -16,3 +16,4 @@ for each in $SUBDIRS; do
   fi
 done
 
+#DEBHELPER#
