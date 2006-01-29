@@ -19,12 +19,21 @@ if (!$cod) {
 
 if ($PERIOD_RESULT) {
 
+  if (! $PERIOD_UPDATES ) {
+    $smarty->fatal('tooLateForUpdates');
+  }
+
   $person = Persons::find($mysql, $user);
   $proposal = Proposals::find($mysql, $cod);
 
   if (! Proposals::owns($person, $proposal, $mysql)) {
-    $smarty->assign('message', 'onlyProposalOwnerCanConfirm');
+    $smarty->fatal('onlyProposalOwnerCanConfirm');
   } else {
+
+    if ($proposal['status'] != 'a' && $proposal['status'] != 'p') {
+      $smarty->fatal('onlyAcceptedCanConfirm');
+    }
+  
     $smarty->assign('proposal', $proposal);
     $smarty->assign('person', $person);
     $smarty->assign('content', 'confirm.tpl');

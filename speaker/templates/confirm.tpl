@@ -23,22 +23,6 @@
       </td>
     </tr>
     <tr>
-      <th>{#imageRights#}</th>
-      <td>
-        {include file="videosExplanation.$language.tpl"}
-        <hr/>
-        {#videoAuthorization#}: <br/>
-        <input type="radio" name="autoriza_video" value="1" {if (!isset($proposal.autoriza_video)) || $proposal.autoriza_video == 1}checked{/if}/> {#yesIAgree#} <br/>
-        <input type="radio" name="autoriza_video" value="0" {if isset($proposal.autoriza_video) && $proposal.autoriza_video == 0}checked{/if}/> {#noIDontAgree#}
-      </td>
-    </tr>
-    <tr>
-      <th>{#title#}</th>
-      <td>
-        <input type="text" size="80" maxlength="80" name="titulo" value="{$proposal.titulo}"/>
-      </td>
-    </tr>
-    <tr>
       <th>{#lectureAbstract#}</th>
       <td>
         {#lectureAbstractExplanation#} <br/>

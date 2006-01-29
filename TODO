@@ -13,7 +13,7 @@ Release 0.3.3 -- para divulgação dos resultados
     também o menor escore para aceitação.
 [x] multiplicar por 100 e somar 500 ao escore padrao para aumentar os
     numeros (e evitar numeros negativos).
-[ ] revisar a confirmação:
+[x] revisar a confirmação:
     *) aceitação de termos foi na submissão
     *) conferir se os (pré-)aprovados tem acesso à confirmação, e somente eles.
 
