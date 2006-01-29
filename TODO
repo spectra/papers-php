@@ -9,7 +9,7 @@ Release 0.3.3 -- para divulgação dos resultados
     resultados de aceitação não foram lançados ainda."
 [x] não mostrar avaliações que foram desconsideradas ao proponente, mas mostrar
     todos os comentários
-[ ] divulgar o escore junto com os comentarios para os autores, e mostrar
+[x] divulgar o escore junto com os comentarios para os autores, e mostrar
     também o menor escore para aceitação.
 [x] multiplicar por 100 e somar 500 ao escore padrao para aumentar os
     numeros (e evitar numeros negativos).

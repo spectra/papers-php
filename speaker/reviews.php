@@ -38,6 +38,9 @@ if ($PERIOD_RESULT) {
 
     $comments = Proposals::comments($mysql, $proposal['cod']);
     $smarty->assign('comments', $comments);
+
+    $minimumScore = Proposals::minimumScoreForAcceptanceInTrack($mysql, $proposal['tema']);
+    $smarty->assign('minimumScore', $minimumScore);
   }
   
   $smarty->display('index.tpl');

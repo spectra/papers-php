@@ -14,6 +14,16 @@
   </li>
 </ul>
 
+<h3>{#reviewResultsSummary#}</h3>
+<ul>
+  <li>
+    <strong>{#score#}</strong>: {$proposal.score}
+  </li>
+  <li>
+    <strong>{#minimumScoreForApproval#}</strong>: {$minimumScore}
+  </li>
+</ul>
+
 <h3>{#legend#}</h3>
 <div class='proposalBox'>
   <strong>{#confidence#}</strong>:

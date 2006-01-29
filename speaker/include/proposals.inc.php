@@ -108,6 +108,19 @@ class Proposals {
     return $rs->GetArray();
   }
 
+  function minimumScoreForAcceptanceInTrack($db, $track) {
+    $sql = "
+      select min(score) as score
+      from propostas
+      where tema = $track
+            and tipo = 's'
+            and status = 'a';
+    ";
+    $rs = $db->conn->Execute($sql);
+    $rsa = $rs->GetArray();
+    return $rsa[0]['score'];
+  }
+
   function update($db, $cod, $fields) {
     $rs = $db->conn->Execute("select confirmada, autoriza_video, titulo, resumo from propostas where cod = $cod");
     $sql = $db->conn->GetUpdateSQL($rs, $fields, false, true);
