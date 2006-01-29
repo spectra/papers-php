@@ -29,7 +29,7 @@ foreach($macrotemas as $macrotema) {
           from propostas
           where tema = $mt and
           tipo = 's' and
-          status in ('p','a','i')";
+          status != 'd' ";
   $rs = $mysql->conn->Execute($sql);
   $propostas[$mt] = $rs->GetArray();
 }
