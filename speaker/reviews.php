@@ -35,6 +35,9 @@ if ($PERIOD_RESULT) {
   
     $reviews = Proposals::reviews($mysql, $proposal['cod']);
     $smarty->assign('reviews', $reviews);
+
+    $comments = Proposals::comments($mysql, $proposal['cod']);
+    $smarty->assign('comments', $comments);
   }
   
   $smarty->display('index.tpl');

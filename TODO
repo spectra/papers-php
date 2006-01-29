@@ -7,7 +7,8 @@ Release 0.3.3 -- para divulgação dos resultados
 
 [x] erro ao checar período: mesmo no período de resultados, diz que "Os
     resultados de aceitação não foram lançados ainda."
-[ ] não mostrar avaliações que foram desconsideradas ao proponente.
+[x] não mostrar avaliações que foram desconsideradas ao proponente, mas mostrar
+    todos os comentários
 [ ] divulgar o escore junto com os comentarios para os autores, e mostrar
     também o menor escore para aceitação.
 [x] multiplicar por 100 e somar 500 ao escore padrao para aumentar os

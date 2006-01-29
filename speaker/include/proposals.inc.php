@@ -71,9 +71,38 @@ class Proposals {
 
   function reviews($db, $cod) {
     $sql = "
-      select *
+      select a1.*
+      from avaliacoes a1
+           join propostas p1 on p1.cod = a1.proposta
+      where proposta = $cod
+      and
+      (select count(*)
+       from avaliacoes
+            join propostas p2 on p2.cod = avaliacoes.proposta
+       where p2.tema = p1.tema and
+             p2.tipo = 's' and
+             p2.status in ('p','a','i','r') and
+             avaliador = a1.avaliador
+       )
+       =
+       (select count(*)
+        from propostas p3
+        where p3.tema = p1.tema and
+              p3.tipo = 's' and
+              p3.status in ('p','a','i','r')
+       )
+       order by a1.avaliador
+    ";
+    $rs = $db->conn->Execute($sql);
+    return $rs->GetArray();
+  }
+
+  function comments($db, $cod) {
+    $sql = "
+      select comentarios_autor as comment
       from avaliacoes
       where proposta = $cod
+      order by avaliador
     ";
     $rs = $db->conn->Execute($sql);
     return $rs->GetArray();

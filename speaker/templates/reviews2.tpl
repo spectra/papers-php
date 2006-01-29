@@ -142,7 +142,6 @@
     <th>{#quality#}</th>
     <th>{#experience#}</th>
     <th>{#recommendation#}</th>
-    <th>{#commentsToAuthor#}</th>
   </tr>
 {section loop=$reviews name=r}
   <tr>
@@ -161,14 +160,22 @@
         {else}A
         {/if}
     </td>
-    <td>
+  </tr>
+{/section}
+</table>
+</div>
+
+<h3>{#commentsToAuthor#}</h3>
+<ul>
+{section loop=$comments name=c}
+  <li>
+    <strong>{#reviewer#} #{$smarty.section.c.iteration}:</strong>
+    <br/>
     {if $reviews[r].comentarios_autor}
         {$reviews[r].comentarios_autor}
     {else}
       {#noComments#}
     {/if}
-    </td>
-  </tr>
+  </li>
 {/section}
-</table>
-</div>
+</ul>
