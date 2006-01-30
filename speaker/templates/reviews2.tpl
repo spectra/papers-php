@@ -17,10 +17,10 @@
 <h3>{#reviewResultsSummary#}</h3>
 <ul>
   <li>
-    <strong>{#score#}</strong>: {$proposal.score}
+    <strong>{#argument#}</strong>: {$proposal.score}
   </li>
   <li>
-    <strong>{#minimumScoreForApproval#}</strong>: {$minimumScore}
+    <strong>{#minimumArgumentForApproval#}</strong>: {$minimumScore}
   </li>
 </ul>
 
