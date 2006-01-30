@@ -27,7 +27,7 @@
     <div>
       <strong>Status:</strong>
       <span class='status_{$proposals[pr].status}'>
-      {if $proposals[pr].status == 'a'}
+      {if $proposals[pr].status == 'a' || $proposals[pr].status == 'p'}
       {#accepted#}
       {/if}
       {if $proposals[pr].status == 'r'}
@@ -42,7 +42,7 @@
       </span>
     </div>
     <div>
-      {if $proposals[pr].status == 'a'}
+      {if $proposals[pr].status == 'a' || $proposals[pr].status == 'p'}
         {if $proposals[pr].confirmada}
           <div class='softMessage'>
             <span>{#thanksForYourConfirmation#}</span>
@@ -67,7 +67,7 @@
       {/if}
     </div>
     <div>
-      {if $proposals[pr].status == 'a' || $proposals[pr].status == 'r' || $proposals[pr].status == 'd'}
+      {if $proposals[pr].tipo == 's' || $proposals[pr].status != 'd'}
         <a href="reviews/{$proposals[pr].cod}">{#viewReviews#}</a>
         {if $proposals[pr].status == 'd'}
         (<em>{#viewReviewsGaveUpNote#}</em>)
