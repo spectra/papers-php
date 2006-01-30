@@ -16,6 +16,24 @@ class Notificacoes {
             where
               propostas.status in $status
               $extraCond
+              
+            union
+
+            select
+              propostas.cod as cod,
+              propostas.titulo as title,
+              pessoas.cod as pcod,
+              pessoas.nome as name,
+              pessoas.email as email,
+              propostas.idioma as language
+            from
+              propostas
+              join copalestrantes on copalestrantes.proposta = propostas.cod
+              join pessoas on copalestrantes.pessoa = pessoas.cod
+            where
+              propostas.status in $status
+              $extraCond
+              
               ";
     $rs = $db->conn->Execute($sql);
     return $rs->GetArray();
