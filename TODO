@@ -2,29 +2,20 @@ TODO em forma de roadmap. No final tem coisas atemporais. :)
 
 veja no final para coisas atemporais, como bugs e coisas do tipo.
 
-Release 0.3.3 -- para divulgação dos resultados
------------------------------------------------
-
-[x] erro ao checar período: mesmo no período de resultados, diz que "Os
-    resultados de aceitação não foram lançados ainda."
-[x] não mostrar avaliações que foram desconsideradas ao proponente, mas mostrar
-    todos os comentários
-[x] divulgar o escore junto com os comentarios para os autores, e mostrar
-    também o menor escore para aceitação.
-[x] multiplicar por 100 e somar 500 ao escore padrao para aumentar os
-    numeros (e evitar numeros negativos).
-[x] revisar a confirmação:
-    *) aceitação de termos foi na submissão
-    *) conferir se os (pré-)aprovados tem acesso à confirmação, e somente eles.
-
 Release 0.3.4 -- p/ criação da grade de programação do FISL
 -----------------------------------------------------------
 
 [ ] checar conflitos de horário
+[ ] sortear configuração inicial da grade (??)
 [ ] geração da programação (em LaTeX?)
 [ ] mostrar palestras que ocupam mais de um horário seguidos como uma célula só
    (tanto na grade na web quanto na programação).
 
+Release 0.3.5 -- p/ avaliação das propostas do Festival
+-------------------------------------------------------
+
+[ ] quando for "aceitação forte", ou "rejeição forte", forçar o preenchimento
+    de comentário ao autor (para justificar o conceito)
 
 Coisas atemporais -- pra ir fazendo na medida do possível
 ---------------------------------------------------------
