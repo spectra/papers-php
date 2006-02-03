@@ -181,8 +181,8 @@
   <li>
     <strong>{#reviewer#} #{$smarty.section.c.iteration}:</strong>
     <br/>
-    {if $reviews[r].comentarios_autor}
-        {$reviews[r].comentarios_autor}
+    {if $comments[c].comment}
+        {$comments[c].comment}
     {else}
       {#noComments#}
     {/if}
