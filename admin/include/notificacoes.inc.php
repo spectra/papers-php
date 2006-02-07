@@ -48,7 +48,7 @@ class Notificacoes {
   }
 
   function aceitas_nao_confirmadas($db) {
-    return Notificacoes::_load($db, "('a','p')", "and tipo = 's' and ISNULL(propostas.confirmada)");
+    return Notificacoes::_load($db, "('a','p')", "and tipo = 's' and (ISNULL(propostas.confirmada) or not propostas.confirmada)");
   }
   
   function convidados($db) {
