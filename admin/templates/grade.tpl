@@ -24,7 +24,7 @@
 <a name="toc"></a>
 <ul>
 {section loop=$dias name=d}
-  <li><a href="#dia{$dias[d].numero}">{$dias[d].descricao}</a></li>
+  <li><a href="{php}echo $_SERVER['REQUEST_URI']; {/php}#dia{$dias[d].numero}">{$dias[d].descricao}</a></li>
 {/section}
 </ul>
 
@@ -48,7 +48,10 @@
             {assign var="sala" value=$salas[s].numero}
             {assign var="horario" value=$horarios[h].numero}
             {assign var="celula" value=$grade[$dia][$sala][$horario]}
-            <td bgcolor="{$celula.cor}"> 
+	    {if !$admin && $celula.dumb}
+	    <!-- dumb cell -->
+	    {else}
+	    <td bgcolor="{$celula.cor}" rowspan="{$celula.num}">
               {if $celula}
                 {if $admin && ! $celula.confirmada}
                   <div style='background: yellow; color: red; text-align: center;'>
@@ -88,6 +91,7 @@
                 {/if}
               {/if}
             </td>
+	    {/if}
           {/section}
         </tr>
       {/section}

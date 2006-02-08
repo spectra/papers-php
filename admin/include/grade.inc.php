@@ -37,6 +37,16 @@ class Grade {
       $celulas = $rs->GetArray();
       foreach ($celulas as $celula) {
         extract($celula);
+
+        if ($horario > 1 and $grade[$dia][$sala][$horario - 1]['cod'] == $cod) {
+	  $grade[$dia][$sala][$horario - 1]['num']++;
+	  $grade[$dia][$sala][$horario]['dumb'] = true;
+	  continue;
+	}
+	
+        $grade[$dia][$sala][$horario]['dumb'] = false;
+        $grade[$dia][$sala][$horario]['num'] = 1;
+	
         $grade[$dia][$sala][$horario]['cod'] = $cod;
         $grade[$dia][$sala][$horario]['titulo'] = $titulo;
         $grade[$dia][$sala][$horario]['nome'] = $nome;
