@@ -49,9 +49,10 @@
             {assign var="horario" value=$horarios[h].numero}
             {assign var="celula" value=$grade[$dia][$sala][$horario]}
 	    {if !$admin && $celula.dumb}
-	    <!-- dumb cell -->
+	    <!-- dumb cell: day {$dia}, room {$sala}, hour {$horario} -->
 	    {else}
-	    <td bgcolor="{$celula.cor}" rowspan="{$celula.num}">
+	    <!-- day {$dia}, room {$sala}, hour {$horario} -->
+	    <td bgcolor="{$celula.cor}" {if !$admin }rowspan="{$celula.num}"{/if}>
               {if $celula}
                 {if $admin && ! $celula.confirmada}
                   <div style='background: yellow; color: red; text-align: center;'>
