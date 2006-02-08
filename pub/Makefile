@@ -1,5 +1,5 @@
 #PHP=grade.php
-INCLUDES=mysql.inc.php basic.inc.php grade.inc.php dias.inc.php horarios.inc.php salas.inc.php propostas.inc.php pessoas.inc.php macrotemas.inc.php press.inc.php config.inc.php
+INCLUDES=mysql.inc.php basic.inc.php grade.inc.php dias.inc.php horarios.inc.php salas.inc.php propostas.inc.php pessoas.inc.php macrotemas.inc.php press.inc.php config.inc.php mysmarty.inc.php
 TEMPLATES=grade.tpl
 
 all: build runtime

@@ -1,8 +1,6 @@
 <?
 
-require 'Smarty.class.php';
-$smarty = new Smarty;
-$smarty->compile_check = true;
+include('include/mysmarty.inc.php');
 
 include('include/mysql.inc.php');
 include('include/basic.inc.php');
@@ -17,6 +15,7 @@ include('include/salas.inc.php');
 
 expires(0);
 
+$smarty = new MySmarty;
 $smarty->assign('title', 'Alocação de Espaços');
 
 $cod = str_replace('/', '', $_SERVER['PATH_INFO']);
@@ -24,6 +23,7 @@ if (! preg_match('/^[0-9]+$/',$cod)) {
   $cod = null;
 }
 
+$smarty = new MySmarty;
 $mysql = new Mysql;
 
 if ($cod) {

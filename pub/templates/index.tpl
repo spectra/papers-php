@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 
 <head>
-  <title>fisl6.0 - Fórum Internacional Software Livre</title><meta name="resource-type" content="document"/>
+  <title>{$event.codename} - {$event.name}</title><meta name="resource-type" content="document"/>
   <meta http-equiv="pragma" content="no-cache"/>
   <meta name="revisit-after" content="1"/>
   <meta name="classification" content="Internet"/>
@@ -29,21 +29,9 @@
 </head>
 <body>
 
-<div id="header">
-  <div id="logo">
-    <a href="/"><img src="img/fisl.png" alt="fisl6.0"/></a>
-  </div>
-
-  <div id='titulo'>
-    <span class="forum">6&deg; Fórum Internacional</span>
-    <span class="softwarelivre">Software Livre</span>
-    <span class="forum"></span>
-    <br/>
-      1, 2, 3 e 4 de Junho de 2005
-    <br/>
-    Porto Alegre/RS, Brasil
-  </div>
-</div>
+<h1>
+  {$event.name}
+</h1>
 
 {if $linkup}
 <div>
