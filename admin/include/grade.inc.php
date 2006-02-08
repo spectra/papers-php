@@ -82,6 +82,12 @@ class Grade {
       $rs = $db->conn->Execute("select dias.descricao as dia , substring(horarios.inicio,1,5) as inicio, substring(horarios.final,1,5) as final, salas.descricao as sala, concat(dia,',',sala,',',horario) as cod from grade join dias on dias.numero = grade.dia join horarios on horarios.numero = grade.horario join salas on salas.numero = grade.sala where proposta = $proposta");
       return $rs->GetArray();
     }
+
+    function conflitos($db) {
+      $sql = "select pessoas.nome, dias.descricao as dia, substring(horarios.inicio,1,5) as horario, count(grade.sala) as count from pessoas join propostas on (propostas.pessoa = pessoas.cod or exists (select 1 from copalestrantes where copalestrantes.pessoa = pessoas.cod and copalestrantes.proposta = propostas.cod)) join grade on propostas.cod = grade.proposta join horarios on horarios.numero = grade.horario join dias on dias.numero = grade.dia group by pessoas.nome, dia, horario having count > 1;";
+      $rs = $db->conn->Execute($sql);
+      return $rs->GetArray();
+    }
     
 }
 

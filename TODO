@@ -5,19 +5,27 @@ veja no final para coisas atemporais, como bugs e coisas do tipo.
 Release 0.3.4 -- p/ criação da grade de programação do FISL
 -----------------------------------------------------------
 
-[ ] checar conflitos de horário
-[ ] sortear configuração inicial da grade (??)
-[ ] geração da programação (em LaTeX?)
+[x] checar conflitos de horário
 [ ] mostrar palestras que ocupam mais de um horário seguidos como uma célula só
    (tanto na grade na web quanto na programação).
 [ ] parametrizar o layout do /pub/
 [ ] não listar salas que não têm nada no /pub/
 
-Release 0.3.5 -- p/ avaliação das propostas do Festival
+Release 0.3.5 -- p/ impressão da programação do fisl7.0
+-------------------------------------------------------
+
+[ ] geração da programação (em LaTeX?)
+
+Release 0.3.6 -- p/ avaliação das propostas do Festival
 -------------------------------------------------------
 
 [ ] quando for "aceitação forte", ou "rejeição forte", forçar o preenchimento
     de comentário ao autor (para justificar o conceito)
+
+Release 0.3.7 -- p/ programação do festival
+-------------------------------------------
+
+[ ] sortear configuração inicial da grade (??)
 
 Coisas atemporais -- pra ir fazendo na medida do possível
 ---------------------------------------------------------
