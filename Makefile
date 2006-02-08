@@ -18,7 +18,7 @@ runtime:
 	make runtime -C admin/
 
 %.png: %.svg
-	rsvg $< $@
+	-rsvg $< $@
 
 ###### DISTRIBUTION ######
 

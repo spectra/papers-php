@@ -5,23 +5,29 @@ include_once('include/propostas.inc.php');
 class Grade {
 
     function carregar ($db) {
-      $CORES["Desenvolvimento"] = "#99ffcc";
-      $CORES["Bancos de Dados"] = "#ffff99";
-      $CORES["Desktop"] = "#ffcc66";
-      $CORES["Redes"] = "#CCCCFF";
-      $CORES["Segurança"] = "#ccffff";
-      $CORES["Cases"] = "#ff99ff";
-      $CORES["Comunidade"] = "#999966";
-      $CORES["Governos"] = "#cccccc";
-      $CORES["Política / Filosofia"] = "#33CC99";
-      $CORES["Inclusão Social / Digital"] = "#00CCFF";
-      $CORES["Organização"] = "#FFFFee";
+      $CORES[0] = "#99ffcc";
+      $CORES[1] = "#ffff99";
+      $CORES[2] = "#ffcc66";
+      $CORES[3] = "#CCCCFF";
+      $CORES[4] = "#ccffff";
+      $CORES[5] = "#ff99ff";
+      $CORES[6] = "#999966";
+      $CORES[7] = "#cccccc";
+      $CORES[8] = "#33CC99";
+      $CORES[9] = "#00CCFF";
+      $CORES[10] = "#FFFFee";
+      $CORES[11] = "#0099FF";
+      $CORES[12] = "#6699CC";
+      $CORES[13] = "#66CC33";
+      $CORES[14] = "#CC9966";
+      $CORES[15] = "#FFCCFF";
 
       $sql = 'select
                 dia, sala, horario,
                 propostas.titulo, propostas.cod as cod,
                 nome,
                 macrotemas.titulo as macrotema,
+		macrotemas.cod as cod_macrotema,
                 propostas.confirmada as confirmada
               from grade
                    join propostas  on grade.proposta   = propostas.cod
@@ -35,7 +41,7 @@ class Grade {
         $grade[$dia][$sala][$horario]['titulo'] = $titulo;
         $grade[$dia][$sala][$horario]['nome'] = $nome;
         $grade[$dia][$sala][$horario]['macrotema'] = $macrotema;
-        $grade[$dia][$sala][$horario]['cor'] = $CORES[$macrotema];
+        $grade[$dia][$sala][$horario]['cor'] = $CORES[$cod_macrotema % 16];
         $grade[$dia][$sala][$horario]['confirmada'] = $confirmada;
         $grade[$dia][$sala][$horario]['copalestrantes'] = Propostas::copalestrantes($db,$cod);
         $grade[$dia][$sala][$horario]['mesa'] = Propostas::mesa($db,$cod);

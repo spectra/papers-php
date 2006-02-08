@@ -10,6 +10,8 @@ Release 0.3.4 -- p/ criação da grade de programação do FISL
 [ ] geração da programação (em LaTeX?)
 [ ] mostrar palestras que ocupam mais de um horário seguidos como uma célula só
    (tanto na grade na web quanto na programação).
+[ ] parametrizar o layout do /pub/
+[ ] não listar salas que não têm nada
 
 Release 0.3.5 -- p/ avaliação das propostas do Festival
 -------------------------------------------------------
