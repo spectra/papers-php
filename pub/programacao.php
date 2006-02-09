@@ -56,7 +56,7 @@ if ($cod) {
   $horarios = Horarios::carregar($mysql);
   $smarty->assign('horarios', $horarios);
   
-  $salas = Salas::carregar($mysql);
+  $salas = Salas::carregarNaoVazias($mysql);
   $smarty->assign('salas', $salas);
   
   $grade = Grade::carregar($mysql);

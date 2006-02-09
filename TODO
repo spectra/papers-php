@@ -8,7 +8,7 @@ Release 0.3.4 -- p/ criação da grade de programação do FISL
 [x] checar conflitos de horário
 [x] mostrar palestras que ocupam mais de um horário seguidos como uma célula só na web.
 [ ] parametrizar o layout do /pub/
-[ ] não listar salas que não têm nada no /pub/
+[x] não listar salas que não têm nada no /pub/
 
 Release 0.3.5 -- p/ impressão da programação do fisl7.0
 -------------------------------------------------------
