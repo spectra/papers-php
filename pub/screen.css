@@ -1,9 +1,4 @@
 body {
-  background-image: url(img/fisl-bg.png);
-  background-position: top right;
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  background-color: white;
 
   font-family: sans-serif;
   font-size: 12px;
@@ -28,13 +23,8 @@ img {
 }
 
 
-/***** CebeÃ§alho ************************************/
+/***** Cebeçalho ************************************/
 #header {
-  background-image: url(img/fisl-bg2.png);
-  background-color: #f0f0f0;
-  background-position: top right;
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
   height: 90px;
   border-bottom: 1px solid #d0d0d0;
 }

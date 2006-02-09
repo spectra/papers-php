@@ -1,8 +1,8 @@
-<h1>Programação - <code>fisl6.0</code></h1>
+<h1>{$event.name} - Programação</h1>
 
 <p>
 Salas, dias e horários estão sujeitos a alterações, de acordo com os critérios
-da organização do <code>fisl6.0</code>.
+da organização do <em>{$event.name}</em>.
 </p>
 
 <p>
@@ -19,5 +19,5 @@ da organização do <code>fisl6.0</code>.
 </div>
 
 <div style='text-align: center; margin: 1em;'>
-Dúvidas? Escreva para <code>&lt;temario em softwarelivre.org&gt;</code>
+Dúvidas? Escreva para <code>{$event.contact_email}</code>
 </div>

@@ -29,10 +29,6 @@
 </head>
 <body>
 
-<h1>
-  {$event.name}
-</h1>
-
 {if $linkup}
 <div>
 <a href="{$linkup}">Voltar</a>

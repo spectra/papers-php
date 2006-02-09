@@ -27,16 +27,14 @@
 <body>
 
 <h1>
-6° Fórum Internacional  Software Livre <br/>
-1, 2, 3 e 4 de Junho de 2005 <br/>
-Porto Alegre/RS, Brasil <br/>
+{$event.name}<br/>
+Progamação
 </h1>
 
-<h1>Programação - <code>fisl6.0</code></h1>
 
 <p>
 Salas, dias e horários estão sujeitos a alterações, de acordo com os critérios
-da organização do <code>fisl6.0</code>.
+da organização do <em>{$event.name}</em>.
 </p>
 
 {section loop=$dias name=d}
@@ -59,7 +57,7 @@ da organização do <code>fisl6.0</code>.
             <br/> {$celula.mesa[m].nome} (<em>Coordenação de mesa</em>)
           {/section}
           <br/> <strong>Sala:</strong> {$salas[s].descricao}
-          <br/> <strong>Macrotema:</strong>  {$celula.macrotema}
+          <br/> <strong>Trilha:</strong>  {$celula.macrotema}
           <br/>
           <br/>
         {/if}
