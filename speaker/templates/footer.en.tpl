@@ -2,7 +2,7 @@
 
 <div align='center'>
 Doubts, questions, information and bugs ;-) : write to
-<strong>{$event.contact_email}</strong>
+<code>{mailto address=$event.contact_email encode="javascript"}</code>
 </div>
 
 <hr/>

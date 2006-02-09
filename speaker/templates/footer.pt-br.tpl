@@ -1,7 +1,7 @@
 <hr/>
 <div align='center'>
 Dúvidas, perguntas, informações e bugs ;-) : escreva para
-<strong>{$event.contact_email}</strong>
+<code>{mailto address=$event.contact_email encode="javascript"}</code>
 </div>
 
 <hr/>

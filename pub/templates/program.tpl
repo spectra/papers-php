@@ -19,5 +19,5 @@ da organização do <em>{$event.name}</em>.
 </div>
 
 <div style='text-align: center; margin: 1em;'>
-Dúvidas? Escreva para <code>{$event.contact_email}</code>
+Dúvidas? Escreva para <code>{mailto address=$event.contact_email encode="javascript"}</code>
 </div>
