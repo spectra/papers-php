@@ -65,6 +65,12 @@ if ($cod) {
   $smarty->assign('urlBase', 'programacao');
   $smarty->assign('admin', null);
 
+  $macrotemas = Macrotemas::carregar($mysql);
+  foreach (array_keys($macrotemas) as $tema) {
+    $macrotemas[$tema]['cor'] = Grade::cor($macrotemas[$tema]['cod']);
+  }
+  $smarty->assign('macrotemas', $macrotemas);
+
   $print = $_GET['print'];
 
   if ($print) {

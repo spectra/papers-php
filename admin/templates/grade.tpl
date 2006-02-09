@@ -52,7 +52,7 @@
 	    <!-- dumb cell: day {$dia}, room {$sala}, hour {$horario} -->
 	    {else}
 	    <!-- day {$dia}, room {$sala}, hour {$horario} -->
-	    <td bgcolor="{$celula.cor}" {if !$admin }rowspan="{$celula.num}"{/if}>
+	    <td bgcolor="{$celula.cor}" {if !$admin }rowspan="{$celula.num}"{/if} class='track_{$celula.cod_macrotema}'>
               {if $celula}
                 {if $admin && ! $celula.confirmada}
                   <div style='background: yellow; color: red; text-align: center;'>
