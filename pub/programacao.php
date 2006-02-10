@@ -73,6 +73,7 @@ if ($cod) {
 
   $print = $_GET['print'];
 
+  $smarty->assign('print',$print);
   if ($print) {
     $smarty->display('print.tpl');
   } else {

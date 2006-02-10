@@ -31,6 +31,7 @@
 Progamação
 </h1>
 
+{include file='legend.tpl'}
 
 <p>
 Salas, dias e horários estão sujeitos a alterações, de acordo com os critérios
@@ -48,6 +49,7 @@ da organização do <em>{$event.name}</em>.
         {assign var="horario" value=$horarios[h].numero}
         {assign var="celula" value=$grade[$dia][$sala][$horario]}
         {if $celula}
+	  <div class='track_{$celula.cod_macrotema}'>
           <strong><em>{$celula.titulo}</em></strong>
           <br/> {$celula.nome}
           {section loop=$celula.copalestrantes name=cp}
@@ -60,6 +62,7 @@ da organização do <em>{$event.name}</em>.
           <br/> <strong>Trilha:</strong>  {$celula.macrotema}
           <br/>
           <br/>
+	  </div>
         {/if}
       {/section}
   {/section}
