@@ -7,9 +7,11 @@
   {/section}
 </ul>
 
-<div>
-<a href="copalestrantes/{$proposta.cod}?acao=adicionar">Adicionar copalestrante <strong>não cadastrado</strong> ainda</a>
-|
-<a href="copalestrantes/{$proposta.cod}?acao=escolher">Adicionar copalestrante <strong>já cadastrado</strong></a>
-
-</div>
+<ul>
+  <li>
+    <a href="copalestrantes/{$proposta.cod}?acao=adicionar">Adicionar copalestrante <strong>não cadastrado</strong> ainda</a>
+  </li>
+  <li>
+    <a href="copalestrantes/{$proposta.cod}?acao=escolher">Adicionar copalestrante <strong>já cadastrado</strong></a>
+  </li>
+</ul>

@@ -1,5 +1,6 @@
 <form action="convidadoSave" method="POST">
 <table class='formulario' align='center'>
+{if !$pessoa}
   <tr>
     <th>Nome:</th>
     <td><input type="text" name="nome"/></td>
@@ -12,6 +13,15 @@
     <th>mini-currículo:</th>
     <td><textarea name="biografia" cols='60' rows='10'></textarea></td>
   </tr>
+{else}
+  <tr>
+    <th>Pessoa:</th>
+    <td>
+      <a href="proponente/{$pessoa.cod}">{$pessoa.nome}</a>
+      <input type="hidden" name="cod_pessoa" value="{$pessoa.cod}"/>
+    </td>
+  </tr>
+{/if}
   <tr>
     <th>Título da palestra</th>
     <td><input type="text" name="titulo"/></td>

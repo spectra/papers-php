@@ -72,20 +72,22 @@
                 <em>{$celula.titulo}</em>
                 <br/>
                 <br/>
-                {$celula.nome}
-                {section loop=$celula.copalestrantes name=cp}
-                  <br/> {$celula.copalestrantes[cp].nome}
-                {/section}
                 {if ! $urlEspacoVazio}
                 </a>
                 {/if}
+              </center>
+		<ul style='padding-left: 20px;'>
+                <li>{$celula.nome}</li>
+                {section loop=$celula.copalestrantes name=cp}
+                  <li> {$celula.copalestrantes[cp].nome}</li>
+                {/section}
+		</ul>
                 {if $admin}
                 <hr/>
-                <div>
-                  <a href="alocacaoSave?acao=remover&celula={$dia},{$sala},{$horario}">Limpar espaço</a>
+                <div style='text-align: center;'>
+                  <a href="alocacaoSave?acao=remover&celula={$dia},{$sala},{$horario}">(limpar espaço)</a>
                 </div>
                 {/if}
-              </center>
               {else}
                 {if $insert}
                   <a href="alocacaoSave?acao=incluir&celula={$dia},{$sala},{$horario}&proposta={$proposta.cod}">(Inserir aqui!)</a>

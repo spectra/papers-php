@@ -17,7 +17,10 @@ header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-ch
 
 $mysql = new Mysql;
 
-$cod = Pessoas::incluirConvidado($mysql, $_POST['nome'], $_POST['email'], $_POST['biografia']);
+$cod = $_POST['cod_pessoa'];
+if (!$cod) {
+  $cod = Pessoas::incluirConvidado($mysql, $_POST['nome'], $_POST['email'], $_POST['biografia']);
+}
 
 $r['titulo'] = $_POST['titulo'];
 $r['resumo'] = $_POST['resumo'];
