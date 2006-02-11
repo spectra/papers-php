@@ -186,10 +186,6 @@ span.status_d {
 }
 
 body.frivolo {
-  background-image: url(../img/fisl-bg.png);
-  background-position: top right;
-  background-repeat: no-repeat;
-  background-color: white;
 
   margin: 0px;
   padding: 10px;
