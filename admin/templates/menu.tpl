@@ -8,13 +8,13 @@
       <li><a href="avaliadores">Avaliadores</a></li>
       <li><a href="acompanhamentoAvaliacao">Acompanhamento da avaliação</a> (pra cobrar os avaliadores ;-))</li>
       <li><a href="macrotemas">Macrotemas</a> (número de espaços na grade por macro-tema)</li>
-      <li><a href="fecharAvaliacao">Fechar avaliação</a> (define o status das propostas a partir de sua avaliação) [acesso restrito] <br/> <em>(dá pau se não tiver pelo menos um avaliador que tenha avaliado todas as propostas em cada trilha)</em>
+      <li><a href="fecharAvaliacao">Fechar avaliação</a> (define o status das propostas a partir de sua avaliação) <br/> <em>(dá pau se não tiver pelo menos um avaliador que tenha avaliado todas as propostas em cada trilha)</em>
       </li>
-      <li><a href="marcarDesistencias">Marca as desistencias</a> [acesso restrito]</li>
+      <li><a href="marcarDesistencias">Marca as desistencias</a></li>
       <li><a href="repetidos">Palestrantes repetidos</a></li>
     </ul>
   </li>
-      <li><a href="notificacao">Notificações</a> (notificações diversas) [acesso restrito]</li>
+      <li><a href="notificacao">Notificações</a> (notificações diversas)</li>
   <li>Convidados
     <ul>
       <li><a href="convidado">Incluir palestra</a> (inclui o convidado/patrocinador/etc, a palestra e já possibilita inserir na grade)</li>
