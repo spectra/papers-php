@@ -37,7 +37,8 @@
   <li>Relatórios
     <ul>
       <li><a href="custo">Custo com palestrantes</a></li>
-      <li><a href="relatorioConfirmadas">Relatório de Palestras Confirmadas</a> [acesso restrito]</li>
+      <li><a href="relatorioConfirmadas">Relatório de Palestras Confirmadas</a></li>
+      <li><a href="relatorioNaoConfirmadas">Relatório de Palestras <strong>não</strong> confirmadas</a></li>
       <li>
         <a href="resumos">Resumos para Anais</a>
         (tente também <a href="resumos?biografia=1">incluindo minicurrículo</a>)

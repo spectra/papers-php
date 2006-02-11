@@ -181,6 +181,11 @@ class Propostas {
     return $resumos;
   }
 
+  function naoConfirmadas($db) {
+    $rs = $db->conn->Execute("select propostas.titulo, pessoas.nome from propostas join pessoas on pessoas.cod = propostas.pessoa where tipo = 's' and propostas.status in ('a','p') and (confirmada is null or not confirmada)");
+    return $rs->GetArray();
+  }
+
 }
 
 ?>
