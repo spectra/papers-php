@@ -28,7 +28,8 @@ CURDIR = $(shell pwd)
 
 dist: clean
 	mkdir /tmp/$(DISTDIR)
-	cp -r `ls -1 | grep -v debian | grep -v $(TARBALL)` /tmp/$(DISTDIR)
+	cp -r `ls -1 | grep -v $(TARBALL)` /tmp/$(DISTDIR)
+	(cd /tmp/$(DISTDIR); rm -rf debian `find . -name .svn`)
 	(cd /tmp; tar czf $(CURDIR)/$(TARBALL) $(DISTDIR))
 	rm -rf /tmp/$(DISTDIR)
 	
@@ -43,6 +44,7 @@ deb: dist $(DEBIAN_BUILD)
 	cp $(TARBALL) $(DEBIAN_BUILD)/$(DEBIAN_ORIG)
 	(cd $(DEBIAN_BUILD) ; tar xzf $(DEBIAN_ORIG))
 	cp -r debian $(DEBIAN_BUILD)/$(DISTDIR)/
+	rm -rf $(DEBIAN_BUILD)/$(DISTDIR)/debian/.svn
 	(cd $(DEBIAN_BUILD)/$(DISTDIR)/; dpkg-buildpackage -rfakeroot $(DEBIAN_OPTS))
 	(cd $(DEBIAN_BUILD); lintian -iI *.changes)
 	(cd $(DEBIAN_BUILD); linda -C E,W *.changes)
