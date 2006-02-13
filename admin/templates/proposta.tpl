@@ -68,7 +68,7 @@
     </tr>
     
     <tr>
-      <td>Macrotema ({$rs.tema}):
+      <td>Macrotema:
       </td>
       <td><select name="tema">
       {section loop=$macrotemas name=c}
