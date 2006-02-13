@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-  <title>fisl6.0 - Fórum Internacional Software Livre</title><meta name="resource-type" content="document"/>
+  <title>{$event.codename} - {$event.name}</title><meta name="resource-type" content="document"/>
   <meta http-equiv="pragma" content="no-cache"/>
   <meta name="revisit-after" content="1"/>
   <meta name="classification" content="Internet"/>
-  <meta name="description" content="6º Fórum Internacional Software Livre"/>
-  <meta name="keywords" content="fisl software livre porto alegre brasil"/>
+  <meta name="description" content="{$event.name}"/>
+  <meta name="keywords" content="{$event.codename} {$event.name}"/>
   <meta name="robots" content="ALL"/>
   <meta name="distribution" content="Global"/>
   <meta name="rating" content="General"/>
-  <meta name="author" content="Projeto Software Livre Brasil"/>
+  <meta name="author" content="{$event.name}"/>
   <meta name="language" content="pt-br"/>
   <meta name="doc-class" content="Completed"/>
   <meta name="doc-rights" content="Public"/>
