@@ -68,20 +68,12 @@
     </tr>
     
     <tr>
-      <td>Macrotema:
+      <td>Macrotema ({$rs.tema}):
       </td>
       <td><select name="tema">
-      <option value="1"{if $rs.tema == 1} selected{/if}>Desenvolvimento</option>
-      <option value="2"{if $rs.tema == 2} selected{/if}>Bancos de Dados</option>
-      <option value="3"{if $rs.tema == 3} selected{/if}>Desktop</option>
-      <option value="4"{if $rs.tema == 4} selected{/if}>Redes</option>
-      <option value="5"{if $rs.tema == 5} selected{/if}>Segurança</option>
-      <option value="6"{if $rs.tema == 6} selected{/if}>Cases</option>
-      <option value="7"{if $rs.tema == 7} selected{/if}>Comunidade</option>
-      <option value="8"{if $rs.tema == 8} selected{/if}>Software Livre em Governos</option>
-      <option value="9"{if $rs.tema == 9} selected{/if}>Política/Filosofia</option>
-      <option value="10"{if $rs.tema == 10} selected{/if}>Inclusão Social/Digital</option>
-      <option value="11"{if $rs.tema == 11} selected{/if}>Organização</option>
+      {section loop=$macrotemas name=c}
+        <option value="{$macrotemas[c].cod}" {if $rs.tema == $macrotemas[c].cod}selected{/if}>{$macrotemas[c].titulo}</option>
+      {/section}
       </select>
       </td>
     </tr>

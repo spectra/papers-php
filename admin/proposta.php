@@ -10,6 +10,7 @@ $smarty->compile_check = true;
 include('include/mysql.inc.php');
 include('include/basic.inc.php');
 include('include/propostas.inc.php');
+include('include/macrotemas.inc.php');
 
 expires(0);
 
@@ -28,6 +29,8 @@ $sql = "SELECT a.cod, a.tstamp, a.dthora, a.titulo, a.descricao, a.tema,
 $rs = $mysql->conn->Execute($sql);
 
 $smarty->assign('rs', $rs->fields);
+
+$smarty->assign('macrotemas', Macrotemas::carregar($mysql));
 
 $smarty->assign('copalestrantes', Propostas::copalestrantes($mysql, $cod));
 
