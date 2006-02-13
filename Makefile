@@ -32,7 +32,10 @@ dist: clean
 	(cd /tmp/$(DISTDIR); rm -rf debian `find . -name .svn`)
 	(cd /tmp; tar czf $(CURDIR)/$(TARBALL) $(DISTDIR))
 	rm -rf /tmp/$(DISTDIR)
-	
+
+SVNROOT=https://svn.softwarelivre.org/svn/papers
+svntag:
+	svn copy $(SVNROOT)/trunk $(SVNROOT)/tags/$(VERSION)
 
 ###### DEBIAN PACKAGING #####
 
