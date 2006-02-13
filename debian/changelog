@@ -2,8 +2,9 @@ papers (0.3.4d-1) unstable; urgency=low
 
   * new "upstream" release
   * making the headers for /pub/ generic
+  * making colunms in legend equally wide
 
- -- Antonio Terceiro <terceiro@people.softwarelivre.org>  Mon, 13 Feb 2006 18:34:37 -0200
+ -- Antonio Terceiro <terceiro@people.softwarelivre.org>  Mon, 13 Feb 2006 18:36:58 -0200
 
 papers (0.3.4c-1) unstable; urgency=low
 

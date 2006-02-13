@@ -6,7 +6,7 @@
 <tr>
 <form>
 {section loop=$macrotemas name=m}
-<td {if !$print}style='background: {$macrotemas[m].cor};'{/if}>
+<td width='25%' {if !$print}style='background: {$macrotemas[m].cor};'{/if}>
 <input type='checkbox' name='track{$macrotemas[m].cod}' checked onclick='javascript: toggle(this, {$macrotemas[m].cod}, "{if $print}div{else}td{/if}")'>
 {$macrotemas[m].titulo}
 </td>
