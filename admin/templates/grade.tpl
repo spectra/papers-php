@@ -24,7 +24,7 @@
 <a name="toc"></a>
 <ul>
 {section loop=$dias name=d}
-  <li><a href="{php}echo $_SERVER['REQUEST_URI']; {/php}#dia{$dias[d].numero}">{$dias[d].descricao}</a></li>
+  <li><a href="#dia{$dias[d].numero}">{$dias[d].descricao}</a></li>
 {/section}
 </ul>
 
@@ -48,11 +48,7 @@
             {assign var="sala" value=$salas[s].numero}
             {assign var="horario" value=$horarios[h].numero}
             {assign var="celula" value=$grade[$dia][$sala][$horario]}
-	    {if !$admin && $celula.dumb}
-	    <!-- dumb cell: day {$dia}, room {$sala}, hour {$horario} -->
-	    {else}
-	    <!-- day {$dia}, room {$sala}, hour {$horario} -->
-	    <td bgcolor="{$celula.cor}" {if !$admin }rowspan="{$celula.num}"{/if} class='track_{$celula.cod_macrotema}'>
+            <td bgcolor="{$celula.cor}"> 
               {if $celula}
                 {if $admin && ! $celula.confirmada}
                   <div style='background: yellow; color: red; text-align: center;'>
@@ -72,29 +68,26 @@
                 <em>{$celula.titulo}</em>
                 <br/>
                 <br/>
+                {$celula.nome}
+                {section loop=$celula.copalestrantes name=cp}
+                  <br/> {$celula.copalestrantes[cp].nome}
+                {/section}
                 {if ! $urlEspacoVazio}
                 </a>
                 {/if}
-              </center>
-		<ul style='padding-left: 20px;'>
-                <li>{$celula.nome}</li>
-                {section loop=$celula.copalestrantes name=cp}
-                  <li> {$celula.copalestrantes[cp].nome}</li>
-                {/section}
-		</ul>
                 {if $admin}
                 <hr/>
-                <div style='text-align: center;'>
-                  <a href="alocacaoSave?acao=remover&celula={$dia},{$sala},{$horario}">(limpar espaço)</a>
+                <div>
+                  <a href="alocacaoSave?acao=remover&celula={$dia},{$sala},{$horario}">Limpar espaço</a>
                 </div>
                 {/if}
+              </center>
               {else}
                 {if $insert}
                   <a href="alocacaoSave?acao=incluir&celula={$dia},{$sala},{$horario}&proposta={$proposta.cod}">(Inserir aqui!)</a>
                 {/if}
               {/if}
             </td>
-	    {/if}
           {/section}
         </tr>
       {/section}
