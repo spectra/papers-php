@@ -1,3 +1,11 @@
+papers (0.3.4c-1) unstable; urgency=low
+
+  * new "upstream" release.
+  * fixes build: it was overwiting the new pub/templates/grade.tpl with a link
+    to the /admin/ one.
+
+ -- Antonio Terceiro <terceiro@people.softwarelivre.org>  Mon, 13 Feb 2006 17:50:49 -0200
+
 papers (0.3.4b-1) unstable; urgency=low
 
   * New "upstream" release
