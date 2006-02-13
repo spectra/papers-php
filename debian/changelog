@@ -1,3 +1,10 @@
+papers (0.3.4b-1) unstable; urgency=low
+
+  * New "upstream" release
+  * fixes cell merging for talks with subsequente slots
+
+ -- Antonio Terceiro <terceiro@people.softwarelivre.org>  Mon, 13 Feb 2006 17:17:20 -0200
+
 papers (0.3.4a-1) unstable; urgency=low
 
   * New "upstream" release.
