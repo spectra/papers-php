@@ -45,9 +45,15 @@ class Grade {
         extract($celula);
 
         if ($horario > 1 && $grade[$dia][$sala][$horario - 1]['cod'] == $cod) {
-	  $grade[$dia][$sala][$horario - 1]['num']++;
+
+          $first = $horario - 1;
+	  while ($grade[$dia][$sala][$first]['dumb']) {
+	    $first--;
+	  }
+	
+	  $grade[$dia][$sala][$first]['num']++;
 	  $grade[$dia][$sala][$horario]['dumb'] = true;
-	  $grade[$dia][$sala][$horario]['numm'] = 0;
+	  $grade[$dia][$sala][$horario]['num'] = 0;
 	} else {
           $grade[$dia][$sala][$horario]['dumb'] = false;
           $grade[$dia][$sala][$horario]['num'] = 1;
