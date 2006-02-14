@@ -24,7 +24,7 @@
 <a name="toc"></a>
 <ul>
 {section loop=$dias name=d}
-  <li><a href="#dia{$dias[d].numero}">{$dias[d].descricao}</a></li>
+  <li><a href="{php}echo $_SERVER['REQUEST_URI']{/php}#dia{$dias[d].numero}">{$dias[d].descricao}</a></li>
 {/section}
 </ul>
 
