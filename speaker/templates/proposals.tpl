@@ -9,7 +9,7 @@
 <div class='proposalBox'>
   <h3>
     {$proposals[pr].titulo}
-    {if $PERIOD_SUBMISSION || ( ($proposals[pr].tipo == 'p' || $proposals[pr].tipo == 'v' || $proposals[pr].tipo == 'c') && $PERIOD_UPDATES) }
+    {if $PERIOD_SUBMISSION }
       <!-- ***************************************** -->
       <!-- start of SUBMISSION -->
       <!-- ***************************************** -->
@@ -23,23 +23,25 @@
   <!-- ***************************************** -->
   <!-- start of RESULTS -->
   <!-- ***************************************** -->
-  {if $PERIOD_RESULT && $proposals[pr].tipo == 's'}
+  {if ($PERIOD_RESULT && $proposals[pr].tipo == 's') || ( ($proposals[pr].tipo == 'p' || $proposals[pr].tipo == 'v' || $proposals[pr].tipo == 'c') && $PERIOD_UPDATES)}
     <div>
-      <strong>Status:</strong>
-      <span class='status_{$proposals[pr].status}'>
-      {if $proposals[pr].status == 'a' || $proposals[pr].status == 'p'}
-      {#accepted#}
+      {if $proposals[pr].tipo == 's'}
+        <strong>Status:</strong>
+        <span class='status_{$proposals[pr].status}'>
+        {if $proposals[pr].status == 'a' || $proposals[pr].status == 'p'}
+        {#accepted#}
+        {/if}
+        {if $proposals[pr].status == 'r'}
+        {#rejected#}
+        {/if}
+        {if $proposals[pr].status == 'i'}
+        {#undefined#}
+        {/if}
+        {if $proposals[pr].status == 'd'}
+        {#gaveUp#}
+        {/if}
+        </span>
       {/if}
-      {if $proposals[pr].status == 'r'}
-      {#rejected#}
-      {/if}
-      {if $proposals[pr].status == 'i'}
-      {#undefined#}
-      {/if}
-      {if $proposals[pr].status == 'd'}
-      {#gaveUp#}
-      {/if}
-      </span>
     </div>
     <div>
       {if $proposals[pr].status == 'a' || $proposals[pr].status == 'p'}
@@ -67,7 +69,7 @@
       {/if}
     </div>
     <div>
-      {if $proposals[pr].tipo == 's' || $proposals[pr].status != 'd'}
+      {if $proposals[pr].tipo == 's'}
         <a href="reviews/{$proposals[pr].cod}">{#viewReviews#}</a>
         {if $proposals[pr].status == 'd'}
         (<em>{#viewReviewsGaveUpNote#}</em>)

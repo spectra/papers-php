@@ -12,7 +12,11 @@
     </tr>
     <tr>
       <th>{#proposal#}</th>
-      <td>{$proposal.titulo}</td>
+      {if $proposal.tipo != 's'}
+      	<td><input type='text' name='titulo' maxlength='80' size='50' value='{$proposal.titulo}'/></td>
+      {else}
+      	<td>{$proposal.titulo}</td>
+      {/if}
     </tr>
     <tr>
       <th>{#attendance#}</th>
