@@ -1,5 +1,5 @@
 PACKAGE = papers
-VERSION = 0.3.4f
+VERSION = 0.3.4g
 
 IMG=$(patsubst %.svg,%.png,$(wildcard *.svg))
 

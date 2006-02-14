@@ -1,3 +1,10 @@
+papers (0.3.4g-1) unstable; urgency=low
+
+  * new "upstream" release
+  * fixing TOC in program, under /admin/
+
+ -- Antonio Terceiro <terceiro@people.softwarelivre.org>  Tue, 14 Feb 2006 00:35:00 -0200
+
 papers (0.3.4f-1) unstable; urgency=low
 
   * new "upstream" release
