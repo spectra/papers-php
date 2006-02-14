@@ -41,23 +41,12 @@ class Grade {
                    join macrotemas on propostas.tema   = macrotemas.cod';
       $rs = $db->conn->Execute($sql);
       $celulas = $rs->GetArray();
+      $grade = array();
+      $dias = array();
+      $salas = array();
+      $horarios = array();
       foreach ($celulas as $celula) {
         extract($celula);
-
-        if ($horario > 1 && $grade[$dia][$sala][$horario - 1]['cod'] == $cod) {
-
-          $first = $horario - 1;
-	  while ($grade[$dia][$sala][$first]['dumb']) {
-	    $first--;
-	  }
-	
-	  $grade[$dia][$sala][$first]['num']++;
-	  $grade[$dia][$sala][$horario]['dumb'] = true;
-	  $grade[$dia][$sala][$horario]['num'] = 0;
-	} else {
-          $grade[$dia][$sala][$horario]['dumb'] = false;
-          $grade[$dia][$sala][$horario]['num'] = 1;
-	}
 	
         $grade[$dia][$sala][$horario]['cod'] = $cod;
         $grade[$dia][$sala][$horario]['titulo'] = $titulo;
@@ -68,9 +57,49 @@ class Grade {
         $grade[$dia][$sala][$horario]['confirmada'] = $confirmada;
         $grade[$dia][$sala][$horario]['copalestrantes'] = Propostas::copalestrantes($db,$cod);
         $grade[$dia][$sala][$horario]['mesa'] = Propostas::mesa($db,$cod);
-        $rs->MoveNext();
-      }
 
+	if (! in_array($dia,$dias)) {
+	  array_push($dias,$dia);
+	}
+	if (! in_array($sala,$salas)) {
+	  array_push($salas,$sala);
+	}
+	if (! in_array($horario,$horarios)) {
+	  array_push($horarios,$horario);
+	}
+      }
+      
+      sort($dias);
+      sort($salas);
+      sort($horarios);
+
+      foreach ($dias as $dia) {
+        foreach ($horarios as $horario) {
+          foreach ($salas as $sala) {
+
+            if (! isset($grade[$dia][$sala][$horario])) {
+	      continue;
+	    }
+	  
+            if ($horario > 1 && $grade[$dia][$sala][$horario - 1]['cod'] == $grade[$dia][$sala][$horario]['cod']) {
+
+              $first = $horario - 1;
+              while ($grade[$dia][$sala][$first]['dumb']) {
+                $first--;
+              }
+            
+              $grade[$dia][$sala][$first]['num']++;
+              $grade[$dia][$sala][$horario]['dumb'] = true;
+              $grade[$dia][$sala][$horario]['num'] = 0;
+            } else {
+              $grade[$dia][$sala][$horario]['dumb'] = false;
+              $grade[$dia][$sala][$horario]['num'] = 1;
+            }
+
+	  }
+	}
+       }
+      
       return $grade;
     }
 
