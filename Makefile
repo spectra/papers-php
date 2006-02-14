@@ -35,6 +35,7 @@ dist: clean
 
 SVNROOT=https://svn.softwarelivre.org/svn/papers
 svntag:
+	if [ "`svn ls $(SVNROOT)/tags/$(VERSION) 2>/dev/null`" ]; then echo "this version ($(VERSION)) was already tagged"; exit 1; fi
 	svn copy $(SVNROOT)/trunk $(SVNROOT)/tags/$(VERSION)
 
 ###### DEBIAN PACKAGING #####
