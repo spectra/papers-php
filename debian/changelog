@@ -1,3 +1,12 @@
+papers (0.3.4f-1) unstable; urgency=low
+
+  * new "upstream" release
+  * fixes the merge of consecutive slots in the program: we first load all the
+    slots, and then _after_ that we scan them in order checking for the
+    superior one.
+
+ -- Antonio Terceiro <terceiro@people.softwarelivre.org>  Mon, 13 Feb 2006 23:46:19 -0200
+
 papers (0.3.4e-1) unstable; urgency=low
 
   * new "upstream" release
