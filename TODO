@@ -2,25 +2,14 @@ TODO em forma de roadmap. No final tem coisas atemporais. :)
 
 veja no final para coisas atemporais, como bugs e coisas do tipo.
 
-Release 0.3.4 -- p/ criação da grade de programação do FISL
------------------------------------------------------------
-
-[x] checar conflitos de horário
-[x] mostrar palestras que ocupam mais de um horário seguidos como uma célula só na web.
-[x] generalizar o layout do /pub/
-[x] não listar salas que não têm nada no /pub/
-[x] consertar cores no /pub/
-[x] exibir/esconder trilhas ao gosto do fregues
-[x] mascarar e-mail no layout
-[x] incluir palestra convidada com pessoa já existente
-[x] relatório de não-confirmadas
-[x] confirmação dos convidados
-
-Release 0.3.5 -- p/ impressão da programação do fisl7.0
--------------------------------------------------------
+Release 0.3.5 -- p/ impressão da programação do fisl7.0 + alocação do WSL
+-------------------------------------------------------------------------
 
 [ ] geração da programação (em LaTeX?), mostrando palestras que ocupam mais de
     um horário seguidos como uma célula só
+[ ] possibilidade de indicar sub-propostas de uma proposta pra poder encaixar
+    mais de uma atividade dentro do mesmo espaço (e.g. WSL)
+[ ] incluir um relatório de ranking das palestras que foram submissões.
 
 Release 0.3.6 -- p/ avaliação das propostas do Festival
 -------------------------------------------------------
