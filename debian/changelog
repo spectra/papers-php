@@ -1,3 +1,10 @@
+papers (0.3.5-1) unstable; urgency=low
+
+  * new "upstream" release
+  * adds TeX generation for the conference program
+
+ -- Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>  Sat, 18 Feb 2006 02:15:31 -0200
+
 papers (0.3.4g-1) unstable; urgency=low
 
   * new "upstream" release
