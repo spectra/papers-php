@@ -156,8 +156,7 @@ class Propostas {
             from propostas
                  join pessoas    on propostas.pessoa = pessoas.cod
                  join macrotemas on propostas.tema   = macrotemas.cod
-            where propostas.status in ('a','p','c')
-                  and propostas.tema != 11
+            where exists (select 1 from grade where grade.proposta = propostas.cod)
             order by propostas.titulo
                                ";
     $rs = $db->conn->Execute($sql);
