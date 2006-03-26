@@ -6,7 +6,7 @@
 {section loop=$resumos name=r}
 <center>
 <h2>{$resumos[r].titulo}</h2>
-<h3>Macrotema: {$resumos[r].macrotema}</h3>
+<h3>Trilha: {$resumos[r].macrotema}</h3>
 
 {$resumos[r].nome} <br/>
 <u>{$resumos[r].email}</u><br/>
