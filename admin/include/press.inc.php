@@ -1,6 +1,13 @@
 <?
 
 class Press {
+
+  function find($db, $cod) {
+    $rs = $db->conn->Execute("select * from press where cod = $cod");
+    $res = $rs->GetArray();
+    return $res[0];
+  }
+
   function load($db, $sql) {
     $rs = $db->conn->Execute($sql);
     return $rs->GetArray();
@@ -33,6 +40,12 @@ class Press {
   function insert($db,$fields) {
     $rs = $db->conn->Execute('select nome,veiculo,cargo,registro_profissional,endereco_profissional,pais,estado,cidade,email from press where cod = -1');
     $sql = $db->conn->GetInsertSQL($rs, $fields,false,true);
+    $db->conn->Execute($sql);
+  }
+  
+  function update($db,$fields) {
+    $rs = $db->conn->Execute('select nome,veiculo,cargo,registro_profissional,endereco_profissional,pais,estado,cidade,email from press where cod = ' . $fields['cod']);
+    $sql = $db->conn->GetUpdateSQL($rs, $fields,false,true);
     $db->conn->Execute($sql);
   }
 }

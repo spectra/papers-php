@@ -26,10 +26,21 @@ if ($acao == "remover") {
   header('Location: press');
   exit;
 }
+if ($acao == "editar") {
+
+  $pressPerson = Press::find($mysql, $cod);
+  $smarty->assign('title', 'Editar imprensa');
+  $smarty->assign('central', 'press-edit.tpl');
+  $smarty->assign('pressPerson', $pressPerson);
+  $smarty->assign('linkup', 'press');
+  $smarty->display('index.tpl');
+  exit;
+}
 
 $smarty->assign('title','Moderar imprensa');
 $smarty->assign('press', $press);
 $smarty->assign('central', 'press.tpl');
+$smarty->assign('linkup', '.');
 $smarty->display('index.tpl');
 
 ?>

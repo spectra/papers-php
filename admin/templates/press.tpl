@@ -22,7 +22,7 @@
       <td>{$press[p].estado}</td>
       <td>{$press[p].cidade}</td>
       <td>{$press[p].email}</td>
-      <td>(<a href="press?acao=aprovar&cod={$press[p].cod}">aprovar</a>) (<a href="press?acao=remover&cod={$press[p].cod}">remover</a>)</td>
+      <td>(<a href="press?acao=aprovar&cod={$press[p].cod}">aprovar</a>) (<a href="press?acao=remover&cod={$press[p].cod}">remover</a>) (<a href="press?acao=editar&cod={$press[p].cod}">editar</a>)</td>
     </tr>
   {/section}
 </table>
