@@ -22,25 +22,42 @@ $grade = Grade::carregar($mysql);
 
 header('Content-Type: text/plain');
 
+
+$columns = count($salas);
+$colwidth = 0.80 / $columns; // 20% reserved
+$colwidthtext = 'p{' . $colwidth . '\textwidth}';
+
 echo "% be sure to include the multirow LaTeX package!\n";
 
 foreach ($dias as $dia) {
   echo '\startday{' . $dia['descricao'] . '}' . "\n";
-  echo '\begin{tabular}{' . str_repeat('|c',count($salas) + 1) . "|}\n";
-  echo 'Horário';
+  echo '\begin{tabular}{|c' . str_repeat('|' . $colwidthtext , $columns) . "|}\n";
+  //echo 'Horário';
   foreach ($salas as $sala) {
     echo ' & ';
     echo $sala['descricao'];
   }
-  echo '\\\\' . "\n";
+  echo "\\\\\n";
+  echo "\\hline\\\\\n";
   
   foreach ($horarios as $horario) {
-    echo $horario['inicio'];
+    echo '\talktime{' . $horario['inicio'] . '}';
     foreach ($salas as $sala) {
       $celula = $grade[$dia['numero']][$sala['numero']][$horario['numero']];
-      echo ' & ' . $celula['titulo'];
+      echo ' & ';
+      if ($celula['macrotema']) { 
+        echo '\track{' . $celula['macrotema'] . '}';
+      }
+      echo ' \talk{' . preg_replace('/&/', '\&', $celula['titulo']) . '}';
+      if ($celula['nome']) {
+        echo '\person{' . $celula['nome'] . '}';
+      }
+      foreach ($celula['copalestrantes'] as $person) {
+        echo '\person{' . $person['nome'] . '}';
+      }
     }
     echo "\\\\\n";
+    echo "\\hline\\\\\n";
   }
   echo '\end{tabular}' . "\n";
 }
