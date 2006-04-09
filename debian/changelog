@@ -1,3 +1,11 @@
+papers (0.3.5-1) unstable; urgency=low
+
+  * news "upstream" release.
+  * enhances TeX program generation, quite ready
+  * several oter small stuff I don't remember now
+
+ -- Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>  Sun,  9 Apr 2006 12:17:48 -0300
+
 papers (0.3.5-0pre) unstable; urgency=low
 
   * new "upstream" release
