@@ -7,12 +7,12 @@
   <tr>
     <td>Nome completo:</td>
 
-    <td><input size="30" maxlength="50" name="nome" type="text"
+    <td><input size="30" maxlength="200" name="nome" type="text"
     value='{$rs.nome}'></td>
 
     <td>E-mail:</td>
 
-    <td><input size="30" maxlength="50" name="email" type="text"
+    <td><input size="30" maxlength="200" name="email" type="text"
     value="{$rs.email}"> <a href="mailto:{$rs.email}">escrever</a></td>
   </tr>
 
