@@ -61,7 +61,12 @@ foreach ($dias as $dia) {
       if ($celula['macrotema']) { 
         echo '\track{' . $celula['macrotema'] . '}';
       }
-      echo ' \talk{' . preg_replace('/&/', '\&', $celula['titulo']) . '}';
+
+      $title = preg_replace('/&/', '\&', $celula['titulo']);
+      $title = preg_replace('/%/', '\%', $title);
+      
+      echo ' \talk{' . $title . '}';
+      
       if ($celula['nome']) {
         echo '\person{' . $celula['nome'] . '}';
       }
