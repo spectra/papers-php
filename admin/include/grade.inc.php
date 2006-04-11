@@ -141,6 +141,12 @@ class Grade {
       return $rs->GetArray();
     }
     
+    function vazios($db) {
+      $sql = "select dias.descricao as dia, salas.descricao as sala, horarios.inicio as horario from dias, salas, horarios where exists (select 1 from grade where salas.numero = grade.sala) and not exists (select 1 from grade where grade.sala = salas.numero and grade.horario = horarios.numero and grade.dia = dias.numero) order by dias.numero, salas.numero, horarios.numero";
+      $rs = $db->conn->Execute($sql);
+      return $rs->GetArray();
+    }
+    
 }
 
 

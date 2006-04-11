@@ -47,6 +47,7 @@
       <li><a href="emails_palestrantes">e-mails dos <strong>palestrantes</strong> para notificações em massa</a></li>
       <li><a href="crachas_imprensa">Nomes de <strong>profissionais de imprensa</strong> para crachás</a></li>
       <li><a href="relatorioConflitos">Conflitos de horários na programação</a></li>
+      <li><a href="relatorioVazios">Horários vazios</a></li>
     </ul>
   </li>
 </ul>
