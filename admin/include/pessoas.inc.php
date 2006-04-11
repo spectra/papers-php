@@ -47,7 +47,8 @@ class Pessoas {
                 pessoas.org,
                 pessoas.cidade,
                 pessoas.estado,
-                pessoas.pais
+                pessoas.pais,
+                pessoas.email
               from
                 pessoas
                 join propostas on propostas.pessoa = pessoas.cod
@@ -58,7 +59,8 @@ class Pessoas {
                 pessoas.org,
                 pessoas.cidade,
                 pessoas.estado,
-                pessoas.pais
+                pessoas.pais,
+                pessoas.email
               from pessoas
                 join copalestrantes on pessoas.cod = copalestrantes.pessoa
                 join propostas on propostas.cod = copalestrantes.proposta

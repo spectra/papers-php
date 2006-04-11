@@ -44,6 +44,7 @@
         (tente também <a href="resumos?biografia=1">incluindo minicurrículo</a>)
       </li>
       <li><a href="crachas_palestrantes">Nomes de <strong>palestrantes</strong> para crachás</a></li>
+      <li><a href="emails_palestrantes">e-mails dos <strong>palestrantes</strong> para notificações em massa</a></li>
       <li><a href="crachas_imprensa">Nomes de <strong>profissionais de imprensa</strong> para crachás</a></li>
       <li><a href="relatorioConflitos">Conflitos de horários na programação</a></li>
     </ul>

@@ -22,7 +22,9 @@ function track($t) {
 
 function person($name, $email) {
   echo '\name{' . $name . '}';
-  echo '\email{' . $email . '}';
+  if ($name != $email) {
+    echo '\email{' . $email . '}';
+  }
   echo "\n";
 }
 
@@ -30,17 +32,23 @@ function escape($text) {
 
   $t = preg_replace('/&/', '\&', $text);
   $t = preg_replace('/%/', '\%', $t);
+  $t = preg_replace('/\$/', '\$', $t);
   return $t;
 
 }
 
 function abst($text) {
-  echo '\begin{quote}' . "\n";
+  if (trim($text) == "") {
+    echo '\vspace{1em}' . "\n";
+    return;
+  }
+
+  echo '\talkabstract{' . "\n";
 
   echo escape($text);
   echo "\n";
 
-  echo '\end{quote}' . "\n";
+  echo '}' . "\n";
 }
 
 function title($text) {
@@ -55,6 +63,8 @@ foreach($resumos as $palestra) {
     continue;
   }
 
+  echo '\begin{talkabstractblock}' . "\n";
+  
   title($palestra['titulo']);
   track($palestra['macrotema']);
   person($palestra['nome'], $palestra['email']);
@@ -62,6 +72,8 @@ foreach($resumos as $palestra) {
     person($cop['nome'], $cop['email']);
   }
   abst($palestra['resumo']);
+
+  echo '\end{talkabstractblock}' . "\n";
   
 }
 
