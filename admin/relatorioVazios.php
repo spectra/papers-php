@@ -12,7 +12,7 @@ expires(0);
 
 $mysql = new Mysql;
 
-$vazios = Grade::conflitos($mysql);
+$vazios = Grade::vazios($mysql);
 
 $smarty->assign('central', 'relatorioVazios.tpl');
 $smarty->assign('vazios', $vazios);
