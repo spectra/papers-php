@@ -6,9 +6,9 @@
   <tr>
     <th>Autor(es)</th>
     <td>
-      {$pessoa.nome} <code>&lt;{$pessoa.email|replace:"@":" em "}&gt;</code>
+      {$pessoa.nome} {if $pessoa.nome != $pessoa.email}<code>&lt;{$pessoa.email|replace:"@":" em "}&gt;</code>{/if}
       {section loop=$copalestrantes name=cp}
-        <br/> {$copalestrantes[cp].nome} <code>&lt;{$copalestrantes[cp].email|replace:"@":" em "}&gt;</code>
+        <br/> {$copalestrantes[cp].nome} {if $copalestrantes[cp].nome != $copalestrantes[cp].email}<code>&lt;{$copalestrantes[cp].email|replace:"@":" em "}&gt;</code>{/if}
       {/section}
     </td>
   </tr>
