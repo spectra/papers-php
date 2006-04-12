@@ -2,28 +2,50 @@
 
 include_once('include/propostas.inc.php');
 
-$CORES[0] = "#99ffcc";
-$CORES[1] = "#ffff99";
-$CORES[2] = "#ffcc66";
-$CORES[3] = "#CCCCFF";
-$CORES[4] = "#ccffff";
-$CORES[5] = "#ff99ff";
-$CORES[6] = "#999966";
-$CORES[7] = "#cccccc";
-$CORES[8] = "#33CC99";
-$CORES[9] = "#00CCFF";
-$CORES[10] = "#FFFFee";
-$CORES[11] = "#0099FF";
-$CORES[12] = "#6699CC";
-$CORES[13] = "#66CC33";
-$CORES[14] = "#CC9966";
-$CORES[15] = "#FFCCFF";
+# $CORES[9] = "#00CCFF";
+# $CORES[11] = "#0099FF";
+# $CORES[8] = "#33CC99";
+# $CORES[16] = "#6633cc";
+# $CORES[12] = "#6699CC";
+# $CORES[13] = "#66CC33";
+# $CORES[17] = "#66ff33";
+# $CORES[6] = "#999966";
+# $CORES[0] = "#99ffcc";
+# $CORES[14] = "#CC9966";
+# $CORES[7] = "#cccccc";
+# $CORES[3] = "#CCCCFF";
+# $CORES[4] = "#ccffff";
+# $CORES[5] = "#ff99ff";
+# $CORES[2] = "#ffcc66";
+# $CORES[15] = "#FFCCFF";
+# $CORES[1] = "#ffff99";
+# $CORES[10] = "#FFFFee";
+ 
+$CORES[0] = "#0099FF";
+$CORES[1] = "#00CCFF";
+$CORES[2] = "#00FF99";
+$CORES[3] = "#33CC99";
+$CORES[4] = "#6633cc";
+$CORES[5] = "#6699CC";
+$CORES[6] = "#66CC33";
+$CORES[7] = "#66ff33";
+$CORES[8] = "#999966";
+$CORES[9] = "#99ffcc";
+$CORES[10] = "#CC9966";
+$CORES[11] = "#cccccc";
+$CORES[12] = "#CCCCFF";
+$CORES[13] = "#ccffff";
+$CORES[14] = "#ff99ff";
+$CORES[15] = "#ffcc66";
+$CORES[16] = "#FFCCFF";
+$CORES[17] = "#ffff99";
+$CORES[18] = "#FF33ee";
 
 class Grade {
 
     function cor($track) {
       global $CORES;
-      return $CORES[$track % 16];
+      return $CORES[$track % 18];
     }
 
     function carregar ($db) {
