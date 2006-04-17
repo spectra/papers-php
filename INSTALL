@@ -149,8 +149,8 @@ vai rodar + o caminho da aplicação. Exemplos:
 
 Caminho da aplicação                   | Nome do arquivo de configuração
 ---------------------------------------+--------------------------------
-http://www.blablabla.org/papers        | www.blablabla.org.papers
-http://blabla.org/~fulano/papers       | blablabla.org.fulano.papers
+http://www.blablabla.org/papers        | www.blablabla.org.papers.conf.php
+http://blabla.org/~fulano/papers       | blablabla.org.fulano.papers.conf.php
 
 A regra geral é: hostname (sem número de porta, se houver) + caminho até a raiz
 da aplicação, trocando barras por pontos. Depois disso  qualquer coisa que não
