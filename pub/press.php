@@ -15,4 +15,5 @@ $smarty->assign('press', $press);
 $smarty->assign('linkup','/');
 $smarty->display('index.tpl');
 
+
 ?>
