@@ -32,6 +32,9 @@ class Press {
   function moderate($db, $cod) {
     $db->conn->Execute("update press set moderado = 1 where cod = $cod");
   }
+  function unmoderate($db, $cod) {
+    $db->conn->Execute("update press set moderado = 0 where cod = $cod");
+  }
   
   function remove($db, $cod) {
     $db->conn->Execute("delete from press where cod = $cod");

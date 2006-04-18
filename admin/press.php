@@ -12,12 +12,18 @@ expires(0);
 
 $mysql = new Mysql;
 $press = Press::loadUnmoderated($mysql);
+$pressModerated = Press::loadModerated($mysql);#mach
 
 $acao = $_GET['acao'];
 $cod = $_GET['cod'];
 
 if ($acao == "aprovar") {
   Press::moderate($mysql, $cod);
+  header('Location: press');
+  exit;
+}
+if ($acao == "reprovar") {
+  Press::unmoderate($mysql, $cod);
   header('Location: press');
   exit;
 }
@@ -39,6 +45,7 @@ if ($acao == "editar") {
 
 $smarty->assign('title','Moderar imprensa');
 $smarty->assign('press', $press);
+$smarty->assign('pressModerated', $pressModerated);
 $smarty->assign('central', 'press.tpl');
 $smarty->assign('linkup', '.');
 $smarty->display('index.tpl');
