@@ -15,6 +15,7 @@
   <meta name="language" content="pt-br"/>
   <meta name="doc-class" content="Completed"/>
   <meta name="doc-rights" content="Public"/>
+  <meta name="Content-Type" content="text/html; charset=iso88591"/>
   {php}
      $protocol = ($_SERVER['SERVER_PORT']==443)?('https://'):('http://');
 

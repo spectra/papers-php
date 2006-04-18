@@ -72,8 +72,11 @@ if ($cod) {
   $smarty->assign('macrotemas', $macrotemas);
 
   $print = $_GET['print'];
+  $nocoord = $_GET['nocoord'];
 
   $smarty->assign('print',$print);
+  $smarty->assign('nocoord',$nocoord);
+  
   if ($print) {
     $smarty->display('print.tpl');
   } else {

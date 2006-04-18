@@ -46,6 +46,16 @@
                   <li> {$celula.copalestrantes[cp].nome}</li>
                 {/section}
 		</ul>
+                {if !$nocoord}
+                {if count($celula.mesa) > 0}
+                  Coordenação de mesa:
+                  <ul style='padding-left: 20px;'>
+                  {section loop=$celula.mesa name=m}
+                    <li> {$celula.mesa[m].nome}</li>
+                  {/section}
+                  </ul>
+                {/if}
+                {/if}
             {/if}
             </td>
 	    {/if}

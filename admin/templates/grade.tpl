@@ -72,6 +72,16 @@
                 {section loop=$celula.copalestrantes name=cp}
                   <br/> {$celula.copalestrantes[cp].nome}
                 {/section}
+                {if count($celula.mesa)}
+                  <br/>
+                  <br/>
+                  Coordenação de mesa:
+                  <ul style='padding-left: 20px;'>
+                  {section loop=$celula.mesa name=m}
+                    <li>{$celula.mesa[m].nome}</li>
+                  {/section}
+                  </ul>
+                {/if}
                 {if ! $urlEspacoVazio}
                 </a>
                 {/if}
