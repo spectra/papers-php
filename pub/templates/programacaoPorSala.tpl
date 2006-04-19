@@ -35,7 +35,7 @@
        {if count($celula.mesa)}
          <br/>
          <br/>
-         CoordenaÃ§Ã£o de mesa: <br/>
+         Coordenação de mesa: <br/>
          {section loop=$celula.mesa name=m}
            {$celula.mesa[m].nome|replace:"\\":""} <br/>
          {/section}
