@@ -26,6 +26,7 @@
   {/php}
   <link rel="stylesheet" type="text/css" href="screen.css" media="screen" title="Tela"/>
   <link rel="stylesheet" type="text/css" href="print.css" media="print"/>
+  <link rel="stylesheet" type="text/css" href="local.css" media="print"/>
   <link rel="stylesheet" type="text/css" href="local.css" media="screen"/>
 </head>
 <body>
