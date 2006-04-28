@@ -32,6 +32,7 @@ function escape($text) {
   $t = preg_replace('/&/', '\&', $text);
   $t = preg_replace('/%/', '\%', $t);
   $t = preg_replace('/\$/', '\$', $t);
+  $t = str_replace('\\', '', $t);
   return $t;
 
 }
@@ -44,30 +45,36 @@ function p($text, $field) {
 
 function ascii7bitfilename($text) {
 
-   $filename = preg_replace('/[áàäã]/', 'a', $text);
-   $filename = preg_replace('/[éàë]/', 'e', $filename);
-   $filename = preg_replace('/[íìï]/', 'i', $filename);
-   $filename = preg_replace('/[óòöõ]/', 'o', $filename);
-   $filename = preg_replace('/[úùü]/', 'u', $filename);
+   $filename = preg_replace('/[âáàäã]/', 'a', $text);
+   $filename = preg_replace('/[êéàë]/', 'e', $filename);
+   $filename = preg_replace('/[îíìï]/', 'i', $filename);
+   $filename = preg_replace('/[ôóòöõ]/', 'o', $filename);
+   $filename = preg_replace('/[ûúùü]/', 'u', $filename);
    $filename = preg_replace('/[ç]/', 'c', $filename);
 
-   $filename = preg_replace('/[ÁÀÄÃ]/', 'A', $filename);
-   $filename = preg_replace('/[ÉÀË]/', 'E', $filename);
-   $filename = preg_replace('/[ÍÌÏ]/', 'I', $filename);
-   $filename = preg_replace('/[ÓÒÖÕ]/', 'O', $filename);
-   $filename = preg_replace('/[ÚÙÜ]/', 'U', $filename);
+   $filename = preg_replace('/[ÂÁÀÄÃ]/', 'A', $filename);
+   $filename = preg_replace('/[ÊÉÀË]/', 'E', $filename);
+   $filename = preg_replace('/[ÎÍÌÏ]/', 'I', $filename);
+   $filename = preg_replace('/[ÔÓÒÖÕ]/', 'O', $filename);
+   $filename = preg_replace('/[ÛÚÙÜ]/', 'U', $filename);
    $filename = preg_replace('/[Ç]/', 'C', $filename);
    
-   $filename = preg_replace('/[ ,:.]/', '_', $filename);
+   $filename = preg_replace('/[º]/', 'o', $filename);
+   $filename = preg_replace('/[°]/', 'o', $filename);
+   $filename = preg_replace('/[ª]/', 'a', $filename);
+   
+   $filename = preg_replace('/[ ,:.\'"\/?!()]/', '_', $filename);
 
    return $filename;
 }
 
 function abst($text) {
 
-  $a = preg_replace('/\n/', "\n ", $text);
+  $a = $text;
 
-  $a = wordwrap($a, 60, "\n ");
+  $a = wordwrap($a, 60, "\n");
+
+  $a = preg_replace('/\n/', "\n ", $a);
 
   return $a;
 }
