@@ -93,6 +93,10 @@ foreach($resumos as $palestra) {
   p($palestra['cod'], 'Code');
 
   p($titulo, 'Title');
+
+  p($palestra['sala'][0], 'Room');
+  p($palestra['dia'][0], 'Day');
+  p($palestra['horario'][0], 'Time');
   
   p($palestra['macrotema'], 'Track');
   

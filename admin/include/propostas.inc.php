@@ -156,13 +156,15 @@ class Propostas {
             from propostas
                  join pessoas    on propostas.pessoa = pessoas.cod
                  join macrotemas on propostas.tema   = macrotemas.cod
-            where exists (select 1 from grade where grade.proposta = propostas.cod)
+            where
+                 exists (select 1 from grade where grade.proposta = propostas.cod)
             order by propostas.titulo
                                ";
     $rs = $db->conn->Execute($sql);
     $celulas = $rs->GetArray();
     foreach ($celulas as $celula) {
       extract($celula);
+      $palestra = array();
       $palestra['cod'] = $cod;
       $palestra['titulo'] = $titulo;
       $palestra['nome'] = $nome;
@@ -171,6 +173,14 @@ class Propostas {
       $palestra['macrotema'] = $macrotema;
       $palestra['resumo'] = $resumo;
       $palestra['copalestrantes'] = Propostas::copalestrantes($db,$cod);
+
+      $slots = Grade::celulas($db, $palestra['cod']);
+      foreach ($slots as $slot) {
+        $palestra['sala'][] = $slot['sala'];
+        $palestra['dia'][] = $slot['dia'];
+        $palestra['horario'][] = $slot['inicio'];
+      }
+      
 
       $resumos[] = $palestra;
       
