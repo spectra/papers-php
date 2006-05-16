@@ -7,6 +7,6 @@ Sua nova senha no Canto do Palestrante do {$event.codename} é:
 Saudações,
 
 --
-Canto do palestrante do {$event.codename}
-temario@softwarelivre.org
+Sistema de Conferências do {$event.codename}
+{$event.contact_email}
 

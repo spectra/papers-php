@@ -7,6 +7,6 @@ Your new password at {$event.codename}'s Speakers' Corner is:
 Regards,
 
 --
-{$event.codename}'s Speaker Corner
-temario@softwarelivre.org
+{$event.codename}'s Conference System
+{$event.contact_email}
 
