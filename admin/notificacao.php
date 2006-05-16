@@ -44,7 +44,7 @@ function gerarMensagem($cod,$titulo,$nome,$template) {
 
 if ($confim && $tipo && $texto) {
 
-  $headers = "Content-type: text/plain; charset=iso-8859-1\nFrom: temario@softwarelivre.org";
+  $headers = "Content-type: text/plain; charset=iso-8859-1\nFrom: " . $papers['event']['contact_email'];
 
   $propostas = tipo2propostas($tipo);
 
