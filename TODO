@@ -5,11 +5,8 @@ veja no final para coisas atemporais, como bugs e coisas do tipo.
 Release 0.3.5 -- p/ impressão da programação do fisl7.0 + alocação do WSL
 -------------------------------------------------------------------------
 
-[ ] geração da programação (em LaTeX?), mostrando palestras que ocupam mais de
+[x] geração da programação (em LaTeX?), mostrando palestras que ocupam mais de
     um horário seguidos como uma célula só
-[ ] possibilidade de indicar sub-propostas de uma proposta pra poder encaixar
-    mais de uma atividade dentro do mesmo espaço (e.g. WSL)
-[ ] incluir um relatório de ranking das palestras que foram submissões.
 
 Release 0.3.6 -- p/ avaliação das propostas do Festival
 -------------------------------------------------------
@@ -26,6 +23,9 @@ Coisas atemporais -- pra ir fazendo na medida do possível
 ---------------------------------------------------------
 [ ] tirar tudo que é específico para o FISL do código e colocar como na
     configuração
+[ ] possibilidade de indicar sub-propostas de uma proposta pra poder encaixar
+    mais de uma atividade dentro do mesmo espaço (e.g. WSL)
+[ ] incluir um relatório de ranking das palestras que foram submissões.
 [ ] ...
 
 BUGS - atemporal
@@ -38,7 +38,7 @@ BUGS - atemporal
 [ ] fernanda@softwarelivre.org: Quando peco para reenviar senha no campo
     "Esqueci minha senha", manda um email dizendo que eh do "Speakers' Corner", nao
     Reviewers' corner.
-[ ] fernanda@softwarelivre.org:  Quando entro em uma palestra, e clico no NOME do
+[x] fernanda@softwarelivre.org:  Quando entro em uma palestra, e clico no NOME do
     palestrante, por exemplo, eu cliquei em Pia Waugh e recebi:
 
     Not Found

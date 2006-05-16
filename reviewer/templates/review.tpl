@@ -45,7 +45,7 @@ function toggle(id) {
         {section loop=$palestrantes name=cp}
           <li>
             <div>
-              <a href="speaker/{$palestrantes[cp].cod}">{$palestrantes[cp].nome}</a>
+              {$palestrantes[cp].nome}
               (<a href="javascript: toggle('speaker_{$palestrantes[cp].cod}')">mostrar/esconder detalhes</a>)
             </div>
             <div id='speaker_{$palestrantes[cp].cod}' style='display: none;'>
