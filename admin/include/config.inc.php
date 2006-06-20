@@ -9,10 +9,12 @@ $configfile = preg_replace('/\//','.', $configfile);
 
 $configfile = $configbase . preg_replace('/[^a-zA-Z0-9.]/','', $configfile) . 'conf.php';
 
-require_once($configfile);
-
-#header("Content-Type: text/plain");
-#print_r ($papers);
-#exit;
+if (file_exists($configfile)) {
+  require_once($configfile);
+} else {
+  header('Content-Type: text/plain');
+  echo("Could not open configuration file $configfile!\n\nDid you read the INSTALL file?");
+  exit;
+}
 
 ?>
