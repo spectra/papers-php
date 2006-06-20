@@ -1,6 +1,6 @@
 <?
 
-require_once 'Smarty.class.php';
+require 'include/mysmarty.inc.php';
 require_once 'include/config.inc.php';
 
 class MySmarty extends Smarty {

@@ -2,7 +2,7 @@
 
 # $Id: grade.php 4 2005-09-22 02:31:37Z terceiro $
 
-require 'Smarty.class.php';
+require 'include/mysmarty.inc.php';
 $smarty = new Smarty;
 $smarty->compile_check = true;
 # $smarty->debugging = true;

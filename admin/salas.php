@@ -1,6 +1,6 @@
 <?
 
-require 'Smarty.class.php';
+require 'include/mysmarty.inc.php';
 $smarty = new Smarty;
 $smarty->compile_check = true;
 

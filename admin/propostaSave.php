@@ -3,7 +3,7 @@
 include('include/mysql.inc.php');
 include('include/basic.inc.php');
 
-require 'Smarty.class.php';
+require 'include/mysmarty.inc.php';
 $smarty = new Smarty;
 $smarty->compile_check = true;
 # $smarty->debugging = true;

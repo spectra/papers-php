@@ -1,6 +1,6 @@
 <?
 
-require 'Smarty.class.php';
+require 'include/mysmarty.inc.php';
 require 'include/mysql.inc.php';
 require 'include/macrotemas.inc.php';
 require 'include/pessoas.inc.php';

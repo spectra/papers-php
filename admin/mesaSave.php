@@ -5,7 +5,7 @@ include('include/basic.inc.php');
 include('include/pessoas.inc.php');
 include('include/propostas.inc.php');
 
-require 'Smarty.class.php';
+require 'include/mysmarty.inc.php';
 $smarty = new Smarty;
 $smarty->compile_check = true;
 # $smarty->debugging = true;
