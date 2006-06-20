@@ -5,28 +5,26 @@ Como instalar este sistema
 ##############################################################################
 
    * Smarty - http://smarty.php.net/
-   * ADODB  - http://php.weblogs.com/ADODB
+   * ADODB  - http://adodb.sf.net
    * MySQL  - http://www.mysql.org/
 
 
 Smarty
 --------------
 Gerenciador de templates. Instalar seguindo a recomendação do próprio sistema.
-Não há o que configurar.
+Não há o que configurar. Baixar o pacote e explodir no subdiretório ext/.
 
-Incluir o diretório de libs do Smarty no php.ini (no Debian Sarge, fica no
-/etc/php4/apache/php.ini) ao include_path do php:
-
-include_path=".:/usr/share/php/smarty/libs"
-
+Caso o servidor seja Debia, é suficiente instalar o pacote 'smarty'. O papers
+encontrará ele no diretório /usr/share/php/smarty/libs.
 
 ADODB
 --------------
 
 Biblioteca de acesso ao banco de dados. Não há o que configurar.
+Baixar o pacote e explodir ele no subdiretório ext/, com o nome 'adodb'.
 
-Incluir o diretório do adodb ("/usr/share/adodb" no Debian Sarge) ao
-include_path no php.ini.
+Caso o servidor seja Debian, é suficiente instalar o pacote 'smarty'. O papers
+acha o Smarty no diretório /usr/share/adodb.
 
 
 MySQL
