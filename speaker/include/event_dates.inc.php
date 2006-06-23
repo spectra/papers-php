@@ -1,6 +1,6 @@
 <?
 
-include_once('include/config.inc.php');
+require_once('include/config.inc.php');
 
 // indique aqui o período de submissão (use essas variáveis pra mostrar nos
 // templates):
