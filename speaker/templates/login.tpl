@@ -1,7 +1,17 @@
+<table class='formulario' width='100%'>
+  <tr>
+    <th width='50%'>{#alreadyRegistered#}</th>
+    <th width='50%'>{#notRegistered#}</th>
+  </tr>
+  <tr>
+  <td valign='top' style='padding: 1em;'>
+    <p>{#alreadyRegisteredContinue#}</p>
+    <p><a href='lostPassword'>{#lostMyPassword#}</a></p>
+
   <table class='formulario' align='center'>
     <form action="" method='POST'>
       <tr>
-        <th colspan='2'>Login</th>
+        <th colspan='2'>{#login#}</th>
       </tr>
       <tr>
         <th>E-mail</th>
@@ -14,19 +24,15 @@
       <tr>
         <th colspan='2'>
           <center>
-            <input type='submit' value='Login'/>
+            <input type='submit' value='{#login#} !'/>
           </center>
         </th>
       </tr>
     </form>
-      <tr>
-        <td colspan='2' align="center">
-          <a href='account'>{#createAccount#}</a>
-        </td>
-      </tr>
-      <tr>
-        <td colspan='2' align="center">
-          <a href='lostPassword'>{#lostMyPassword#}</a>
-        </td>
-      </tr>
   </table>
+  </td>
+  <td valign='top' style='padding: 1em;'>
+    <p>{#notRegisteredContinue#}</p>
+  </td>
+</tr>
+</table>
