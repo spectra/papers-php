@@ -51,6 +51,7 @@ table.formulario td,
 table.formulario th
 {
   border: 1px solid #b0b0b0;
+  padding: 5px;
 }
 
 table.formulario th {
@@ -58,6 +59,10 @@ table.formulario th {
 }
 
 table.formulario {
+}
+
+table.formulario p {
+  text-align: left;
 }
 
 code {
