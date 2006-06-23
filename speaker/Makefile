@@ -13,7 +13,7 @@ templates_c:
 	chmod 777 $@
 
 css:
-	ln -s ../admin/css .
+	ln -s ../css .
 
 clean:
 	rm -rf templates_c css img js

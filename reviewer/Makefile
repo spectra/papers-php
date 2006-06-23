@@ -15,7 +15,7 @@ templates_c:
 	chmod 777 $@
 
 css:
-	ln -s ../admin/css .
+	ln -s ../css .
 
 configs:
 	ln -s ../speaker/configs .
