@@ -28,7 +28,7 @@ foreach ($_configpaths as $path) {
 }
 if (! $_loaded_config) {
   header('Content-Type: text/plain');
-  echo("Could not open configuration file $configfilename!\n\n");
+  echo("Could not open configuration file $configfilename !\n\n");
   echo('Search path: ' . join(':',$_configpaths) . "\n\n");
   echo("Did you read the INSTALL file?");
   exit;
