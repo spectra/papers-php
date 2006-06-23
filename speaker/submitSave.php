@@ -41,7 +41,9 @@ if ($PERIOD_SUBMISSION) {
       $smarty->assign('speakers', Proposals::findSpeakers($mysql, $cod));
     } else {
       $person['main'] = 1;
-      $smarty->assign('speakers', array ($person));
+      $speakers = array ($person);
+      // TODO: check for speakers data from $_POST and add them to $speakers
+      $smarty->assign('speakers', $speakers);
     }
     $smarty->display('index.tpl');
     return;
