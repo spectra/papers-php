@@ -30,6 +30,9 @@ if ($PERIOD_SUBMISSION) {
     }
   }
 
+  // TODO: check the types of uploaded files against
+  // $papers['event']['file_upload_accepted_extensions']
+
   $cod = $fields['cod'];
 
   if ($error) {
