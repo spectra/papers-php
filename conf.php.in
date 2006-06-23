@@ -25,17 +25,38 @@ $papers['event']['contact_email']         = 'webmaster@localhost';
 
 
 /****************************************************
+ ****************************************************
  * configuration options: several options that control
  * presence or absense of optional features, or chose
  * between alternative behaviors.
+ ****************************************************
  *****************************************************/
 
-# set to true if you don't want to present optional personal information
+/****************************************************
+ * Hide optional personal information. Set to true if you
+ * don't want to present optional personal information
+ *****************************************************/
 $papers['event']['hide_optional_personal_info'] = false;
 
-# file upload options
+/***************************************************
+ * File upload options
+ *****************************************************/
+
+# allow file uploads on submission?
 $papers['event']['file_upload_on_submission'] = false;
+
+# where to put the uploaded files. {PAPERSROOT} will be
+# replaced by the application path.
+$papers['event']['file_upload_directory'] = '{PAPERSROOT}/upload';
+
+# maximum number of uploaded files by submission
 $papers['event']['maximum_uploaded_files'] = 1;
+
+# maximum size for uploaded files (in bytes).
+$papers['event']['maximum_upload_size'] = 5000000; #(~5MB)
+
+# what filetypes (file extensions, really) are allowed to be
+# uploaded.
 $papers['event']['file_upload_accepted_extensions'] = array (
   # text formats
   #########################################
@@ -81,4 +102,5 @@ $papers['today'] = null;
 // $papers['today'] = '20 January 2006'; // after results, before last day for updates
 // $papers['today'] = '20 February 2006'; // after last day for updates
 
+# vim: tw=60
 ?>
