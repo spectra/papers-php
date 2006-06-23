@@ -76,7 +76,7 @@ function toggleSubmission(status) {
     <tr>
       <th>{#title#}: <span class='warn'>*</span>
       </th>
-      <td><input size="40" maxlength="80" name="titulo" type="text" value="{$proposal.titulo}">
+      <td><input size="50" maxlength="200" name="titulo" type="text" value="{$proposal.titulo}">
       </td>
     </tr>
     <tr>
@@ -127,23 +127,33 @@ function toggleSubmission(status) {
 	</center>
       </td>
     </tr>
-      
-
     
     <tr>
-      <th>{#lectureAbstract#}:<span class='warn'>*</span>
+      <th colspan="2">{#lectureAbstract#}:<span class='warn'>*</span>
       <br/>
       <font size="-1"><i>{#lectureAbstractExplanation#}</i></font>
       </th>
-      <th>{#comments#}:
+    </tr>
+    <tr>
+      <td colspan="2">
+        <center>
+	  <textarea cols="80" rows="5" name="resumo">{$proposal.resumo}</textarea>
+	</center>
+      </td>
+    </tr>
+
+    <tr>
+      <th colspan="2">{#comments#}:
       </th>
     </tr>
     <tr>
-      <td><textarea cols="46" rows="5" name="resumo">{$proposal.resumo}</textarea>
-      </td>
-      <td><textarea cols="46" rows="5" name="comentarios">{$proposal.comentarios}</textarea>
+      <td colspan="2">
+        <center>
+	  <textarea cols="80" rows="5" name="comentarios">{$proposal.comentarios}</textarea>
+	</center>
       </td>
     </tr>
+
     {if ($event.agreement)}
       <tr>
         <td colspan="2">
