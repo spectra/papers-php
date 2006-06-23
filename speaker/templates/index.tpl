@@ -40,7 +40,7 @@
   {if $user}
     <!-- <a href='proposals'>{#yourProposals#}</a> | -->
     <a href='personalInfo'>{#personalInfo#}</a> |
-    <a href='logout'>Logout</a> |
+    <a href='logout'>{#logout#}</a> |
   {/if}
 </div>
 
