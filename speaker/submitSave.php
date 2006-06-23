@@ -30,11 +30,19 @@ if ($PERIOD_SUBMISSION) {
     }
   }
 
+  $cod = $fields['cod'];
+
   if ($error) {
     $smarty->assign('message', $error);
     $smarty->assign('proposal', $fields);
     $smarty->assign('content', 'submit.tpl');
     $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
+    if ($cod) {
+      $smarty->assign('speakers', Proposals::findSpeakers($mysql, $cod));
+    } else {
+      $person['main'] = 1;
+      $smarty->assign('speakers', array ($person));
+    }
     $smarty->display('index.tpl');
     return;
   }
@@ -45,11 +53,10 @@ if ($PERIOD_SUBMISSION) {
     $max_authors = 15; // SMELL: bad assumption
   }
 
-  // TODO: check if the person saving the proposal is its owner
-  $cod = $fields['cod'];
-  
   if ($cod) {
     // existing proposal
+
+    // check ownership
     $proposal = Proposals::find($mysql,$cod);
     if (!Proposals::owns($person,$proposal, $mysql)) {
       $smarty->fatal('onlyProposalOwnerCanUpdate');
