@@ -177,6 +177,7 @@ function toggleSubmission(status) {
     <tr>
       <td colspan='2'>
       {if $files}
+        <br/>
         {#uploadedFiles#}:
         <ul>
           {section loop=$files name=f}
@@ -194,6 +195,7 @@ function toggleSubmission(status) {
 	  <br/>
 	  <br/>
 	  <input name="proposal_file" type="file" size='40'/>
+	  <br/>
 	  <br/>
 	</center>
       </td>
