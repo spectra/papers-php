@@ -13,7 +13,7 @@ function toggleSubmission(status) {
 
 <div>
 
-<form name="form1" action="submitSave" method="POST">
+<form name="form1" {if $event.file_upload_on_submission}enctype="multipart/form-data" {/if} action="submitSave" method="POST">
   {if $proposal.cod}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
   <table class='formulario' align='center' width='70%'>
     <tbody>
@@ -164,6 +164,40 @@ function toggleSubmission(status) {
           </div>
         </td>
       </tr>
+    {/if}
+    {if $event.file_upload_on_submission}
+    <tr>
+      <th colspan='2'>
+        {#fileUpload#}
+        <br/>
+        <font size="-1"><i>{#fileUploadDescription#}</i></font>
+        
+      </th>
+    </tr>
+    <tr>
+      <td colspan='2'>
+      {if $files}
+        {#uploadedFiles#}:
+        <ul>
+          {section loop=$files name=f}
+            <li><a href='file/{$files[f]}'>{$files[f]}</a></li>
+          {/section}
+        </ul>
+      {/if}
+	<center>
+	  <br/>
+	  {#acceptedFileTypes#}:
+	  {section loop=$acceptedFileTypes name=t}
+	    <strong>$acceptedFileTypes[t]</strong>
+	    &bnsp;
+	  {/section}
+	  <br/>
+	  <br/>
+	  <input name="proposal_file" type="file" size='40'/>
+	  <br/>
+	</center>
+      </td>
+    </tr>
     {/if}
     <tr>
       <td bgcolor="#eeeeee" align="center" colspan="2">

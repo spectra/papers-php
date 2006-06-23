@@ -30,6 +30,8 @@ if ($PERIOD_SUBMISSION) {
 
     $speakers = Proposals::findSpeakers($mysql, $cod);
     $smarty->assign('speakers', $speakers);
+
+    $smarty->assign('files', Proposals::getFiles($cod));
   }
   
 } else {

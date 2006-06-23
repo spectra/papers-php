@@ -168,6 +168,14 @@ class Proposals {
     $db->conn->Execute($sql);
   }
 
+  function getFiles($cod) {
+    global $papers;
+    $uploddir = papers_expand_path($papers['event']['file_upload_directory']);
+    $files = glob($uploddir . "/$cod.*");
+    $files = array_map('basename', $files);
+    return $files;
+  }
+
 }
 
 ?>

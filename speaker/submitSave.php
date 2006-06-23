@@ -39,13 +39,11 @@ if ($PERIOD_SUBMISSION) {
     return;
   }
 
+  // TODO: check if the person saving the proposal is its owner
+  $cod = $fields['cod'];
   
-  if ($fields['cod']) {
+  if ($cod) {
     // existing proposal
-
-    // TODO: check if the person saving the proposal is its owner
-    $cod = $fields['cod'];
-
     $proposal = Proposals::find($mysql,$cod);
     if (!Proposals::owns($person,$proposal, $mysql)) {
       $smarty->fatal('onlyProposalOwnerCanUpdate');
@@ -64,6 +62,21 @@ if ($PERIOD_SUBMISSION) {
 
     
     Proposals::create($mysql, $fields);
+
+    $cod = $mysql->last_insert_id();
+  }
+
+  // uploaded file:
+  if ($papers['event']['file_upload_on_submission']) {
+    if ($_FILES['proposal_file']['name']) {
+      $filename = basename($_FILES['proposal_file']['name']);
+      preg_match('/\.([^\.]*)$/', $filename, $matches);
+      $extension = $matches[1];
+      $destination =
+        papers_expand_path($papers['event']['file_upload_directory']) .
+        "/$cod.$extension"; 
+      copy($_FILES['proposal_file']['tmp_name'], $destination);
+    }
   }
 
 } else {
