@@ -101,19 +101,35 @@ function toggleSubmission(status) {
       </select>
       </td>
     </tr>
+    
     <tr>
-      <th>{#intendedAudience#}:<span class='warn'>*</span>
+      <th colspan="2">{#intendedAudience#}:<span class='warn'>*</span>
       </th>
-      <th>{#lectureDescription#}:<span class='warn'>*</span>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <center>
+	  <textarea cols="80" rows="8" name="publicoalvo">{$proposal.publicoalvo}</textarea>
+	</center>
+      </td>
+    </tr>
+    
+    <tr>
+      <th colspan="2">{#lectureDescription#}:<span class='warn'>*</span>
       <br/>
       <font size="-1"><i>{#lectureDescriptionExplanation#}</i></font>
       </th>
+    </tr>
     <tr>
-      <td><textarea cols="46" rows="8" name="publicoalvo">{$proposal.publicoalvo}</textarea>
-      </td>
-      <td><textarea cols="46" rows="8" name="descricao">{$proposal.descricao}</textarea>
+      <td colspan="2">
+        <center>
+	  <textarea cols="80" rows="8" name="descricao">{$proposal.descricao}</textarea>
+	</center>
       </td>
     </tr>
+      
+
+    
     <tr>
       <th>{#lectureAbstract#}:<span class='warn'>*</span>
       <br/>
