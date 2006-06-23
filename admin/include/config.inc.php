@@ -4,6 +4,17 @@
 $_application_path = preg_replace('/\/(admin|speaker|pub|reviewer)\/[^\/]*$/','', $_SERVER['SCRIPT_FILENAME']);
 
 
+
+#### utility functions ##############################################
+
+function papers_expand_path($path) {
+  global $_application_path;
+  return str_replace('{PAPERSROOT}', $_application_path, $path);
+}
+
+#### end of utility functions #######################################
+
+
 $_configpaths = array(
   $_application_path . '/conf',
   '/etc/papers',
