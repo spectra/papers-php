@@ -68,10 +68,23 @@ if ($PERIOD_SUBMISSION) {
 
   // uploaded file:
   if ($papers['event']['file_upload_on_submission']) {
+    
     if ($_FILES['proposal_file']['name']) {
       $filename = basename($_FILES['proposal_file']['name']);
       preg_match('/\.([^\.]*)$/', $filename, $matches);
       $extension = $matches[1];
+
+      // check if the proponent can still upload files
+      $files = Proposals::getFiles($cod);
+      $max = $papers['event']['maximum_uploaded_files'];
+      if ($max && count($files) >= $max) {
+        // maximum number of files reached. Check if we are replacing a file.
+        if (! preg_grep("/\.$extension$/", $files)) {
+          // not replacing
+          $smarty->fatal('maximumNumberOfUploadedFiles');
+        }
+      }
+      
       $destination =
         papers_expand_path($papers['event']['file_upload_directory']) .
         "/$cod.$extension"; 
