@@ -1,19 +1,36 @@
 <?
-$configbase = '/etc/papers/';
+
+# application path
+$_application_path = preg_replace('/\/(admin|speaker|pub|reviewer)\/[^\/]*$/','', $_SERVER['SCRIPT_FILENAME']);
+
+
+$_configpaths = array(
+  $_application_path . '/conf',
+  '/etc/papers',
+);
 
 $_server = preg_replace('/:.*/','',$_SERVER['HTTP_HOST']);
 $_path = preg_replace('/(admin|speaker|pub|reviewer).*/','', $_SERVER['REQUEST_URI']);
 
-$configfile = $_server . $_path;
-$configfile = preg_replace('/\//','.', $configfile);
+$configfilename = $_server . $_path;
+$configfilename = preg_replace('/\//','.', $configfilename);
+$configfilename = preg_replace('/[^a-zA-Z0-9.]/','', $configfilename) . 'conf.php';
 
-$configfile = $configbase . preg_replace('/[^a-zA-Z0-9.]/','', $configfile) . 'conf.php';
-
-if (file_exists($configfile)) {
-  require_once($configfile);
-} else {
+# try to load configuration file from all the paths
+$_loaded_config = false;
+foreach ($_configpaths as $path) {
+  $configfile = $path . '/' . $configfilename;
+  if (file_exists($configfile)) {
+    require_once($configfile);
+    $_loaded_config = true;
+    break;
+  }
+}
+if (! $_loaded_config) {
   header('Content-Type: text/plain');
-  echo("Could not open configuration file $configfile!\n\nDid you read the INSTALL file?");
+  echo("Could not open configuration file $configfilename!\n\n");
+  echo('Search path: ' . join(':',$_configpaths) . "\n\n");
+  echo("Did you read the INSTALL file?");
   exit;
 }
 
@@ -37,7 +54,6 @@ function papers_ext_conf($path, $extname) {
 }
 
 # auto configuration of locally installed extensions
-$_application_path = preg_replace('/\/(admin|speaker|pub|reviewer)\/[^\/]*$/','', $_SERVER['SCRIPT_FILENAME']);
 papers_ext_conf($_application_path . '/ext/smarty/libs', 'smarty');
 papers_ext_conf($_application_path . '/ext/adodb', 'adodb');
 
