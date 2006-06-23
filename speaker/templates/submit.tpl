@@ -105,17 +105,7 @@ function getKeywords() {
     {/if}
     <tr>
       <th bgcolor="#dddddd" align="center" colspan="2">{#proposalInfo#}
-      </th>
-    </tr>
-    <tr>
-      <td align="center" colspan="2">
-      <em>{#tipForSubmission#}</em>
-      </td>
-    </tr>
-    <tr>
-      <th bgcolor="#dddddd" align="center" colspan="2">
-        <span class='warn'>*</span>
-        {#mandatoryFields#}
+        (<span class='warn'>*</span> = {#mandatoryFields#})
       </th>
     </tr>
     <tr>
