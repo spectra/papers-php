@@ -101,7 +101,15 @@ Da linha de comando (substituindo 'nobody' e 'papers' pelo nome de
 usuário do MySQL e pelo nome do seu banco de dados), use:
 
   mysql -u nobody -p papers < database/database.mysql
-  
+
+Criando dados iniciais
+----------------------
+
+As seguintes tabelas não possuem interface para preenchimento, o que quer dizer que você tem que prenchê-las na mão:
+
+   * macrotemas
+   * keywords
+
 
 Apontar o servidor web para a aplicação
 ---------------------------------------
