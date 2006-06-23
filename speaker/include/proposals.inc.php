@@ -176,6 +176,25 @@ class Proposals {
     return $files;
   }
 
+  function getKeywords($db, $cod, $language) {
+    $descr = ($language == 'pt' || $language == 'pt-br') ?
+             'descr'
+             :
+             'descr_en as descr';
+
+    $rs = $db->conn->execute(
+      "select id, $descr, (select count(*) from propostas_keywords where proposta = $cod and keyword = keywords.id) as chosen from keywords");
+    return $rs->GetArray();
+  }
+
+  function addKeyword ($db, $cod, $keyword) {
+    $db->conn->execute("insert into propostas_keywords values ($cod,$keyword)");
+  }
+
+  function removeKeyword( $db, $cod, $keyword) {
+    $db->conn->execute("delete from propostas_keywords where proposta = $cod and keyword = $keyword");
+  }
+
 }
 
 ?>

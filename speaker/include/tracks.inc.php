@@ -38,6 +38,17 @@ class Tracks {
     }
     return $assoc;
   }
+  
+  function getKeywords($db, $cod, $language) {
+    $descr = ($language == 'pt' || $language == 'pt-br') ?
+             'descr'
+             :
+             'descr_en as descr';
+
+    $rs = $db->conn->execute(
+      "select id, $descr, 0 as chosen from keywords where macrotema_id = $cod");
+    return $rs->GetArray();
+  }
 
 }
 

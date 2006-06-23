@@ -44,6 +44,17 @@ if ($PERIOD_SUBMISSION) {
       $speakers = array ($person);
       // TODO: check for speakers data from $_POST and add them to $speakers
       $smarty->assign('speakers', $speakers);
+      
+      // check for already filled keyword data
+      if ($fields['tema']) {
+        $keywords = Tracks::getKeywords($mysql, $fields['tema'], $language);
+        foreach ($keywords as $index => $k) {
+          if ($fields[ 'keyword_' . $k['id'] ] ) {
+            $keywords[$index]['chosen'] = true;
+          }
+        }
+        $smarty->assign('keywords', $keywords);
+      }
     }
     $smarty->display('index.tpl');
     return;
@@ -112,6 +123,25 @@ if ($PERIOD_SUBMISSION) {
         $person_cod = $stored['cod'];
       }
       Proposals::addSpeaker($mysql, $cod, $person_cod);
+    }
+  }
+
+  // handle keywords:
+  foreach ($_POST as $key => $value) {
+    if (preg_match ('/^had_keyword_([0-9]+)$/', $key, $matches)) {
+      $keyword = $matches[1];
+      // if keyword was previously checked and isn't anymore,
+      // we have to remove it.
+      if (! $_POST['keyword_' . $keyword]) {
+        Proposals::removeKeyword($mysql, $cod, $keyword);
+      }
+    }
+    if (preg_match ('/^keyword_([0-9]+)$/', $key, $matches)) {
+      $keyword = $matches[1];
+      // if keyword is checked now and wasn't before, we have to add it
+      if (! $_POST['had_keyword_' . $keyword]) {
+        Proposals::addKeyword($mysql, $cod, $keyword);
+      }
     }
   }
 

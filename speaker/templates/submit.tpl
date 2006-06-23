@@ -7,6 +7,7 @@ var maxSpeakers = {$event.max_authors};
 var noMoreSpeakers = "{#noMoreSpeakers#}";
 var onlyEmailIsNeeded = "{#onlyEmailIsNeeded#}";
 var proposal = {if $proposal.cod}{$proposal.cod}{else}0{/if};
+var track = {if $proposal.tema}{$proposal.tema}{else}0{/if};
 {literal}
 
 function toggleSubmission(status) {
@@ -44,6 +45,35 @@ function addSpeaker() {
     {
       method: 'get',
       onComplete: addNewSpeaker,
+      on404: function(req) { alert('not found!'); },
+    }
+  );
+}
+
+function getKeywords() {
+  var box = $('tema');
+  var newtrack = box.options[box.selectedIndex].value;
+
+  if (newtrack == "") {
+    $('keywords').innerHTML = "";
+    return;
+  }
+  
+  var url =
+    (proposal > 0 && track == newtrack)
+    ?
+    'keywords?pcod=' + proposal
+    :
+    'keywords?tcod=' + newtrack
+    ;
+  
+  new Ajax.Request(
+    url,
+    {
+      method: 'get',
+      onComplete: function (req) {
+                    $('keywords').innerHTML = req.responseText;
+                  },
       on404: function(req) { alert('not found!'); },
     }
   );
@@ -89,6 +119,48 @@ function addSpeaker() {
       </th>
     </tr>
     <tr>
+      <th>{#title#}: <span class='warn'>*</span>
+      </th>
+      <td><input size="50" maxlength="200" name="titulo" type="text" value="{$proposal.titulo}">
+      </td>
+    </tr>
+    <tr>
+      <th>{#track#}:<span class='warn'>*</span>
+      <br/>
+      <font size="-1"><i><a href="tracks">{#readMore#}...</a></i></font>
+      </th>
+      <td>
+        <select name="tema" id="tema" onchange='getKeywords()'>
+          <option></option>
+          {html_options options=$tracks selected=$proposal.tema}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th valign='top'>{#keywords#}</th>
+      <td>
+        {section loop=$keywords name=k}
+          {if $keywords[k].chosen}
+            <input type='hidden' name='had_keyword_{$keywords[k].id}' value='1'/>
+          {/if}
+        {/section}
+        <div id='keywords'>
+        {include file=keywords.tpl}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>{#language#}:<span class='warn'>*</span>
+      </th>
+      <td><select name="idioma">
+      <option value="pt" {if $proposal.idioma == 'pt'}selected{/if}>{#language_pt#}</option>
+      <option value="en" {if $proposal.idioma == 'en'}selected{/if}>{#language_en#}</option>
+      <option value="es" {if $proposal.idioma == 'es'}selected{/if}>{#language_es#}</option>
+      </select>
+      </td>
+    </tr>
+
+    <tr>
       <th colspan="2">{#proponents#}:</th>
     </tr>
     <tr>
@@ -102,34 +174,6 @@ function addSpeaker() {
       {/section}
       </div>
         <input type='button' onclick='javascript: addSpeaker()' value='{#addSpeaker#}' style='margin-left: 10%; margin-bottom: 1em;'/>
-      </td>
-    </tr>
-    <tr>
-      <th>{#title#}: <span class='warn'>*</span>
-      </th>
-      <td><input size="50" maxlength="200" name="titulo" type="text" value="{$proposal.titulo}">
-      </td>
-    </tr>
-    <tr>
-      <th>{#track#}:<span class='warn'>*</span>
-      <br/>
-      <font size="-1"><i><a href="tracks">{#readMore#}...</a></i></font>
-      </th>
-      <td>
-        <select name="tema">
-          <option></option>
-          {html_options options=$tracks selected=$proposal.tema}
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th>{#language#}:<span class='warn'>*</span>
-      </th>
-      <td><select name="idioma">
-      <option value="pt" {if $proposal.idioma == 'pt'}selected{/if}>{#language_pt#}</option>
-      <option value="en" {if $proposal.idioma == 'en'}selected{/if}>{#language_en#}</option>
-      <option value="es" {if $proposal.idioma == 'es'}selected{/if}>{#language_es#}</option>
-      </select>
       </td>
     </tr>
     

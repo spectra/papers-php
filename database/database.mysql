@@ -261,3 +261,18 @@ CREATE TABLE `avaliador` (
 -- Dumping data for table `avaliador`
 --
 
+create table `keywords` (
+  `id` int auto_increment,
+  macrotema_id int,
+  descr char(100),
+  descr_en char(100),
+  primary key (id)
+);
+
+
+create table `propostas_keywords` (
+  proposta int,
+  keyword int,
+  primary key (proposta,keyword)
+);
+

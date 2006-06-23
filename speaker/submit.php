@@ -27,8 +27,11 @@ if ($PERIOD_SUBMISSION) {
 
     $speakers = Proposals::findSpeakers($mysql, $cod);
     $smarty->assign('speakers', $speakers);
-
+    
     $smarty->assign('files', Proposals::getFiles($cod));
+
+    $smarty->assign('keywords', Proposals::getKeywords($mysql, $cod, $language));
+    
   } else {
 
     // new proposal: check if the maximum number of submissions was already
