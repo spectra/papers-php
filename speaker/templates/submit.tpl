@@ -264,8 +264,8 @@ function getKeywords() {
 	  <br/>
 	  {#acceptedFileTypes#}:
 	  {section loop=$acceptedFileTypes name=t}
-	    <strong>$acceptedFileTypes[t]</strong>
-	    &bnsp;
+            {if $smarty.section.t.iteration > 1},{/if}
+	    <strong>{$acceptedFileTypes[t]|upper}</strong>
 	  {/section}
 	  <br/>
 	  <br/>

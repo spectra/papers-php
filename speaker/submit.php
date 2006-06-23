@@ -53,6 +53,7 @@ if ($PERIOD_SUBMISSION) {
     
   }
 
+  $smarty->assign('acceptedFileTypes', $papers['event']['file_upload_accepted_extensions']);
   $smarty->assign('content', "submit.tpl");
   $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
   
