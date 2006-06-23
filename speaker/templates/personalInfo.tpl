@@ -5,11 +5,16 @@
 
 
   <tr>
-    <td colspan='4' align='center'>
+    <th colspan='2'>
+      {#personalInfo#}
+      (<span class='warn'>*</span> = {#mandatoryFields#})
+    </th>
+  </tr>
+  <tr>
+    <td colspan='2' align='center'>
       <span style='color: green'><sup>BR</sup></span> for Brazilians only, don't care if you
       are not Brazilian.
       <br/>
-      <span class='warn'>*</span> {#mandatoryFields#}.
     </td>
   </tr>
 
@@ -18,6 +23,8 @@
     </th>
     <td><input size="30" maxlength="50" name="nome" type="text"
     value="{$person.nome}"></td>
+  </tr>
+  <tr>
     <th>E-mail:<span class='warn'>*</span>
     </th>
     <td><input size="30" maxlength="50" name="email" type="text"
@@ -26,22 +33,27 @@
 
 
   {if $user}
+  <tr><td colspan='2'>&nbsp;</td></tr>
   <tr>
-    <th colspan='4'>Change password</th>
+    <th colspan='2'>Change password</th>
   </tr>
   <tr>
     <th>{#currentPassword#}
     </th>
-    <td colspan="3"><input size="30" maxlength="50" name="currentPassword" type="password" value=""></td>
+    <td ><input size="30" maxlength="50" name="currentPassword" type="password" value=""></td>
   </tr>
   {/if}
   <tr>
     <th>{if $user}{#newPassword#}{else}{#password#}{/if} {if !$user}<span class='warn'>*</span>{/if}  </th>
     <td><input size="30" maxlength="50" name="newPassword" type="password" value=""></td>
+  </tr>
+  <tr>
     <th>{#repeatPassword#}{if !$user}<span class='warn'>*</span>{/if}
     </th>
     <td><input size="30" maxlength="50" name="repeatPassword" type="password" value=""></td>
   </tr>
+
+  <tr><td colspan='2'>&nbsp;</td></tr>
 
   <tr>
     <th>CPF: <span style='color: green'><sup>BR</sup></span></th>
@@ -58,6 +70,9 @@
        {#female#} <input type="radio" name="sexo" value="f" {if $person.sexo == 'f'}checked{/if} />
        {#male#}   <input type="radio" name="sexo" value="m" {if $person.sexo != 'f'}checked{/if} />
     </td>
+  </tr>
+   
+  <tr>
     <th>{#nickname#}</th>
     <td><input type="text" name="nickname" size="30" maxlength="30" value='{$person.nickname}'/></td>
   </tr>
@@ -68,12 +83,16 @@
       <input type="text" size="15" maxlength="15"
              name="rg" value="{$person.rg}"/>
     </td>
+  </tr>
+
+  <tr>
     <th>Órgão Expeditor: <span style='color: green'><sup>BR</sup></span></th>
     <td>
       <input type="text" name="rg_orgao" value="{$person.rg_orgao}"
              size="15" maxlength="15"/>
     </td>
   </tr>
+  
   <tr>
     <th>{#passport#}:</th>
     <td>
@@ -87,8 +106,10 @@
 
     <td><input size="30" maxlength="50" name="org" type="text"
     value="{$person.org}"></td>
-    <th>{#city#}:</th>
+  </tr>
 
+  <tr>
+    <th>{#city#}:</th>
     <td><input size="30" maxlength="30" name="cidade" type="text"
     value="{$person.cidade}"></td>
   </tr>
@@ -98,6 +119,9 @@
 
     <td><input size="30" maxlength="30" name="estado" type="text"
     value="{$person.estado}"></td>
+  </tr>
+  <tr>
+    
     <th>{#country#}:</th>
 
     <td><input size="30" maxlength="30" name="pais" type="text"
@@ -110,6 +134,9 @@
 
     <td><input size="30" maxlength="30" name="fone" type="text"
     value="{$person.fone}"></td>
+  </tr>
+
+  <tr>
     <th>{#photoUrl#}:<br>
     <font size="-1"><i>{#photoSpec#}</i></font></th>
 
