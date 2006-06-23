@@ -15,9 +15,6 @@ $smarty->assign('person',$person);
 
 if ($PERIOD_SUBMISSION) {
 
-  $smarty->assign('content', "submit.tpl");
-  $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
-
   $cod = PathInfo::getInteger();
   if ($cod) {
     $proposal = Proposals::find($mysql, $cod);
@@ -32,7 +29,26 @@ if ($PERIOD_SUBMISSION) {
     $smarty->assign('speakers', $speakers);
 
     $smarty->assign('files', Proposals::getFiles($cod));
+  } else {
+
+    // new proposal: check if the maximum number of submissions was already
+    // reached
+    $max = $papers['event']['max_submissions'];
+    if ($max) {
+      // there is a limit of submissions!
+    
+      $proposals = Proposals::load($mysql, $person['cod']);
+      if (count($proposals) >= $max) {
+        $smarty->fatal('maximumNumberOfSubmissions');
+      }
+
+      
+    }
+    
   }
+
+  $smarty->assign('content', "submit.tpl");
+  $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
   
 } else {
   $smarty->fatal('notInSubmissionPeriod');

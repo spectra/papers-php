@@ -74,6 +74,15 @@ $papers['event']['file_upload_accepted_extensions'] = array (
 );
 
 /*****************************************************
+ * maximum number of submissions                     *
+ * the maximum number of submissions a person can    *
+ * have. Set to zero to no limit.                    *
+ *****************************************************/
+
+$papers['event']['max_submissions'] = 0;
+
+
+/*****************************************************
  * agreement: if your event requires that submitters *
  * accept some terms before submissions, you must    *
  * uncomment these and fill the terms they should    *
