@@ -1,10 +1,10 @@
 all: build runtime
 
-build: css img
+build: css img js
 	make -C include/
 
-img:
-	ln -sf ../img .
+img js:
+	ln -sf ../$@ .
 
 runtime: templates_c
 
@@ -16,5 +16,5 @@ css:
 	ln -s ../admin/css .
 
 clean:
-	rm -rf templates_c css img
+	rm -rf templates_c css img js
 	make clean -C include
