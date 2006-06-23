@@ -42,5 +42,11 @@ class Mysql
     }
     return $rs;
   }
+
+  function last_insert_id() {
+    $rs = $this->conn->Execute('select last_insert_id() as id');
+    $arr = $rs->GetArray();
+    return $arr[0]['id'];
+  }
 }
 ?>
