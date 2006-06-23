@@ -16,6 +16,22 @@ runtime:
 	make runtime -C speaker/
 	make runtime -C reviewer/
 	make runtime -C admin/
+	make upload
+
+upload:
+	mkdir $@
+	chmod 777 $@ || rmdir upload
+	@echo "***********************************************"
+	@echo "*WARNING: upload/ directory has permissions 777"
+	@echo "*WARNING: YOU SHOULD REALLY FIX THIS, BY ISSUING:"
+	@echo "*WARNING: chown webserveruser:webservergroup upload/"
+	@echo "*WARNING: chmod 700 upload/"
+	@echo "*WARNING: Where:"
+	@echo "*WARNING: webserveruser = user that owns the webserver's processes"
+	@echo "*WARNING: webservergroup = group to which the webserver's processes are bound"
+	@echo "***********************************************"
+
+
 
 %.png: %.svg
 	-rsvg $< $@
@@ -66,3 +82,4 @@ clean:
 	make clean -C speaker/
 	make clean -C reviewer/
 	make clean -C admin/
+	@rmdir upload/ && echo "removed upload/" || echo "*********************************" && echo "*WARNING: upload/ not empty, not removing." && echo "*********************************"
