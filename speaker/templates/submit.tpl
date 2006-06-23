@@ -180,7 +180,7 @@ function toggleSubmission(status) {
         {#uploadedFiles#}:
         <ul>
           {section loop=$files name=f}
-            <li>{$files[f]}</li>
+            <li>{$files[f]} (<a href='removeFile?proposal_file={$files[f]}'>{#remove#}</a>)</li>
           {/section}
         </ul>
       {/if}
