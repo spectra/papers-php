@@ -16,6 +16,7 @@ runtime:
 	make runtime -C speaker/
 	make runtime -C reviewer/
 	make runtime -C admin/
+	make runtime -C ext/
 	make upload
 
 upload:
