@@ -23,6 +23,16 @@ $papers['event']['codename']              = 'myevent2005';
 $papers['event']['name']                  = 'My Event 2005';
 $papers['event']['contact_email']         = 'webmaster@localhost';
 
+
+/****************************************************
+ * configuration options: several options that control
+ * presence or absense of optional features, or chose
+ * between alternative behaviors.
+ *****************************************************/
+
+# set to true if you don't want to present optional personal information
+$papers['event']['hide_optional_personal_info'] = false;
+
 /*****************************************************
  * agreement: if your event requires that submitters *
  * accept some terms before submissions, you must    *

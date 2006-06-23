@@ -24,15 +24,6 @@
     value="{$person.email}"></td>
   </tr>
 
-  <tr>
-    <th>{#gender#}:</th>
-    <td> 
-       {#female#} <input type="radio" name="sexo" value="f" {if $person.sexo == 'f'}checked{/if} />
-       {#male#}   <input type="radio" name="sexo" value="m" {if $person.sexo != 'f'}checked{/if} />
-    </td>
-    <th>{#nickname#}</th>
-    <td><input type="text" name="nickname" size="30" maxlength="30" value='{$person.nickname}'/></td>
-  </tr>
 
   {if $user}
   <tr>
@@ -46,12 +37,29 @@
   {/if}
   <tr>
     <th>{if $user}{#newPassword#}{else}{#password#}{/if} {if !$user}<span class='warn'>*</span>{/if}  </th>
-    <td colspan="3"><input size="30" maxlength="50" name="newPassword" type="password" value=""></td>
-  </tr>
-  <tr>
+    <td><input size="30" maxlength="50" name="newPassword" type="password" value=""></td>
     <th>{#repeatPassword#}{if !$user}<span class='warn'>*</span>{/if}
     </th>
-    <td colspan="3"><input size="30" maxlength="50" name="repeatPassword" type="password" value=""></td>
+    <td><input size="30" maxlength="50" name="repeatPassword" type="password" value=""></td>
+  </tr>
+
+  <tr>
+    <th>CPF: <span style='color: green'><sup>BR</sup></span></th>
+    <td>
+      <input type="text" name="cpf" value="{$person.cpf}"
+             size="15" maxlength="11" />
+    </td>
+  </tr>
+
+{if ! $event.hide_optional_personal_info}
+  <tr>
+    <th>{#gender#}:</th>
+    <td> 
+       {#female#} <input type="radio" name="sexo" value="f" {if $person.sexo == 'f'}checked{/if} />
+       {#male#}   <input type="radio" name="sexo" value="m" {if $person.sexo != 'f'}checked{/if} />
+    </td>
+    <th>{#nickname#}</th>
+    <td><input type="text" name="nickname" size="30" maxlength="30" value='{$person.nickname}'/></td>
   </tr>
 
   <tr>
@@ -67,11 +75,6 @@
     </td>
   </tr>
   <tr>
-    <th>CPF: <span style='color: green'><sup>BR</sup></span></th>
-    <td>
-      <input type="text" name="cpf" value="{$person.cpf}"
-             size="15" maxlength="11" />
-    </td>
     <th>{#passport#}:</th>
     <td>
       <input type="text" name="passaporte" value="{$person.passaporte}"
@@ -128,6 +131,7 @@
     <td colspan="3">
     <textarea cols="80" rows="8" name="coment">{$person.coment}</textarea></td>
   </tr>
+{/if}
 
   <tr>
     <td colspan="4" align="center"><input type="submit"
