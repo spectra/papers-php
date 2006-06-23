@@ -137,13 +137,14 @@ acessível por HTTPS.
 
 Arquivo de configuração
 -----------------------
-copie o arquivo conf.php.in para o diretório /etc/papers/ com o nome
-correspondente ao site do evento (veja abaixo) e ajuste as entradas da
-configuração. Essa configuração inclui a configuração de acesso ao banco de
-dados _e_ a configuração do evento.
+Copie o arquivo conf.php.in para um dos seguintes diretórios:
 
-O nome do arquivo de configuração é formado pelo hostname onde a aplicação
-vai rodar + o caminho da aplicação. Exemplos:
+  * ${PAPERSROOT}/conf
+  * /etc/papers/
+
+O nome do arquivo deve corresponder à URL por onde o papers está acessível para
+aquele evento: o nome do arquivo de configuração é formado pelo hostname onde a
+aplicação vai rodar + o caminho da aplicação. Exemplos:
 
 Caminho da aplicação                   | Nome do arquivo de configuração
 ---------------------------------------+--------------------------------
@@ -155,6 +156,13 @@ da aplicação, trocando barras por pontos. Depois disso  qualquer coisa que não
 seja [a-zA-Z0-9.] é removido. Qualquer dúvida, veja
 admin/include/config.inc.php
 
+O arquivo de configuração é procurado nos diretórios na ordem citada acima, e o
+primeiro encontrado é utilizado.
+
+Ajuste as entradas da configuração de acordo com as características do ambiente
+de implantação bem como as características do evento em si. Essa configuração
+inclui a configuração de acesso ao banco de dados _e_ a configuração do evento.
+O arquivo de configuração
 
 Conectando ao banco de dados
 ----------------------------
