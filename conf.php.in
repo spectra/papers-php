@@ -81,6 +81,13 @@ $papers['event']['file_upload_accepted_extensions'] = array (
 
 $papers['event']['max_submissions'] = 0;
 
+/*****************************************************
+ * maximum number of authors per submission          *
+ * Set to zero to no limit.                          *
+ *****************************************************/
+
+$papers['event']['max_authors'] = 6;
+
 
 /*****************************************************
  * agreement: if your event requires that submitters *

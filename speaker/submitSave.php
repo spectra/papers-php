@@ -39,6 +39,12 @@ if ($PERIOD_SUBMISSION) {
     return;
   }
 
+  // maximum number of authors per submission
+  $max_authors = $papers['event']['max_authors'];
+  if (! $max_authors) {
+    $max_authors = 15; // SMELL: bad assumption
+  }
+
   // TODO: check if the person saving the proposal is its owner
   $cod = $fields['cod'];
   
@@ -51,7 +57,17 @@ if ($PERIOD_SUBMISSION) {
     
     unset($fields['cod']);
     Proposals::real_update($mysql, $cod, $fields);
+
+    // removing authors:
+    for($i = 1; $i <= $max_authors; $i++) {
+      if ($_POST["speaker${i}_remove"]) {
+        $person_cod = $_POST["speaker${i}_cod"];
+        Proposals::removeSpeaker($mysql, $cod, $person_cod);
+      }
+    }
+    
   } else {
+
     // new proposal
     $fields['pessoa'] =  $person['cod'];
 
@@ -59,14 +75,38 @@ if ($PERIOD_SUBMISSION) {
     $fields['ip_proxy'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
     $fields['browser']  = $_SERVER["HTTP_USER_AGENT"];
     $fields['dthora']   = time();
-
     
     Proposals::create($mysql, $fields);
 
     $cod = $mysql->last_insert_id();
+    
   }
 
-  // uploaded file:
+  // add all the authors to the database (if needed) and as coauthors of the
+  // proposal
+  for($i = 1; $i <= $max_authors; $i++) {
+    $nome = $_POST['speaker' . $i . '_nome'];
+    $email = $_POST['speaker' . $i . '_email'];
+    $cpf = $_POST['speaker' . $i . '_cpf'];
+    if ( $email ) {
+      $speaker = array (
+        'nome' => $nome,
+        'email' => $email,
+        'cpf' => $cpf,
+      );
+
+      $stored = Persons::find($mysql, $speaker['email']);
+      if (! $stored) {
+        Persons::create($mysql, $speaker);
+        $person_cod = $mysql->last_insert_id();
+      } else {
+        $person_cod = $stored['cod'];
+      }
+      Proposals::addSpeaker($mysql, $cod, $person_cod);
+    }
+  }
+
+  // handle uploaded file:
   if ($papers['event']['file_upload_on_submission']) {
     
     if ($_FILES['proposal_file']['name']) {

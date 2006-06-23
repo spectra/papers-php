@@ -41,9 +41,12 @@ if ($PERIOD_SUBMISSION) {
       if (count($proposals) >= $max) {
         $smarty->fatal('maximumNumberOfSubmissions');
       }
-
-      
     }
+
+    // a new proposal has one speaker: the current user
+    $person['main'] = true;
+    $speakers = array($person);
+    $smarty->assign('speakers', $speakers);
     
   }
 

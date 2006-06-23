@@ -1,14 +1,56 @@
 <h2>{#proposalSubmission#}</h2>
 
+<script type='text/javascript' src='js/prototype.js'></script>
+<script type='text/javascript'>
+var speakers = 0;
+var maxSpeakers = {$event.max_authors};
+var noMoreSpeakers = "{#noMoreSpeakers#}";
+var onlyEmailIsNeeded = "{#onlyEmailIsNeeded#}";
+var proposal = {if $proposal.cod}{$proposal.cod}{else}0{/if};
 {literal}
-<script language="Javascript">
 
 function toggleSubmission(status) {
   var button = document.getElementById('submitButton');
   button.disabled = status;
 }
-{/literal}
 
+function addNewSpeaker(req) {
+  $('speakers').innerHTML += req.responseText;
+  speakers++;
+  alert(onlyEmailIsNeeded);
+}
+
+function toggleRemoveSpeaker(n) {
+  var id = 'speaker' + n + '_remove';
+  var box = $(id);
+  var speakerform = $('speaker' + n);
+  if (box.checked) {
+    speakerform.style.setProperty('background', '#f6f6f6', null);
+    speakerform.style.setProperty('color', '#cfcfcf', null);
+  } else {
+    speakerform.style.setProperty('background', 'white', null);
+    speakerform.style.setProperty('color', 'black', null);
+  }
+}
+
+function addSpeaker() {
+  if (speakers >= maxSpeakers) {
+    alert(noMoreSpeakers);
+    return;
+  }
+  nspeaker = speakers + 1;
+  new Ajax.Request(
+    'newSpeaker?nspeaker=' + nspeaker + '&cod=' + proposal,
+    {
+      method: 'get',
+      onComplete: addNewSpeaker,
+      on404: function(req) { alert('not found!'); },
+    }
+  );
+}
+
+
+{/literal}
 </script>
 
 <div>
@@ -40,26 +82,6 @@ function toggleSubmission(status) {
       <em>{#tipForSubmission#}</em>
       </td>
     </tr>
-    {if $proposal.cod}
-      <tr>
-        <th>{#proponents#}:</th>
-        <td>
-          <ul>
-          {section loop=$speakers name=s}
-            <li>
-              {$speakers[s].nome}
-              {if !$speakers[s].main}
-                (<a href="addSpeakerRemove?cod={$proposal.cod}&scod={$speakers[s].cod}" onclick="return confirm('{#removeConfirm#}')">{#remove#}</a>)
-              {/if}
-            </li>
-          {/section}
-          </li>
-          <br/>
-          <br/>
-          <a href="addSpeaker/{$proposal.cod}">{#addSpeaker#}</a>
-        </td>
-      </tr>
-    {/if}
     <tr>
       <th bgcolor="#dddddd" align="center" colspan="2">
         <span class='warn'>*</span>
@@ -67,11 +89,20 @@ function toggleSubmission(status) {
       </th>
     </tr>
     <tr>
-      <th colspan="2">
-        <span style='color: red'>
-        {#multipleSpeakersMessage#}
-       </span>
-      </th>
+      <th colspan="2">{#proponents#}:</th>
+    </tr>
+    <tr>
+      <td colspan='2'>
+      <div id='speakers'>
+      {section loop=$speakers name=s}
+        {assign var=speaker value=$speakers[s]}
+        {assign var=nspeaker value=$smarty.section.s.iteration}
+        {include file=speaker.tpl}
+        <script type='text/javascript'>speakers = speakers + 1;</script>
+      {/section}
+      </div>
+        <input type='button' onclick='javascript: addSpeaker()' value='{#addSpeaker#}' style='margin-left: 10%; margin-bottom: 1em;'/>
+      </td>
     </tr>
     <tr>
       <th>{#title#}: <span class='warn'>*</span>
