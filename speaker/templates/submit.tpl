@@ -2,7 +2,7 @@
 
 <script type='text/javascript' src='js/prototype.js'></script>
 <script type='text/javascript'>
-var speakers = 0;
+var speakers = {if $speakers_count}{$speakers_count}{else}1{/if};
 var maxSpeakers = {$event.max_authors};
 var noMoreSpeakers = "{#noMoreSpeakers#}";
 var onlyEmailIsNeeded = "{#onlyEmailIsNeeded#}";
@@ -45,7 +45,7 @@ function addSpeaker() {
     {
       method: 'get',
       onComplete: addNewSpeaker,
-      on404: function(req) { alert('not found!'); },
+      on404: function(req) { alert('not found!'); }
     }
   );
 }
@@ -74,7 +74,7 @@ function getKeywords() {
       onComplete: function (req) {
                     $('keywords').innerHTML = req.responseText;
                   },
-      on404: function(req) { alert('not found!'); },
+      on404: function(req) { alert('not found!'); }
     }
   );
 }
@@ -160,7 +160,6 @@ function getKeywords() {
         {assign var=speaker value=$speakers[s]}
         {assign var=nspeaker value=$smarty.section.s.iteration}
         {include file=speaker.tpl}
-        <script type='text/javascript'>speakers = speakers + 1;</script>
       {/section}
       </div>
         <input type='button' onclick='javascript: addSpeaker()' value='{#addSpeaker#}' style='margin-left: 10%; margin-bottom: 1em;'/>
@@ -268,7 +267,9 @@ function getKeywords() {
     {/if}
     <tr>
       <td bgcolor="#eeeeee" align="center" colspan="2">
+        <center>
         <input value="{#save#}" type="submit" id='submitButton' {if $event.agreement && !$proposal}disabled='1'{/if}>
+        </center>
       </td>
     </tr>
   </tbody></table>

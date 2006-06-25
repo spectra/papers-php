@@ -41,12 +41,15 @@ if ($PERIOD_SUBMISSION) {
     $smarty->assign('content', 'submit.tpl');
     $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
     if ($cod) {
-      $smarty->assign('speakers', Proposals::findSpeakers($mysql, $cod));
+      $speakers = Proposals::findSpeakers($mysql, $cod);
+      $smarty->assign('speakers', $speakers);
+      $smarty->assign('speakers_count', count($speakers));
     } else {
       $person['main'] = 1;
       $speakers = array ($person);
       // TODO: check for speakers data from $_POST and add them to $speakers
       $smarty->assign('speakers', $speakers);
+      $smarty->assign('speakers_count', count($speakers));
       
       // check for already filled keyword data
       if ($fields['tema']) {

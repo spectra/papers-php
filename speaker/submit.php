@@ -27,6 +27,7 @@ if ($PERIOD_SUBMISSION) {
 
     $speakers = Proposals::findSpeakers($mysql, $cod);
     $smarty->assign('speakers', $speakers);
+    $smarty->assign('speakers_count', count($speakers));
     
     $smarty->assign('files', Proposals::getFiles($cod));
 
@@ -50,6 +51,7 @@ if ($PERIOD_SUBMISSION) {
     $person['main'] = true;
     $speakers = array($person);
     $smarty->assign('speakers', $speakers);
+    $smarty->assign('speakers_count', 1);
     
   }
 
