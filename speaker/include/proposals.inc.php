@@ -175,6 +175,12 @@ class Proposals {
     $files = array_map('basename', $files);
     return $files;
   }
+  
+  function removeFile($file) {
+    global $papers;
+    $uploaddir = papers_expand_path($papers['event']['file_upload_directory']);
+    unlink($uploaddir . '/' . $file);
+  }
 
   function getKeywords($db, $cod, $language) {
     $descr = ($language == 'pt' || $language == 'pt-br') ?

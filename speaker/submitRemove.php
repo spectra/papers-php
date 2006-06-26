@@ -28,6 +28,12 @@ if ($PERIOD_SUBMISSION) {
     return;
   }
 
+  // remove all uploaded files
+  $files = Proposals::getFiles($cod);
+  foreach($files as $file) {
+    Proposals::removeFile($file);
+  }
+  
   Proposals::remove($mysql, $cod);
   header("Location: ../");
   

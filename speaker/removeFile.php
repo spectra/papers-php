@@ -30,8 +30,7 @@ if ($PERIOD_SUBMISSION) {
     }
 
     // remove the file
-    $uploaddir = papers_expand_path($papers['event']['file_upload_directory']);
-    unlink($uploaddir . '/' . $file);
+    Proposals::removeFile($file);
   }
 
 } else {
