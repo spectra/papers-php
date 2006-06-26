@@ -12,6 +12,10 @@ $mysql = new Mysql;
 $tcod = $_GET['tcod'];
 $pcod = $_GET['pcod'];
 
+if ($papers['debug']) {
+  sleep(3);
+}
+
 if ($pcod) {
   $proposal = Proposals::find($mysql, $pcod, $language);
   if ($proposal) {
