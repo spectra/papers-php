@@ -42,13 +42,27 @@ upload:
 DISTDIR = $(PACKAGE)-$(VERSION)
 TARBALL = $(DISTDIR).tar.gz
 CURDIR = $(shell pwd)
+FULLPACKAGE=$(PACKAGE)-$(VERSION)-full
+FULLPACKAGETARBALL=$(FULLPACKAGE).tar.gz
 
 dist: clean
 	mkdir /tmp/$(DISTDIR)
 	cp -r `ls -1 | grep -v $(TARBALL)` /tmp/$(DISTDIR)
 	(cd /tmp/$(DISTDIR); rm -rf debian `find . -name .svn`)
+	(cd /tmp/$(DISTDIR); rm -rf upload ext)
 	(cd /tmp; tar czf $(CURDIR)/$(TARBALL) $(DISTDIR))
 	rm -rf /tmp/$(DISTDIR)
+	
+ftpdeploy: all
+	mkdir /tmp/$(FULLPACKAGE)
+	cp -r * /tmp/$(FULLPACKAGE)
+	(cd /tmp/$(FULLPACKAGE); rm -rf debian `find . -name .svn`)
+	(cd /tmp/$(DISTDIR); rm -rf upload)
+	(cd /tmp/$(DISTDIR); rm -rf ext/*.tar.gz ext/*.tgz)
+	# 'h' to make tar derreference symlinks
+	(cd /tmp; tar czfh $(CURDIR)/$(FULLPACKAGETARBALL) $(FULLPACKAGE))
+	rm -rf /tmp/$(FULLPACKAGE)
+
 
 SVNROOT=https://svn.softwarelivre.org/svn/papers
 svntag:
@@ -79,6 +93,7 @@ clean:
 	rm -rf *.tar.gz $(DEBIAN_BUILD)
 	for each in `find -type d -name templates_c`; do rm -f $$each/*; done
 	rm -rf $(IMG)
+	rm -f $(TARBALL) $(FULLPACKAGETARBALL)
 	make clean -C pub/
 	make clean -C speaker/
 	make clean -C reviewer/
