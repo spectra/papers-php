@@ -58,6 +58,8 @@ function getKeywords() {
     $('keywords').innerHTML = "";
     return;
   }
+
+  $('loadingKeywords').style.display = 'block';
   
   var url =
     (proposal > 0 && track == newtrack)
@@ -73,8 +75,12 @@ function getKeywords() {
       method: 'get',
       onComplete: function (req) {
                     $('keywords').innerHTML = req.responseText;
+                    $('loadingKeywords').style.display = 'none';
                   },
-      on404: function(req) { alert('not found!'); }
+      on404: function(req) {
+               alert('not found!');
+               $('loadingKeywords').style.display = 'block';
+             }
     }
   );
 }
@@ -129,6 +135,8 @@ function getKeywords() {
     <tr>
       <th valign='top'>{#keywords#}</th>
       <td>
+        <div id='loadingKeywords'
+             style='border: 1px solid #ffcc99; background: #ffffcc; display: none;'>{#loadingKeywords#}</div>
         {section loop=$keywords name=k}
           {if $keywords[k].chosen}
             <input type='hidden' name='had_keyword_{$keywords[k].id}' value='1'/>
