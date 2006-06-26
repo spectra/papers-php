@@ -59,8 +59,9 @@ dist-full: clean all
 	(cd /tmp/$(FULLPACKAGE); rm -rf debian `find . -name .svn`)
 	(cd /tmp/$(FULLPACKAGE); rm -rf upload)
 	(cd /tmp/$(FULLPACKAGE); rm -rf ext/*.tar.gz ext/*.tgz)
-	# 'h' to make tar derreference symlinks
-	(cd /tmp; tar czfh $(CURDIR)/$(FULLPACKAGETARBALL) $(FULLPACKAGE))
+	# -h to make tar derreference symlinks
+	# -p to preserve premissions
+	(cd /tmp; tar czfhp $(CURDIR)/$(FULLPACKAGETARBALL) $(FULLPACKAGE))
 	rm -rf /tmp/$(FULLPACKAGE)
 
 
