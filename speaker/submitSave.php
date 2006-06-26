@@ -183,28 +183,34 @@ if ($PERIOD_SUBMISSION) {
   }
 
   // confirm the submission by e-mail
-  $proposal = Proposals::find($mysql, $cod);
   if ($papers['event']['submission_confirmation_by_email']) {
     // only notify on proposal creation
     if ($new_proposal) {
 
-      // TODO: calculate $from
+      $proposal = Proposals::find($mysql, $cod);
+      if (! $proposal) {
+        echo "bizarre error: proposal not found (cod = $cod)!";
+        exit;
+      }
+      
+      // TODO: calculate $from and form headers
+      $headers = 'From: ' . $papers['event']['contact_email'] . "\r\n";
+      $headers .= 'Content-Type: text/plain; charset=iso-8859-1' . "\r\n";
+
+      // those who will receive the e-mail
       $speakers = Proposals::findSpeakers($mysql, $cod);
-      $addresses = array();
+
+      // send e-mail for each one of them
       foreach ($speakers as $s) {
         $msgfmt = new MySmarty;
         
-        $smarty->assign('person', $s);
-        $smarty->assign('proposal', $proposal);
+        $msgfmt->assign('person', $s);
+        $msgfmt->assign('proposal', $proposal);
 
         $msgfmt->config_load("$language.conf");
-
-        $subject = $msgfmt->get_config_vars('submissionConfirmation');
+        $subject = $msgfmt->get_config_vars('submissionConfirmation') . " ($cod)";
         
         $message = $msgfmt->fetch("submission_confirmation.$language.tpl");
-
-        $headers = 'From: ' . $papers['event']['contact_email'] . "\r\n";
-        $headers .= 'Content-Type: text/plain; charset=iso-8859-1' . "\r\n";
 
         // send the damn email
         mail($s['email'], $subject, $message, $headers);

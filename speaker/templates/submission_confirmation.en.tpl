@@ -1,7 +1,7 @@
 Dear {$person.nome},
 
 Your submission for "{$event.name}",
-with title "{$propostal.titulo}",
+with title "{$proposal.titulo}",
 was received for evaluation.
 
 Before the submissin deadline, you can update your submission

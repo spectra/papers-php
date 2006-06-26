@@ -1,7 +1,7 @@
 Prezado(a) {$person.nome},
 
 Sua submissão para o "{$event.name}",
-com título "{$propostal.titulo}",
+com título "{$proposal.titulo}",
 foi recebida para avaliação.
 
 
