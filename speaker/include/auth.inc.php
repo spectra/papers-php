@@ -2,6 +2,7 @@
 
 require_once 'include/mysql.inc.php';
 require_once 'include/mysmarty.inc.php';
+require_once 'include/config.inc.php';
 
 
 $smarty = new MySmarty;
@@ -12,6 +13,7 @@ require_once 'include/language.inc.php'; // already starts the session
 
 $user = $_SESSION['papersauth'];
 $smarty->assign('user', $user);
+$smarty->assign('debug', $papers['debug']);
 
 // checks authentication
 if (!$_SESSION['papersauth']) {

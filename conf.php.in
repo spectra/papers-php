@@ -32,6 +32,14 @@ $papers['event']['contact_email']         = 'webmaster@localhost';
  ****************************************************
  *****************************************************/
 
+
+/****************************************************
+ * Debug mode.
+ * Set to true if you want to debug papers.
+ *****************************************************/
+
+$papers['debug'] = false;
+
 /****************************************************
  * Hide optional personal information. Set to true if you
  * don't want to present optional personal information
