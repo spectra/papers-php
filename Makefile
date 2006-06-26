@@ -53,7 +53,7 @@ dist: clean
 	(cd /tmp; tar czf $(CURDIR)/$(TARBALL) $(DISTDIR))
 	rm -rf /tmp/$(DISTDIR)
 	
-ftpdeploy: all
+dist-full: clean all
 	mkdir /tmp/$(FULLPACKAGE)
 	cp -r * /tmp/$(FULLPACKAGE)
 	(cd /tmp/$(FULLPACKAGE); rm -rf debian `find . -name .svn`)
@@ -88,6 +88,9 @@ deb: dist $(DEBIAN_BUILD)
 $(DEBIAN_BUILD):
 	rm -rf $(DEBIAN_BUILD)/*
 	mkdir -p $@
+
+ext-clean:
+	make clean -C ext/
 
 clean:
 	rm -rf *.tar.gz $(DEBIAN_BUILD)

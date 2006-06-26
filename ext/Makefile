@@ -25,4 +25,6 @@ clean:
 
 fullclean: clean
 	rm -rf $(SMARTY_TARBALL)
+	rm -rf smarty
 	rm -rf $(ADODB_TARBALL)
+	rm -rf adodb
