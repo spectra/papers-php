@@ -12,6 +12,12 @@ function papers_expand_path($path) {
   return str_replace('{PAPERSROOT}', $_application_path, $path);
 }
 
+function papers_url() {
+  $path = preg_replace('/\/(admin|speaker|pub|reviewer)\/[^\/]*$/','', $_SERVER['REQUEST_URI']);
+  $protocol = (($_SERVER['SERVER_PORT'] == 443)?'https':'http') . '://';
+  return $protocol . $_SERVER['HTTP_HOST'] .  $path;
+}
+
 #### end of utility functions #######################################
 
 
@@ -44,6 +50,9 @@ if (! $_loaded_config) {
   echo("Did you read the INSTALL file?");
   exit;
 }
+
+# add (calculated) url to configuration:
+$papers['event']['papers_url'] = papers_url();
 
 # extension discovery
 $_needed_extensions = array(
