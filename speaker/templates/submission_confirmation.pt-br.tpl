@@ -5,7 +5,7 @@ com título "{$proposal.titulo}",
 foi recebida para avaliação.
 
 
-Antes do final do prazo ara submissão, você pode atualizar sua submissão
+Antes do final do prazo para submissão, você pode atualizar sua submissão
 através do website:
 {$event.papers_url}/speaker/
 
