@@ -12,4 +12,4 @@ css:
 	ln -sf ../css .
 
 clean:
-	rm -rf templates_c log
+	rm -rf templates_c log css
