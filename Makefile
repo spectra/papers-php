@@ -57,8 +57,8 @@ dist-full: clean all
 	mkdir /tmp/$(FULLPACKAGE)
 	cp -r * /tmp/$(FULLPACKAGE)
 	(cd /tmp/$(FULLPACKAGE); rm -rf debian `find . -name .svn`)
-	(cd /tmp/$(DISTDIR); rm -rf upload)
-	(cd /tmp/$(DISTDIR); rm -rf ext/*.tar.gz ext/*.tgz)
+	(cd /tmp/$(FULLPACKAGE); rm -rf upload)
+	(cd /tmp/$(FULLPACKAGE); rm -rf ext/*.tar.gz ext/*.tgz)
 	# 'h' to make tar derreference symlinks
 	(cd /tmp; tar czfh $(CURDIR)/$(FULLPACKAGETARBALL) $(FULLPACKAGE))
 	rm -rf /tmp/$(FULLPACKAGE)
