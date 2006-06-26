@@ -15,11 +15,11 @@
       </tr>
       <tr>
         <th>E-mail</th>
-        <td><input type='text' name='username'/></td>
+        <td><input type='text' name='username' size='25'/></td>
       </tr>
       <tr>
         <th>{#password#}</th>
-        <td><input type='password' name='password'/></td>
+        <td><input type='password' name='password' size='10'/></td>
       </tr>
       <tr>
         <th colspan='2'>
