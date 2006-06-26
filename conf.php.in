@@ -96,6 +96,13 @@ $papers['event']['max_submissions'] = 0;
 
 $papers['event']['max_authors'] = 6;
 
+/*****************************************************
+ * Submission confirmation                           *
+ * Set to true if you want to send e-mails to        *
+ * authors confirming the submission                 *
+ *****************************************************/
+
+$papers['event']['submission_confirmation_by_email'] = false;
 
 /*****************************************************
  * agreement: if your event requires that submitters *

@@ -12,6 +12,7 @@ require_once 'include/config.inc.php';
 
 $mysql = new Mysql;
 $person = Persons::find($mysql, $user);
+$new_proposal = false;
 
 if ($PERIOD_SUBMISSION) {
 
@@ -72,6 +73,8 @@ if ($PERIOD_SUBMISSION) {
     $max_authors = 15; // SMELL: bad assumption
   }
 
+  $proposal = null;
+
   if ($cod) {
     // existing proposal
 
@@ -94,6 +97,8 @@ if ($PERIOD_SUBMISSION) {
     
   } else {
 
+    $new_proposal = true;
+ 
     // new proposal
     $fields['pessoa'] =  $person['cod'];
 
@@ -174,6 +179,37 @@ if ($PERIOD_SUBMISSION) {
         papers_expand_path($papers['event']['file_upload_directory']) .
         "/$cod.$extension"; 
       copy($_FILES['proposal_file']['tmp_name'], $destination);
+    }
+  }
+
+  // confirm the submission by e-mail
+  $proposal = Proposals::find($mysql, $cod);
+  if ($papers['event']['submission_confirmation_by_email']) {
+    // only notify on proposal creation
+    if ($new_proposal) {
+
+      // TODO: calculate $from
+      $speakers = Proposals::findSpeakers($mysql, $cod);
+      $addresses = array();
+      foreach ($speakers as $s) {
+        $msgfmt = new MySmarty;
+        
+        $smarty->assign('person', $s);
+        $smarty->assign('proposal', $proposal);
+
+        $msgfmt->config_load("$language.conf");
+
+        $subject = $msgfmt->get_config_vars('submissionConfirmation');
+        
+        $message = $msgfmt->fetch("submission_confirmation.$language.tpl");
+
+        $headers = 'From: ' . $papers['event']['contact_email'] . "\r\n";
+        $headers .= 'Content-Type: text/plain; charset=iso-8859-1' . "\r\n";
+
+        // send the damn email
+        mail($s['email'], $subject, $message, $headers);
+      }
+      
     }
   }
 
