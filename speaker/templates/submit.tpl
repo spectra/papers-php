@@ -50,12 +50,18 @@ function addSpeaker() {
   );
 }
 
+function clearElement(el) {
+  while (el.childNodes.length > 0) {
+    el.removeChild(el.childNodes[0]);
+  }
+}
+
 function getKeywords() {
   var box = $('tema');
   var newtrack = box.options[box.selectedIndex].value;
 
   if (newtrack == "") {
-    $('keywords').innerHTML = "";
+    clearElement($('keywords'));
     return;
   }
 
@@ -74,7 +80,9 @@ function getKeywords() {
     {
       method: 'get',
       onComplete: function (req) {
-                    $('keywords').innerHTML = req.responseText;
+                    var target = $('keywords');
+                    clearElement(target);
+                    eval(req.responseText);
                     $('loadingKeywords').style.display = 'none';
                   },
       on404: function(req) {

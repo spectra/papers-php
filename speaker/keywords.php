@@ -40,6 +40,6 @@ if ($pcod) {
 
 $smarty->assign('keywords', $keywords);
 
-$smarty->display('keywords.tpl');
+$smarty->display('keywordsjs.tpl');
 
 ?>
