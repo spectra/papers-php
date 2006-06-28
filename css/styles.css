@@ -13,12 +13,6 @@ body, html {
   background-color: white;
 }
 
-input, textarea {
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
-}
-
 A:hover { text-decoration: underline; }
 A { text-decoration: none; }
 
