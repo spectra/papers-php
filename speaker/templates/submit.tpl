@@ -61,7 +61,7 @@ function getKeywords() {
   var newtrack = box.options[box.selectedIndex].value;
 
   if (newtrack == "") {
-    clearElement($('keywords'));
+    clearElement($('div_keywords'));
     return;
   }
 
@@ -80,7 +80,7 @@ function getKeywords() {
     {
       method: 'get',
       onComplete: function (req) {
-                    var target = $('keywords');
+                    var target = $('div_keywords');
                     clearElement(target);
                     eval(req.responseText);
                     $('loadingKeywords').style.display = 'none';
@@ -150,7 +150,7 @@ function getKeywords() {
             <input type='hidden' name='had_keyword_{$keywords[k].id}' value='1'/>
           {/if}
         {/section}
-        <div id='keywords'>
+        <div id='div_keywords'>
         {include file=keywords.tpl}
         </div>
       </td>
