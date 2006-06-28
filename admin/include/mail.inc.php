@@ -1,5 +1,10 @@
 <?php
 
+// these functions were found at http://php.net/manual/en/function.mail.php,
+// posted as a comment by lg83@free.fr . I assume they are in the public
+// domain. So, as far as papers' authors are concerned, this file isn't
+// licensed under the GNU GPL, but is in the public domain.
+
 function encodeMimeSubject($s) {
    
    $lastspace=-1;
