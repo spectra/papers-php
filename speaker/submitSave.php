@@ -9,6 +9,7 @@ require_once 'include/event_dates.inc.php';
 require_once 'include/proposals.inc.php';
 require_once 'include/tracks.inc.php';
 require_once 'include/config.inc.php';
+require_once 'include/mail.inc.php';
 
 $mysql = new Mysql;
 $person = Persons::find($mysql, $user);
@@ -209,6 +210,7 @@ if ($PERIOD_SUBMISSION) {
 
         $msgfmt->config_load("$language.conf");
         $subject = $msgfmt->get_config_vars('submissionConfirmation') . " ($cod)";
+        $subject = encodeMimeSubject($subject);
         
         $message = $msgfmt->fetch("submission_confirmation.$language.tpl");
 
