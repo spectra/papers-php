@@ -50,4 +50,9 @@
       <li><a href="relatorioVazios">Horários vazios</a></li>
     </ul>
   </li>
+  <li>Avançado
+    <ul>
+      <li><a href='console'>Console SQL</a></li>
+    </ul>
+  </li>
 </ul>
