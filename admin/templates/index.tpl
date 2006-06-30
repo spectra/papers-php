@@ -42,8 +42,14 @@
 
 <hr>
 
-<div align="right" class="cl">Copyleft <a
-href="http://www.propus.com.br/">Propus</a></div>
+<div align="right" class="cl">
+Copyright &copy; 2003, 2004 <a href="http://www.propus.com.br/">Propus</a>.
+<br/>
+Copyright &copy; 2005, 2006 <a href="http://associacao.softwarelivre.org/">Associação Software Livre.Org</a>.
+<br/>
+Copyright &copy; 2006 <a href="http://www.colibre.com.br/">Colibre</a>.
+<br/>
+</div>
 
 </body>
 </html>
