@@ -17,6 +17,10 @@ $new_proposal = false;
 
 if ($PERIOD_SUBMISSION) {
 
+  if ( !$papers['event']['allow_submission_update'] ) {
+    $smarty->fatal('updateNotAllowed');
+  }
+
   $fields = $_POST;
 
   $error = null;

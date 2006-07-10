@@ -22,6 +22,10 @@ if ($PERIOD_SUBMISSION) {
     if (! Proposals::owns($person, $proposal, $mysql)) {
       $smarty->fatal('onlyProposalOwnerCanUpdate');
     }
+
+    if (! $papers['event']['allow_submission_update']) {
+      $smarty->fatal('updateNotAllowed');
+    }
     
     $smarty->assign('proposal', $proposal);
 

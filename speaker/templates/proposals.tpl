@@ -9,7 +9,7 @@
 <div class='proposalBox'>
   <h3>
     {$proposals[pr].titulo}
-    {if $PERIOD_SUBMISSION }
+    {if $PERIOD_SUBMISSION && $event.allow_submission_update}
       <!-- ***************************************** -->
       <!-- start of SUBMISSION -->
       <!-- ***************************************** -->
