@@ -15,6 +15,10 @@ $smarty->assign('person',$person);
 
 if ($PERIOD_SUBMISSION) {
 
+  if (! $papers['event']['allow_submission_update']) {
+    $smarty->fatal('updateNotAllowed');
+  }
+
   $cod = PathInfo::getInteger();
   if (! $cod) {
     $smarty->assign('message', 'mustSpecifyProposal');
