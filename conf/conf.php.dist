@@ -105,6 +105,23 @@ $papers['event']['max_authors'] = 6;
 $papers['event']['submission_confirmation_by_email'] = false;
 
 /*****************************************************
+ * Web submission confirmation                           *
+ * Set to true if you want users to be warned in the web
+ * interface that the submission was successfull.
+ *****************************************************/
+
+$papers['event']['submission_confirmation_on_web_interface'] = false;
+
+/*****************************************************
+ * Allow submission update
+ * Set to false if you want users NOT to be able to update
+ * their submissions during the submission period. This
+ * includes BOTH changing and removing proposals.
+ *****************************************************/
+
+$papers['event']['allow_submission_update'] = true;
+
+/*****************************************************
  * agreement: if your event requires that submitters *
  * accept some terms before submissions, you must    *
  * uncomment these and fill the terms they should    *
@@ -133,5 +150,5 @@ $papers['today'] = null;
 // $papers['today'] = '20 January 2006'; // after results, before last day for updates
 // $papers['today'] = '20 February 2006'; // after last day for updates
 
-# vim: tw=60
+# vim: tw=60 ft=php
 ?>

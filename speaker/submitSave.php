@@ -226,6 +226,15 @@ if ($PERIOD_SUBMISSION) {
   return;
 }
 
-header('Location: .');
+if ($papers['event']['submission_confirmation_on_web_interface']) {
+
+  // show a popup telling the user that his/her submission was succesfull.
+  $smarty->assign('content', 'submission_confirmation_on_web_interface.tpl');
+  $smarty->display('index.tpl');
+
+} else {
+  //header('Location: .');
+  echo 'bli'; exit;
+}
 
 ?>
