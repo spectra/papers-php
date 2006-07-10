@@ -145,7 +145,7 @@ acessível por HTTPS.
 
 Arquivo de configuração
 -----------------------
-Copie o arquivo conf.php.in para um dos seguintes diretórios:
+Copie o arquivo conf/conf.php.dist para um dos seguintes diretórios:
 
   * ${PAPERSROOT}/conf
   * /etc/papers/
