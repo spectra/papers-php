@@ -6,6 +6,7 @@ var speakers = {if $speakers_count}{$speakers_count}{else}1{/if};
 var maxSpeakers = {$event.max_authors};
 var noMoreSpeakers = "{#noMoreSpeakers#}";
 var onlyEmailIsNeeded = "{#onlyEmailIsNeeded#}";
+var fileNotChosen = "{#fileNotChosen#}";
 var proposal = {if $proposal.cod}{$proposal.cod}{else}0{/if};
 var track = {if $proposal.tema}{$proposal.tema}{else}0{/if};
 {literal}
@@ -93,13 +94,20 @@ function getKeywords() {
   );
 }
 
+function checkFile() {
+  if (document.forms['form1'].proposal_file.value == '') {
+    return confirm(fileNotChosen);
+  }
+  return true;
+}
+
 
 {/literal}
 </script>
 
 <div>
 
-<form name="form1" {if $event.file_upload_on_submission}enctype="multipart/form-data" {/if} action="submitSave" method="POST">
+<form name="form1" {if $event.file_upload_on_submission}enctype="multipart/form-data" onsubmit='return checkFile()'{/if} action="submitSave" method="POST">
   {if $proposal.cod}<input type="hidden" name="cod" value="{$proposal.cod}"/>{/if}
   <table class='formulario' align='center' width='70%'>
     <tbody>
