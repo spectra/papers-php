@@ -60,6 +60,7 @@
     <td>
       <input type="text" name="cpf" value="{$person.cpf}"
              size="15" maxlength="11" />
+      (sem pontos ou traços)
     </td>
   </tr>
 
