@@ -1,12 +1,12 @@
-OlÃ¡, {$person.nome}.
+Olá, {$person.nome}.
 
-Sua nova senha no Canto do Palestrante do {$event.codename} Ã©:
+Sua nova senha no Canto do Palestrante do {$event.codename} é:
 
 {$passwd}
 
-SaudaÃ§Ãµes,
+Saudações,
 
 --
-Sistema de ConferÃªncias do {$event.codename}
+Sistema de Conferências do {$event.codename}
 {$event.contact_email}
 
