@@ -18,7 +18,11 @@ if (isset($_POST['email'])) {
     $passwd = Persons::newPassword($mysql, $person['cod']);
     $smarty->assign('person', $person);
     $smarty->assign('passwd', $passwd);
-    mail($person['email'] , $subject, $smarty->fetch("newPassword.$language.tpl"), 'From: ' . $papers['event']['contact_email']);
+
+    $headers = 'From: ' . $papers['event']['contact_email'] . "\r\n" .
+               "Content-Type: text/plain; charset=iso-8859-1\r\n";
+    
+    mail($person['email'] , $subject, $smarty->fetch("newPassword.$language.tpl"), $headers);
     $smarty->assign('content', "lostPassword2.$language.tpl");
   } else {
     $smarty->assign('message', 'noSuchUser');
