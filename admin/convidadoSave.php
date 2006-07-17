@@ -29,7 +29,7 @@ $r['pessoa'] = $cod;
 $r['publicoalvo'] = '';
 $r['descricao'] = '';
 $r['idioma'] = $_POST['idioma'];
-$r['status'] = 'a';
+$r['status'] = 'p';
 $r['tipo'] = $_POST['tipo'];
 $r['confirmada'] = null;
 
