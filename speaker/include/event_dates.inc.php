@@ -33,6 +33,7 @@ $SUBMISSION_END = mktime( $temp['hours'], $temp['minutes'], $temp['seconds'], $t
 // review period dates:
 $temp = getdate($REVIEW_LAST_DAY);
 $REVIEW_START = $SUBMISSION_END;
+$REVIEW_FIRST_DAY = $REVIEW_START;
 $REVIEW_END = mktime( $temp['hours'], $temp['minutes'], $temp['seconds'], $temp['mon'], $temp['mday'] +1,  $temp['year'] ); // zero hora do "dia seguinte"
 
 // unless configuration sets today for testing purposes, today is ... today!
