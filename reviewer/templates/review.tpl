@@ -17,7 +17,7 @@ function toggle(id) {
 {if $event.file_upload_on_submission}
 <ul>
 {section loop=$files name=f}
-<li> <a href='javascript: alert("faltando!");'>{$proposta.titulo}: {$files[f]}</a></li>
+<li> <a href='download/{$files[f]}'>{$proposta.titulo}: {$files[f]}</a></li>
 {/section}
 </ul>
 {/if}
