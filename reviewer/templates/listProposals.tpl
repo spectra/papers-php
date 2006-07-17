@@ -10,7 +10,8 @@ verde</span> na lista abaixo.
       {assign var="proposta" value=$propostas[$tema][pr].cod}
       {if $propostas[$tema][pr].forbidden}
         <div>
-          {$propostas[$tema][pr].titulo}
+          <del>{$propostas[$tema][pr].titulo}</del>
+          <small>({#cannotReviewThisProposal#})</small>
         </div>
       {else}
         {if $avaliada[$proposta]}{assign var='bg' value='#99ff99'}{else}{assign var='bg' value='transparent'}{/if}
