@@ -24,7 +24,7 @@ function canReviewTrack($db, $pcod, $tcod) {
   if ($papers['event']['deny_review_of_track']) {
 
     // check if reviewer is a main proponent
-    $sql1 = "select count(*) as num from propostas where pessoa = $pcod and tema = $tcod";
+    $sql1 = "select count(*) as num from propostas where pessoa = $pcod and tema = $tcod and tipo = 's'";
     $rs1 = $db->conn->Execute($sql1);
     $rsa1 = $rs1->GetArray();
     if ($rsa1[0]['num'] > 0) {
@@ -32,7 +32,7 @@ function canReviewTrack($db, $pcod, $tcod) {
     }
 
     // check if reviewer is a cospeaker
-    $sql2 = "select count(*) as num from propostas join copalestrantes on copalestrantes.proposta = propostas.cod where copalestrantes.pessoa = $pcod and propostas.tema = $tcod";
+    $sql2 = "select count(*) as num from propostas join copalestrantes on copalestrantes.proposta = propostas.cod where copalestrantes.pessoa = $pcod and propostas.tema = $tcod and tipo = 's'";
     $rs2 = $db->conn->Execute($sql2);
     $rsa2 = $rs2->GetArray();
     if ($rsa2[0]['num'] > 0) {
