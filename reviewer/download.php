@@ -21,12 +21,16 @@ $user_pcod = $person['cod'];
 $smarty->assign('person',$person);
 
 $file = preg_replace('/^\//', '', $_SERVER['PATH_INFO']); 
+if ( ! $file ) {
+  $smarty->fatal('mustSpecifyProposal');
+}
+
 preg_match('/^([0-9]+).(.*)$/', $file, $matches);
 $cod = $matches[1];
 
 $proposta = Proposals::find($mysql, $cod);
 
-if (! $proposta) {
+if ( ! $proposta ) {
   $smarty->fatal('mustSpecifyProposal');
 }
 
