@@ -90,6 +90,21 @@ where p1.tema = $macrotema and
       return $rs->GetArray();
     } elseif ( $type == 'simple' ) {
 
+      $sql = "
+        select
+          propostas.cod as cod,
+          propostas.titulo as titulo,
+          pessoas.nome as autor,
+          avg(recomendacao) as score
+        from avaliacoes
+             join propostas on propostas.cod = avaliacoes.proposta
+             join pessoas on pessoas.cod = propostas.pessoa
+        where propostas.tipo = 's' and tema = $macrotema
+        group by propostas.cod
+        order by score desc
+        ";
+      $rs = $db->conn->Execute($sql);
+      return $rs->GetArray();
     
     } else {
       return array();
@@ -142,6 +157,23 @@ where p1.tema = $macrotema and
       $rs = $db->conn->Execute($sql);
       return $rs->GetArray();
     } elseif ($type == 'simple') {
+
+      $sql = "
+        select
+          propostas.cod as cod,
+          propostas.titulo as titulo,
+          pessoas.nome as autor,
+          avg(recomendacao) as score
+        from avaliacoes
+             join propostas on propostas.cod = avaliacoes.proposta
+             join pessoas on pessoas.cod = propostas.pessoa
+        where propostas.tipo = 's'
+        group by propostas.cod
+        order by score desc
+        ";
+      $rs = $db->conn->Execute($sql);
+      return $rs->GetArray();
+    
     } else {
       return array();
     }
