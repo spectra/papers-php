@@ -74,6 +74,7 @@ if ($cod) {
   if ($papers['event']['file_upload_on_submission']) {
     $smarty->assign('files', Proposals::getFiles($proposta['cod']));
   }
+  $smarty->assign('keywords', Proposals::getKeywords($mysql, $proposta['cod'], $language));
 
   $smarty->assign('content', 'review.tpl');
   
@@ -110,6 +111,10 @@ if ($cod) {
         $proposal_cod = $prop['cod'];
         $propostas[$mt][$key]['forbidden'] = ! canReviewProposal($mysql, $user_pcod, $prop);
       }
+    }
+    foreach($propostas[$mt] as $key => $prop) {
+      $proposal_cod = $prop['cod'];
+      $propostas[$mt][$key]['keywords'] = Proposals::getKeywords($mysql, $proposal_cod, $language);
     }
   }
 

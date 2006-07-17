@@ -30,6 +30,18 @@ function toggle(id) {
     </th>
   </tr>
   <tr>
+    <th>Palavras-chave</th>
+    <td>
+       <ul>
+         {section loop=$keywords name=k}
+           {if $keywords[k].chosen}
+             <li>{$keywords[k].descr}</li>
+           {/if}
+         {/section}
+       </ul>
+    </td>
+  </tr>
+  <tr>
     <td colspan="2">
       <div>
         <center>
