@@ -14,6 +14,14 @@ function toggle(id) {
 
 <h2>Avaliação de Proposta: {$proposta.titulo}</h2>
 
+{if $event.file_upload_on_submission}
+<ul>
+{section loop=$files name=f}
+<li> <a href='javascript: alert("faltando!");'>{$proposta.titulo}: {$files[f]}</a></li>
+{/section}
+</ul>
+{/if}
+
 <form action="reviewSave" method="POST">
 <input type="hidden" name="proposta" value="{$proposta.cod}"/>
 <table width="100%" class='formulario'>
@@ -36,6 +44,7 @@ function toggle(id) {
   <tr>
     <th colspan='2'>Macro-tema: <a href="tracks">{$proposta.macrotema}</a></th>
   </tr>
+{if ! $event.blind_review}
   <tr>
     <th colspan='2'>Autores</th>
   </tr>
@@ -71,9 +80,10 @@ function toggle(id) {
       </ul>
     </td>
   </tr>
+{/if}
   <tr>
     <th colspan='2'>
-      Comentátios de outros avaliadores: (<a href="javascript: toggle('comments')">mostrar/esconder comentários</a>)
+      Comentários de outros avaliadores: (<a href="javascript: toggle('comments')">mostrar/esconder comentários</a>)
     </th>
   </tr>
   <tr>
@@ -91,6 +101,7 @@ function toggle(id) {
   <tr>
     <th colspan="2">Avaliação</th>
   </tr>
+{if $event.review_type == "fisl" || ! $event.review_type}
   <tr>
     <th>Grau de confiança</th>
     <td>
@@ -155,6 +166,117 @@ function toggle(id) {
       Aceitação forte - Tenho argumentos fortes para aceitar o  trabalho.
     </td>
   </tr>
+{/if}
+{if $event.review_type == "simple"}
+  <tr>
+    <th>Conceito</th>
+    <td>
+      <select name="recomendacao">
+        <option {if $avaliacao.recomendacao == 0.0}selected{/if}>0.0</option>
+        <option {if $avaliacao.recomendacao == 0.1}selected{/if}>0.1</option>
+        <option {if $avaliacao.recomendacao == 0.2}selected{/if}>0.2</option>
+        <option {if $avaliacao.recomendacao == 0.3}selected{/if}>0.3</option>
+        <option {if $avaliacao.recomendacao == 0.4}selected{/if}>0.4</option>
+        <option {if $avaliacao.recomendacao == 0.5}selected{/if}>0.5</option>
+        <option {if $avaliacao.recomendacao == 0.6}selected{/if}>0.6</option>
+        <option {if $avaliacao.recomendacao == 0.7}selected{/if}>0.7</option>
+        <option {if $avaliacao.recomendacao == 0.8}selected{/if}>0.8</option>
+        <option {if $avaliacao.recomendacao == 0.9}selected{/if}>0.9</option>
+        <option {if $avaliacao.recomendacao == 1.0}selected{/if}>1.0</option>
+        <option {if $avaliacao.recomendacao == 1.1}selected{/if}>1.1</option>
+        <option {if $avaliacao.recomendacao == 1.2}selected{/if}>1.2</option>
+        <option {if $avaliacao.recomendacao == 1.3}selected{/if}>1.3</option>
+        <option {if $avaliacao.recomendacao == 1.4}selected{/if}>1.4</option>
+        <option {if $avaliacao.recomendacao == 1.5}selected{/if}>1.5</option>
+        <option {if $avaliacao.recomendacao == 1.6}selected{/if}>1.6</option>
+        <option {if $avaliacao.recomendacao == 1.7}selected{/if}>1.7</option>
+        <option {if $avaliacao.recomendacao == 1.8}selected{/if}>1.8</option>
+        <option {if $avaliacao.recomendacao == 1.9}selected{/if}>1.9</option>
+        <option {if $avaliacao.recomendacao == 2.0}selected{/if}>2.0</option>
+        <option {if $avaliacao.recomendacao == 2.1}selected{/if}>2.1</option>
+        <option {if $avaliacao.recomendacao == 2.2}selected{/if}>2.2</option>
+        <option {if $avaliacao.recomendacao == 2.3}selected{/if}>2.3</option>
+        <option {if $avaliacao.recomendacao == 2.4}selected{/if}>2.4</option>
+        <option {if $avaliacao.recomendacao == 2.5}selected{/if}>2.5</option>
+        <option {if $avaliacao.recomendacao == 2.6}selected{/if}>2.6</option>
+        <option {if $avaliacao.recomendacao == 2.7}selected{/if}>2.7</option>
+        <option {if $avaliacao.recomendacao == 2.8}selected{/if}>2.8</option>
+        <option {if $avaliacao.recomendacao == 2.9}selected{/if}>2.9</option>
+        <option {if $avaliacao.recomendacao == 3.0}selected{/if}>3.0</option>
+        <option {if $avaliacao.recomendacao == 3.1}selected{/if}>3.1</option>
+        <option {if $avaliacao.recomendacao == 3.2}selected{/if}>3.2</option>
+        <option {if $avaliacao.recomendacao == 3.3}selected{/if}>3.3</option>
+        <option {if $avaliacao.recomendacao == 3.4}selected{/if}>3.4</option>
+        <option {if $avaliacao.recomendacao == 3.5}selected{/if}>3.5</option>
+        <option {if $avaliacao.recomendacao == 3.6}selected{/if}>3.6</option>
+        <option {if $avaliacao.recomendacao == 3.7}selected{/if}>3.7</option>
+        <option {if $avaliacao.recomendacao == 3.8}selected{/if}>3.8</option>
+        <option {if $avaliacao.recomendacao == 3.9}selected{/if}>3.9</option>
+        <option {if $avaliacao.recomendacao == 4.0}selected{/if}>4.0</option>
+        <option {if $avaliacao.recomendacao == 4.1}selected{/if}>4.1</option>
+        <option {if $avaliacao.recomendacao == 4.2}selected{/if}>4.2</option>
+        <option {if $avaliacao.recomendacao == 4.3}selected{/if}>4.3</option>
+        <option {if $avaliacao.recomendacao == 4.4}selected{/if}>4.4</option>
+        <option {if $avaliacao.recomendacao == 4.5}selected{/if}>4.5</option>
+        <option {if $avaliacao.recomendacao == 4.6}selected{/if}>4.6</option>
+        <option {if $avaliacao.recomendacao == 4.7}selected{/if}>4.7</option>
+        <option {if $avaliacao.recomendacao == 4.8}selected{/if}>4.8</option>
+        <option {if $avaliacao.recomendacao == 4.9}selected{/if}>4.9</option>
+        <option {if $avaliacao.recomendacao == 5.0}selected{/if}>5.0</option>
+        <option {if $avaliacao.recomendacao == 5.1}selected{/if}>5.1</option>
+        <option {if $avaliacao.recomendacao == 5.2}selected{/if}>5.2</option>
+        <option {if $avaliacao.recomendacao == 5.3}selected{/if}>5.3</option>
+        <option {if $avaliacao.recomendacao == 5.4}selected{/if}>5.4</option>
+        <option {if $avaliacao.recomendacao == 5.5}selected{/if}>5.5</option>
+        <option {if $avaliacao.recomendacao == 5.6}selected{/if}>5.6</option>
+        <option {if $avaliacao.recomendacao == 5.7}selected{/if}>5.7</option>
+        <option {if $avaliacao.recomendacao == 5.8}selected{/if}>5.8</option>
+        <option {if $avaliacao.recomendacao == 5.9}selected{/if}>5.9</option>
+        <option {if $avaliacao.recomendacao == 6.0}selected{/if}>6.0</option>
+        <option {if $avaliacao.recomendacao == 6.1}selected{/if}>6.1</option>
+        <option {if $avaliacao.recomendacao == 6.2}selected{/if}>6.2</option>
+        <option {if $avaliacao.recomendacao == 6.3}selected{/if}>6.3</option>
+        <option {if $avaliacao.recomendacao == 6.4}selected{/if}>6.4</option>
+        <option {if $avaliacao.recomendacao == 6.5}selected{/if}>6.5</option>
+        <option {if $avaliacao.recomendacao == 6.6}selected{/if}>6.6</option>
+        <option {if $avaliacao.recomendacao == 6.7}selected{/if}>6.7</option>
+        <option {if $avaliacao.recomendacao == 6.8}selected{/if}>6.8</option>
+        <option {if $avaliacao.recomendacao == 6.9}selected{/if}>6.9</option>
+        <option {if $avaliacao.recomendacao == 7.0}selected{/if}>7.0</option>
+        <option {if $avaliacao.recomendacao == 7.1}selected{/if}>7.1</option>
+        <option {if $avaliacao.recomendacao == 7.2}selected{/if}>7.2</option>
+        <option {if $avaliacao.recomendacao == 7.3}selected{/if}>7.3</option>
+        <option {if $avaliacao.recomendacao == 7.4}selected{/if}>7.4</option>
+        <option {if $avaliacao.recomendacao == 7.5}selected{/if}>7.5</option>
+        <option {if $avaliacao.recomendacao == 7.6}selected{/if}>7.6</option>
+        <option {if $avaliacao.recomendacao == 7.7}selected{/if}>7.7</option>
+        <option {if $avaliacao.recomendacao == 7.8}selected{/if}>7.8</option>
+        <option {if $avaliacao.recomendacao == 7.9}selected{/if}>7.9</option>
+        <option {if $avaliacao.recomendacao == 8.0}selected{/if}>8.0</option>
+        <option {if $avaliacao.recomendacao == 8.1}selected{/if}>8.1</option>
+        <option {if $avaliacao.recomendacao == 8.2}selected{/if}>8.2</option>
+        <option {if $avaliacao.recomendacao == 8.3}selected{/if}>8.3</option>
+        <option {if $avaliacao.recomendacao == 8.4}selected{/if}>8.4</option>
+        <option {if $avaliacao.recomendacao == 8.5}selected{/if}>8.5</option>
+        <option {if $avaliacao.recomendacao == 8.6}selected{/if}>8.6</option>
+        <option {if $avaliacao.recomendacao == 8.7}selected{/if}>8.7</option>
+        <option {if $avaliacao.recomendacao == 8.8}selected{/if}>8.8</option>
+        <option {if $avaliacao.recomendacao == 8.9}selected{/if}>8.9</option>
+        <option {if $avaliacao.recomendacao == 9.0}selected{/if}>9.0</option>
+        <option {if $avaliacao.recomendacao == 9.1}selected{/if}>9.1</option>
+        <option {if $avaliacao.recomendacao == 9.2}selected{/if}>9.2</option>
+        <option {if $avaliacao.recomendacao == 9.3}selected{/if}>9.3</option>
+        <option {if $avaliacao.recomendacao == 9.4}selected{/if}>9.4</option>
+        <option {if $avaliacao.recomendacao == 9.5}selected{/if}>9.5</option>
+        <option {if $avaliacao.recomendacao == 9.6}selected{/if}>9.6</option>
+        <option {if $avaliacao.recomendacao == 9.7}selected{/if}>9.7</option>
+        <option {if $avaliacao.recomendacao == 9.8}selected{/if}>9.8</option>
+        <option {if $avaliacao.recomendacao == 9.9}selected{/if}>9.9</option>
+        <option {if $avaliacao.recomendacao == 10.0}selected{/if}>10.0</option>
+      </select>
+    </td>
+  </tr>
+{/if}
   <tr>
     <th>Comentários ao autor</th>
     <td>

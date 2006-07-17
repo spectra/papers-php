@@ -9,6 +9,7 @@ require_once ('include/basic.inc.php');
 require_once ('include/auth.inc.php');
 require_once ('include/reviewer_auth.inc.php');
 require_once ('include/pathinfo.inc.php');
+require_once ('include/proposals.inc.php');
 
 expires(0);
 
@@ -69,6 +70,10 @@ if ($cod) {
   $sql = "select comentarios_comite from avaliacoes where proposta = $cod";
   $rs_comentarios = $mysql->conn->Execute($sql);
   $smarty->assign('comentarios', $rs_comentarios->GetArray());
+
+  if ($papers['event']['file_upload_on_submission']) {
+    $smarty->assign('files', Proposals::getFiles($proposta['cod']));
+  }
 
   $smarty->assign('content', 'review.tpl');
   

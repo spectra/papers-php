@@ -18,20 +18,46 @@ function isReviewer($theUser) {
 }
 
 function canReviewTrack($db, $pcod, $tcod) {
-  $sql1 = "select count(*) as num from propostas where pessoa = $pcod and tema = $tcod";
-  $rs1 = $db->conn->Execute($sql1);
-  $rsa1 = $rs1->GetArray();
-  if ($rsa1[0]['num'] > 0) {
+  global $papers;
+
+  // check if the reviewer is a proponent in this track
+  if ($papers['event']['deny_review_of_track']) {
+
+    // check if reviewer is a main proponent
+    $sql1 = "select count(*) as num from propostas where pessoa = $pcod and tema = $tcod";
+    $rs1 = $db->conn->Execute($sql1);
+    $rsa1 = $rs1->GetArray();
+    if ($rsa1[0]['num'] > 0) {
+      return false;
+    }
+
+    // check if reviewer is a cospeaker
+    $sql2 = "select count(*) as num from propostas join copalestrantes on copalestrantes.proposta = propostas.cod where copalestrantes.pessoa = $pcod and propostas.tema = $tcod";
+    $rs2 = $db->conn->Execute($sql2);
+    $rsa2 = $rs2->GetArray();
+    if ($rsa2[0]['num'] > 0) {
+      return false;
+    }
+  }
+ 
+  return true;
+}
+
+function canReviewProposal($db, $person_cod, $proposal) {
+
+  if ($person_cod == $proposal['pessoa']) {
     return false;
   }
 
-  $sql2 = "select count(*) as num from propostas join copalestrantes on copalestrantes.proposta = propostas.cod where copalestrantes.pessoa = $pcod and propostas.tema = $tcod";
-  $rs2 = $db->conn->Execute($sql2);
-  $rsa2 = $rs2->GetArray();
-  if ($rsa2[0]['num'] > 0) {
+  // is a cospeaker ?
+  $proposal_cod = $proposal['cod'];
+  $sql = "select count(*) as num from propostas join copalestrantes on copalestrantes.proposta = propostas.cod where copalestrantes.pessoa = $person_cod and propostas.cod = $proposal_cod";
+  $rs = $db->conn->Execute($sql);
+  $rsa = $rs->GetArray();
+  if ($rsa[0]['num'] > 0) {
     return false;
   }
- 
+
   return true;
 }
 

@@ -122,6 +122,31 @@ $papers['event']['submission_confirmation_on_web_interface'] = false;
 $papers['event']['allow_submission_update'] = true;
 
 /*****************************************************
+ * Review type. Allows the following values:
+ *   'fisl' : according to http://twiki.softwarelivre.org/bin/view/Papers/ProposalsClassificationPt
+ *            (default)
+ *   'simple' : just a score by reviewer, the final score is the
+ *              average of them
+ *****************************************************/
+
+$papers['event']['review_type'] = 'fisl';
+
+/*****************************************************
+ * Blind review: if true, personal information of
+ * proponents will be hidden.
+ *****************************************************/
+
+$papers['event']['blind_review'] = false;
+
+/*****************************************************
+ * Deny review of whole track for the proponentes of the
+ * track. If false, the person won't be able to review only
+ * his/her proposals.
+ *****************************************************/
+
+$papers['event']['deny_review_of_track'] = true;
+
+/*****************************************************
  * agreement: if your event requires that submitters *
  * accept some terms before submissions, you must    *
  * uncomment these and fill the terms they should    *
