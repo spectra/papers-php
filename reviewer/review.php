@@ -38,6 +38,10 @@ if ($cod) {
     $smarty->fatal('cannotReviewThisTrack');
   }
 
+  if (! canReviewProposal($mysql, $user_pcod, $proposta)) {
+    $smarty->fatal('cannotReviewThisProposal');
+  }
+
   $pcod = $proposta['pessoa'];
   $sql = "select
             pessoas.nome, pessoas.cod, pessoas.biografia, pessoas.email,
@@ -75,14 +79,17 @@ if ($cod) {
 
   $rs = $mysql->conn->Execute('select cod, titulo, espacos from macrotemas');
   $macrotemas = $rs->GetArray();
+  $forbidden_track = array();
 
   foreach ($macrotemas as $macrotema) {
     $mt = $macrotema['cod'];
 
+    $forbidden_track[$mt] = ! canReviewTrack($mysql, $user_pcod, $mt);
+    
     // check if the user can review this track
     if (canReviewTrack($mysql, $user_pcod, $mt)) {
 
-      $sql = "select cod, titulo
+      $sql = "select *
               from propostas
               where propostas.tema = $mt
                     and status = 'i'
@@ -90,6 +97,14 @@ if ($cod) {
       $rs = $mysql->conn->Execute($sql);
 
       $propostas[$mt] = $rs->GetArray();
+
+    }
+
+    if (! $papers['event']['deny_review_of_track']) {
+      foreach($propostas[$mt] as $key => $prop) {
+        $proposal_cod = $prop['cod'];
+        $propostas[$mt][$key]['forbidden'] = ! canReviewProposal($mysql, $user_pcod, $prop);
+      }
     }
   }
 
@@ -104,6 +119,7 @@ if ($cod) {
 
   $smarty->assign('macrotemas', $macrotemas);
   $smarty->assign('propostas', $propostas);
+  $smarty->assign('forbidden_track', $forbidden_track);
 
   $smarty->assign('content', 'listProposals.tpl');
 
