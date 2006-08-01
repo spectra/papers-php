@@ -4,10 +4,11 @@ Sua submissão para o "{$event.name}",
 com título "{$proposal.titulo}",
 foi recebida para avaliação.
 
-
+{if $event.allow_submission_update}
 Antes do final do prazo para submissão, você pode atualizar sua submissão
 através do website:
 {$event.papers_url}/speaker/
+{/if}
 
 Se a submissão foi feita por você, então você já tem a sua senha. Caso
 contrário, usa a opção "Esqueci minha senha" para receber uma nova senha por
