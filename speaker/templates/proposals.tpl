@@ -13,6 +13,7 @@
       <!-- ***************************************** -->
       <!-- start of SUBMISSION -->
       <!-- ***************************************** -->
+      <br/>
       <a style='font-size: smaller' href="submit/{$proposals[pr].cod}">({#edit#})</a>
       <a style='font-size: smaller' href="submitRemove/{$proposals[pr].cod}" onclick="return confirm('{#removeConfirm#}');">({#remove#})</a>
       <!-- ***************************************** -->
