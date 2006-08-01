@@ -258,8 +258,13 @@ function checkFile() {
       <th colspan='2'>
         {#fileUpload#}
         <br/>
-        <font size="-1"><i>{#fileUploadDescription#}</i></font>
-        
+        <font size="-1">
+          <em>{#fileUploadDescription#}</em>
+          {if $event.blind_review}
+          <br/>
+          <em>{#blindReviewWarningForFileUpload#}</em>
+          {/if}
+        </font>
       </th>
     </tr>
     <tr>
