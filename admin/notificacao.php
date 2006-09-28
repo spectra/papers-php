@@ -8,7 +8,6 @@ include('include/mysql.inc.php');
 include('include/basic.inc.php');
 include('include/notificacoes.inc.php');
 include('include/pessoas.inc.php');
-include('include/config.inc.php');
 
 expires(0);
 
