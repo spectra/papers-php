@@ -170,8 +170,8 @@ class Proposals {
 
   function getFiles($cod) {
     global $papers;
-    $uploddir = papers_expand_path($papers['event']['file_upload_directory']);
-    $files = glob($uploddir . "/$cod.*");
+    $uploaddir = papers_expand_path($papers['event']['file_upload_directory']);
+    $files = glob($uploaddir . "/$cod.*");
     $files = array_map('basename', $files);
     return $files;
   }
