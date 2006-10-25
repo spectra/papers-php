@@ -276,3 +276,6 @@ create table `propostas_keywords` (
   primary key (proposta,keyword)
 );
 
+ALTER TABLE `propostas` ADD `nivel_proposta` ENUM( 'Iniciante', 'Avancado' ) NULL , ADD `nivel_envolvimento` ENUM( 'Criador', 'Mantenedor', 'Tradutor', 'Desenvolvedor', 'Entusiasta', 'Instrutor', 'Usuario', 'Critico', 'Outros' ) NULL ;
+
+
