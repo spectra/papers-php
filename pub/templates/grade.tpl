@@ -35,7 +35,8 @@
                 <a href="{$urlBase}/{$celula.cod}">
                   <strong>{$celula.macrotema}</strong>
                   <br/>
-                  <em>{$celula.titulo}</em>
+                  <em>{$celula.titulo}</em> <br />
+                  Nível: <em>{$celula.nivel_proposta}</em>
 		</a>
                 <br/>
                 <br/>

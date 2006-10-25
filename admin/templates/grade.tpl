@@ -3,7 +3,8 @@
 <h2>Inserir palestra na grade:</h2>
 <strong>{$proposta.titulo}</strong> <br/>
 {$macrotema.titulo} <br/>
-{$pessoa.nome} <br/>
+<b>Nível:</b> {$proposta.nivel_proposta} <br/>
+{$pessoa.nome} <em>({$proposta.nivel_envolvimento})</em> <br/>
 {if $proposta.comentarios}
 <span style='background: #ffff99;'>
   <strong>Comentário do autor:</strong>
@@ -67,8 +68,9 @@
                 <br/>
                 <em>{$celula.titulo}</em>
                 <br/>
-                <br/>
-                {$celula.nome}
+                <b>Nível:</b> <em>{$celula.nivel_proposta}</em>
+                <br/><br/>
+                {$celula.nome}<em>({$celula.nivel_envolvimento})</em>
                 {section loop=$celula.copalestrantes name=cp}
                   <br/> {$celula.copalestrantes[cp].nome}
                 {/section}

@@ -42,6 +42,14 @@ function toggle(id) {
     </td>
   </tr>
   <tr>
+    <th>Nível da Palestra</th>
+    <td>
+       <ul> {$proposta.nivel_proposta}
+         
+       </ul>
+    </td>
+  </tr>
+  <tr>
     <td colspan="2">
       <div>
         <center>

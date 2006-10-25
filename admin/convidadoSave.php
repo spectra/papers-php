@@ -32,6 +32,8 @@ $r['idioma'] = $_POST['idioma'];
 $r['status'] = 'p';
 $r['tipo'] = $_POST['tipo'];
 $r['confirmada'] = null;
+$r['nivel_envolvimento'] = $_POST['nivel_envolvimento'];
+$r['nivel_proposta'] = $_POST['nivel_proposta'];
 
 $codp = Propostas::incluirPalestraConvidada($mysql,$r);
 

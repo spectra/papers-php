@@ -90,7 +90,7 @@ class Propostas {
   }
 
   function incluirPalestraConvidada($db, $fields) {
-    $rs = $db->conn->Execute('select dthora,titulo,descricao,tema,pessoa,publicoalvo,resumo,idioma,status,tipo,confirmada from propostas where cod = -1');
+    $rs = $db->conn->Execute('select dthora,titulo,descricao,tema,pessoa,publicoalvo,resumo,idioma,status,tipo,confirmada, nivel_envolvimento, nivel_proposta from propostas where cod = -1');
     $fields['dthora'] = time();
     $sql = $db->conn->GetInsertSQL($rs,$fields);
     if (! $db->conn->Execute($sql)) {
@@ -98,6 +98,8 @@ class Propostas {
       exit;
     }
 
+//$r['nivel_envolvimento'] = $_POST['nivel_envolvimento'];
+//$r['nivel_proposta'] = $_POST['nivel_proposta'];
     $rs = $db->conn->Execute('select last_insert_id() as cod');
     $rsa = $rs->GetArray();
     return $rsa[0]['cod'];

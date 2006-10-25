@@ -11,9 +11,17 @@
     <td>{$pessoa.nome}</td>
   </tr>
   <tr>
+    <th>Nível de Envolvimento do proponente</th>
+    <td>{$proposta.nivel_envolvimento}</td>
+  </tr>  
+  <tr>
     <th>Macrotema</th>
     <td>{$macrotema.titulo}</td>
   </tr>
+  <tr>
+    <th>Nível da proposta</th>
+    <td>{$proposta.nivel_proposta}</td>
+  </tr>    
   <tr>
     <th colspan="2">Na grade</th>
   </tr>

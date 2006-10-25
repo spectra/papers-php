@@ -35,7 +35,8 @@ class Grade {
 
       $sql = 'select
                 dia, sala, horario,
-                propostas.titulo, propostas.cod as cod,
+                propostas.titulo, propostas.cod as cod, propostas.nivel_proposta,
+                propostas.nivel_envolvimento,
                 nome,
                 macrotemas.titulo as macrotema,
 		macrotemas.cod as cod_macrotema,
@@ -55,7 +56,9 @@ class Grade {
 	
         $grade[$dia][$sala][$horario]['cod'] = $cod;
         $grade[$dia][$sala][$horario]['titulo'] = $titulo;
-        $grade[$dia][$sala][$horario]['nome'] = $nome;
+        $grade[$dia][$sala][$horario]['nivel_proposta'] = $nivel_proposta;
+        $grade[$dia][$sala][$horario]['nivel_envolvimento'] = $nivel_envolvimento;
+        $grade[$dia][$sala][$horario]['nome'] = $nome;        
         $grade[$dia][$sala][$horario]['macrotema'] = $macrotema;
         $grade[$dia][$sala][$horario]['cod_macrotema'] = $cod_macrotema;
         $grade[$dia][$sala][$horario]['cor'] = Grade::cor($cod_macrotema);

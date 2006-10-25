@@ -31,7 +31,7 @@ if ($PERIOD_SUBMISSION) {
   }
 
   $mandatoryMissing = false;
-  foreach (array('titulo','tema','idioma','descricao','resumo','publicoalvo') as $f) {
+  foreach (array('titulo','tema','nivel_proposta','idioma','descricao','resumo','publicoalvo') as $f) {
     if (! $fields[$f]) {
       $error = 'mandatoryFieldsMissing';
     }
@@ -47,6 +47,7 @@ if ($PERIOD_SUBMISSION) {
     $smarty->assign('proposal', $fields);
     $smarty->assign('content', 'submit.tpl');
     $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
+    $smarty->assign('proposal_level', array('','Iniciante','Avancado'));
     if ($cod) {
       $speakers = Proposals::findSpeakers($mysql, $cod);
       $smarty->assign('speakers', $speakers);
@@ -238,8 +239,8 @@ if ($papers['event']['submission_confirmation_on_web_interface']) {
   $smarty->display('index.tpl');
 
 } else {
-  //header('Location: .');
-  echo 'bli'; exit;
+  header('Location: .');
+  //echo 'bli'; exit;
 }
 
 ?>

@@ -1,3 +1,6 @@
+<h3>Nível de Envolvimento do Primeiro Autor</h3>
+{$proposta.nivel_envolvimento|regex_replace:"/\r\n\r\n|\n\n/":"<p/>"}
+
 <h3>{#intendedAudience#}</h3>
 {$proposta.publicoalvo|regex_replace:"/\r\n\r\n|\n\n/":"<p/>"}
 

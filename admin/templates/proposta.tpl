@@ -78,6 +78,33 @@
       </td>
     </tr>
     <tr>
+      <td>Nível envolvimento do Proponente:
+      </td>
+      <td>
+        <select name="nivel_envolvimento" id="nivel_envolvimento">
+          {section loop=$envolvement_level name=c}
+             <option value="{$envolvement_level[c]}" 
+                  {if $rs.nivel_envolvimento ==$envolvement_level[c]}selected{/if}>
+                    {$envolvement_level[c]}
+             </option>
+          {/section}
+        </select>                    
+      </td>
+    </tr>
+    <tr>
+      <td>Nível da Palestra:
+      </td>
+      <td>
+        <select name="nivel_proposta" id="nivel_proposta">
+          {section loop=$proposal_level name=c}
+             <option value="{$proposal_level[c]}" 
+                  {if $rs.nivel_proposta ==$proposal_level[c]}selected{/if}> {$proposal_level[c]}
+             </option>
+          {/section}
+        </select>                    
+      </td>
+    </tr>        
+    <tr>
       <td>Idioma:
       </td>
       <td><select name="idioma">

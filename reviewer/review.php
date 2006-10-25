@@ -26,7 +26,7 @@ if ($cod) {
   $sql = "select
             propostas.titulo, propostas.cod, propostas.descricao, propostas.resumo,
             propostas.publicoalvo, propostas.comentarios, propostas.pessoa,
-            macrotemas.titulo as macrotema, macrotemas.cod as tcod
+            macrotemas.titulo as macrotema, macrotemas.cod as tcod, propostas.nivel_proposta, propostas.nivel_envolvimento
           from propostas
             join macrotemas on propostas.tema = macrotemas.cod
           where propostas.cod = $cod";
@@ -130,6 +130,7 @@ if ($cod) {
   $smarty->assign('macrotemas', $macrotemas);
   $smarty->assign('propostas', $propostas);
   $smarty->assign('forbidden_track', $forbidden_track);
+  
 
   $smarty->assign('content', 'listProposals.tpl');
 

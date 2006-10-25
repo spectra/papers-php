@@ -26,6 +26,7 @@
        <center>
        <em>{$celula.macrotema}</em> <br/>
        <strong>{$celula.titulo|replace:"\\":""}</strong> <br/>
+       Nível:{$celula.nivel_proposta} <br />
        <br/> <br/>
        {$celula.nome|replace:"\\":""} <br/>
        {section loop=$celula.copalestrantes name=cp}

@@ -62,6 +62,8 @@ if ($PERIOD_SUBMISSION) {
   $smarty->assign('acceptedFileTypes', $papers['event']['file_upload_accepted_extensions']);
   $smarty->assign('content', "submit.tpl");
   $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
+  $smarty->assign('proposal_level', array('','Iniciante','Avancado'));
+  $smarty->assign('envolvement_level', array('Criador', 'Mantenedor', 'Tradutor', 'Desenvolvedor', 'Entusiasta', 'Instrutor', 'Usuario', 'Critico', 'Outros'));
   
 } else {
   $smarty->fatal('notInSubmissionPeriod');

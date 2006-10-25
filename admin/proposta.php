@@ -21,7 +21,7 @@ $mysql = new Mysql;
 
 $sql = "SELECT a.cod, a.tstamp, a.dthora, a.titulo, a.descricao, a.tema,
         pessoas.nome, a.publicoalvo, a.comentarios, a.coapresentadores,
-        a.resumo, a.idioma, a.status, a.espaco, a.comadm, a.pessoa
+        a.resumo, a.idioma, a.status, a.espaco, a.comadm, a.pessoa, a.nivel_proposta, a.nivel_envolvimento
         FROM propostas a
         LEFT OUTER JOIN pessoas
         ON a.pessoa = pessoas.cod
@@ -38,6 +38,8 @@ $smarty->assign('mesa', Propostas::mesa($mysql, $cod));
 
 $smarty->assign('title', $rs->fields['titulo'] . ' (' . $rs->fields['cod'] . ')');
 $smarty->assign('linkup', 'propostas');
+$smarty->assign('proposal_level', array('','Iniciante','Avancado'));
+$smarty->assign('envolvement_level', array('Criador', 'Mantenedor', 'Tradutor', 'Desenvolvedor', 'Entusiasta', 'Instrutor', 'Usuario', 'Critico', 'Outros'));    
 
 # Altera o fundo da TD status
 $smarty->config_load('papers.conf', 'colors');

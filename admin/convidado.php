@@ -26,6 +26,9 @@ if (!$select) {
   $smarty->assign('central', 'convidado_escolher_ou_nao.tpl');
 }
 
+$smarty->assign('proposal_level', array('','Iniciante','Avancado'));
+$smarty->assign('envolvement_level', array('Criador', 'Mantenedor', 'Tradutor', 'Desenvolvedor', 'Entusiasta', 'Instrutor', 'Usuario', 'Critico', 'Outros'));    
+
 $smarty->display('index.tpl');
 
 ?>

@@ -51,6 +51,7 @@ da organização do <em>{$event.name}</em>.
         {if $celula}
 	  <div class='track_{$celula.cod_macrotema}'>
           <strong><em>{$celula.titulo}</em></strong>
+          <br/> Nível: <em>{$celula.nivel_proposta}</em>
           <br/> {$celula.nome}
           {section loop=$celula.copalestrantes name=cp}
             <br/> {$celula.copalestrantes[cp].nome}

@@ -82,6 +82,8 @@ if ($cod) {
 
   $smarty->assign('central', 'alocacao.tpl');
   $smarty->assign('linkup', '.');
+  //$smarty->assign('proposal_level', array('','Iniciante','Avancado'));
+  //$smarty->assign('envolvement_level', array('Criador', 'Mantenedor', 'Tradutor', 'Desenvolvedor', 'Entusiasta', 'Instrutor', 'Usuario', 'Critico', 'Outros'));    
   $smarty->display('index.tpl');
 }
 
