@@ -1,9 +1,9 @@
 Source: papers
 Section: web
 Priority: optional
-Maintainer: Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>
-Build-Depends-Indep: cdbs, debhelper (>= 4.1)
-Standards-Version: 3.6.2
+Maintainer: Antonio S. de A. Terceiro <terceiro@softwarelivre.org>
+Build-Depends: cdbs, debhelper (>= 4.1)
+Standards-Version: 3.7.2
 
 Package: papers
 Architecture: all
