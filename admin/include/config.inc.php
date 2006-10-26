@@ -78,7 +78,8 @@ papers_ext_conf($_application_path . '/ext/smarty/libs', 'smarty');
 papers_ext_conf($_application_path . '/ext/adodb', 'adodb');
 
 # auto configuration on Debian
-papers_ext_conf('/usr/share/adodb', 'adodb');
+papers_ext_conf('/usr/share/adodb', 'adodb'); # old
+papers_ext_conf('/usr/share/php/adodb', 'adodb'); # new
 papers_ext_conf('/usr/share/php/smarty/libs', 'smarty');
 
 
