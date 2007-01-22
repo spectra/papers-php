@@ -124,13 +124,23 @@ if ($cod) {
     $avaliada[$rs->fields['proposta']] = 1;
     $rs->MoveNext();
   }
+
+  $numeros = array();
+  foreach($macrotemas as $macrotema) {
+    $mt = $macrotema['cod'];
+    foreach($propostas[$mt] as $prop) {
+      $numeros[$mt]['total']++;
+      $numeros[$mt]['avaliadas'] += $avaliada[$prop['cod']];
+    }
+  }
+
   
   $smarty->assign('avaliada', $avaliada);
 
   $smarty->assign('macrotemas', $macrotemas);
   $smarty->assign('propostas', $propostas);
   $smarty->assign('forbidden_track', $forbidden_track);
-  
+  $smarty->assign('numeros', $numeros); 
 
   $smarty->assign('content', 'listProposals.tpl');
 

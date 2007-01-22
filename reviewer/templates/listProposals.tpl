@@ -6,7 +6,7 @@ proposta, as palavras chave correspondentes.
 {section loop=$macrotemas name=mt}
   {assign var="tema" value=$macrotemas[mt].cod}
   {if ! $forbidden_track[$tema]}
-    <h2>{$macrotemas[mt].titulo}</h2>
+    <h2>{$macrotemas[mt].titulo} ({$numeros[$tema].avaliadas}/{$numeros[$tema].total})</h2>
     {section loop=$propostas[$tema] name=pr}
       {assign var="proposta" value=$propostas[$tema][pr].cod}
       {if $propostas[$tema][pr].forbidden}
