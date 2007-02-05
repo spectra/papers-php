@@ -49,7 +49,7 @@
        {ranking_position ranking_array=$ranking[$tema] proposta=$aprovadas[$tema][pr].cod}
         &ordm;
       </td>
-      <td><a href="proposta/{$aprovadas[$tema][pr].cod}">{$aprovadas[$tema][pr].titulo}</a></td>
+      <td><a href="proposta/{$aprovadas[$tema][pr].cod}">{$aprovadas[$tema][pr].titulo} ({$aprovadas[$tema][pr].nivel_proposta})</a></td>
       <td>{$aprovadas[$tema][pr].autor}</td>
       <td>
         {$aprovadas[$tema][pr].score}
@@ -77,7 +77,7 @@
        {ranking_position ranking_array=$ranking[$tema] proposta=$propostas[$tema][pr].cod}
         &ordm;
       </td>
-      <td><a href="proposta/{$propostas[$tema][pr].cod}">{$propostas[$tema][pr].titulo}</a></td>
+      <td><a href="proposta/{$propostas[$tema][pr].cod}">{$propostas[$tema][pr].titulo} ({$aprovadas[$tema][pr].nivel_proposta})</a></td>
       <td>{$propostas[$tema][pr].autor}</td>
       <td>
         {$propostas[$tema][pr].score}
@@ -95,7 +95,7 @@
        {ranking_position ranking_array=$ranking[$tema] proposta=$recusadas[$tema][pr].cod}
         &ordm;
       </td>
-      <td><a href="proposta/{$recusadas[$tema][pr].cod}">{$recusadas[$tema][pr].titulo}</a></td>
+      <td><a href="proposta/{$recusadas[$tema][pr].cod}">{$recusadas[$tema][pr].titulo} ({$aprovadas[$tema][pr].nivel_proposta})</a></td>
       <td>{$recusadas[$tema][pr].autor}</td>
       <td>
         {$recusadas[$tema][pr].score}

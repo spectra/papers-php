@@ -59,6 +59,7 @@ where p1.tema = $macrotema and
            select
              a1.proposta as cod,
              p1.titulo as titulo,
+             p1.nivel_avaliacao as nivel_avaliacao,
              pe1.nome as autor,
              (((avg( a1.confianca * a1.recomendacao *
                   (a1.relevancia * 0.2 + a1.qualidade * 0.5 + a1.experiencia * 0.3 )
@@ -94,6 +95,7 @@ where p1.tema = $macrotema and
         select
           propostas.cod as cod,
           propostas.titulo as titulo,
+          propostas.nivel_avaliacao as nivel_avaliacao,
           pessoas.nome as autor,
           avg(recomendacao) as score
         from avaliacoes
@@ -126,6 +128,7 @@ where p1.tema = $macrotema and
           select
             a1.proposta as cod,
             p1.titulo as titulo,
+            p1.nivel_avaliacao as nivel_avaliacao,
             pe1.nome as autor,
             (avg( a1.confianca * a1.recomendacao *
                  (a1.relevancia * 0.2 + a1.qualidade * 0.5 + a1.experiencia * 0.3 )
@@ -162,6 +165,7 @@ where p1.tema = $macrotema and
         select
           propostas.cod as cod,
           propostas.titulo as titulo,
+          propostas.nivel_avaliacao as nivel_avaliacao,
           pessoas.nome as autor,
           avg(recomendacao) as score
         from avaliacoes
@@ -184,6 +188,7 @@ where p1.tema = $macrotema and
         select
           propostas.cod,
           titulo,
+          nivel_avaliacao,
           pessoas.nome as autor,
           propostas.score as score,
           propostas.status as status
@@ -202,6 +207,7 @@ where p1.tema = $macrotema and
         select
           propostas.cod,
           titulo,
+          nivel_avaliacao,
           pessoas.nome as autor,
           propostas.score as score,
           propostas.status as status
@@ -242,6 +248,7 @@ where p1.tema = $macrotema and
         select
           propostas.cod,
           titulo,
+          nivel_avaliacao,
           pessoas.nome as autor,
           propostas.score as score,
           propostas.status as status,
