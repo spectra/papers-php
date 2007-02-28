@@ -1,3 +1,9 @@
+papers (0.4.2-1) unstable; urgency=low
+
+  * New "upstream" release.
+
+ -- Antonio S. de A. Terceiro <terceiro@softwarelivre.org>  Wed, 28 Feb 2007 21:02:42 -0300
+
 papers (0.4.0-1) unstable; urgency=low
 
   * new "upstream" release for fisl8.0, plus several new features from
