@@ -12,6 +12,7 @@
       </li>
       <li><a href="marcarDesistencias">Marca as desistencias</a></li>
       <li><a href="repetidos">Palestrantes repetidos</a></li>
+      <li><a href="tecnicas">Diferenciação: Palestras Técnicas/Não Técnicas</a>
     </ul>
   </li>
       <li><a href="notificacao">Notificações</a> (notificações diversas)</li>
