@@ -278,4 +278,4 @@ create table `propostas_keywords` (
 
 ALTER TABLE `propostas` ADD `nivel_proposta` ENUM( 'Iniciante', 'Avancado' ) NULL , ADD `nivel_envolvimento` ENUM( 'Criador', 'Mantenedor', 'Tradutor', 'Desenvolvedor', 'Entusiasta', 'Instrutor', 'Usuario', 'Critico', 'Outros' ) NULL ;
 
-
+ALTER TABLE `propostas` ADD  `tecnica` int not null default 0;
