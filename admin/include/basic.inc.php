@@ -29,4 +29,10 @@ function writeLog($file, $msg)
   return ! system("echo $dthora $user $msg >> $logbase/$file");
 }
 
+function debug($var) {
+  header('Content-Type: text/plain');
+  print_r($var);
+  exit;
+}
+
 ?>
