@@ -49,7 +49,7 @@ da organização do <em>{$event.name}</em>.
         {assign var="horario" value=$horarios[h].numero}
         {assign var="celula" value=$grade[$dia][$sala][$horario]}
         {if $celula}
-	  <div class='track_{$celula.cod_macrotema}'>
+	  <div class='{if $celula.tecnica}tech{else}non_tech{/if}_track_{$celula.cod_macrotema}'>
           <strong><em>{$celula.titulo}</em></strong>
           <br/> Nível: <em>{$celula.nivel_proposta}</em>
           <br/> {$celula.nome}

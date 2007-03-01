@@ -1,8 +1,9 @@
 <hr/>
+<h2>Trilhas</h2>
 
 <p>Desmarque/marque as trilhas para escondê-las/exibí-las</p>
 
-<table border="0" width='100%'>
+<table border="0" width='100%' id='table_legend'>
 <tr>
 <form>
 {section loop=$macrotemas name=m}
@@ -21,6 +22,11 @@
 {literal}
 <script language='javascript'>
 
+var show = {
+  'tech' : true,
+  'non_tech' : true
+};
+
 function toggleByTag(element, tagname, show) {
   if (tagname == 'div') {
     element.style.display = show?'block':'none';
@@ -36,10 +42,39 @@ function toggle(checkbox, cod, tagname) {
   var elements = document.getElementsByTagName(tagname);
   for (var i = 0; i < elements.length; i++) {
     var cell = elements.item(i);
-    if (cell.className == 'track_' + cod) {
-      toggleByTag(cell, tagname, checkbox.checked);
+    if (cell.className == 'tech_track_' + cod ) {
+      toggleByTag(cell, tagname, checkbox.checked && show['tech']);
+    }
+    if (cell.className == 'non_tech_track_' + cod ) {
+      toggleByTag(cell, tagname, checkbox.checked && show['non_tech']);
     }
   }
 }
+
+function toggle_tech(checkbox, type, tagname) {
+  show[type] = checkbox.checked;
+  track_boxes = document.getElementById('table_legend').getElementsByTagName('input');
+  for (var i = 0; i < track_boxes.length; i++) {
+    box = track_boxes[i];
+    if (box.type == 'checkbox') {
+      cod = box.name.replace(/^track/, '');
+      toggle(box, cod, tagname);
+    }
+  }
+}
+
 </script>
 {/literal}
+
+<h2>Exibir palestras técnicas/não-técnicas</h2>
+
+<ul>
+  <div>
+    <input type='checkbox' name='show_tech' checked onclick='javascript: toggle_tech(this, "tech", "{if $print}div{else}td{/if}")'/> Exibir palestras técnicas
+  </div>
+  <div>
+    <input type='checkbox' name='show_tech' checked onclick='javascript: toggle_tech(this, "non_tech", "{if $print}div{else}td{/if}")'/> Exibir palestras não-técnicas
+  </div>
+</ul>
+
+<hr/>

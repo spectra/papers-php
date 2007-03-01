@@ -1,4 +1,8 @@
 <a name="toc"></a>
+<p>
+<strong>Índice:</strong>
+</p>
+
 <ul>
 {section loop=$dias name=d}
   <li><a href="{php}echo $_SERVER['REQUEST_URI']; {/php}#dia{$dias[d].numero}">{$dias[d].descricao}</a></li>
@@ -29,7 +33,7 @@
 	    <!-- dumb cell: day {$dia}, room {$sala}, hour {$horario} -->
 	    {else}
 	    <!-- day {$dia}, room {$sala}, hour {$horario} -->
-	    <td bgcolor="{$celula.cor}" {if $celula.num > 1}rowspan="{$celula.num}"{/if} class='track_{$celula.cod_macrotema}'>
+	    <td bgcolor="{$celula.cor}" {if $celula.num > 1}rowspan="{$celula.num}"{/if} class='{if $celula.tecnica}tech{else}non_tech{/if}_track_{$celula.cod_macrotema}'>
               {if $celula}
               <center>
                 <a href="{$urlBase}/{$celula.cod}">
