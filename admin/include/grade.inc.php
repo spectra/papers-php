@@ -40,7 +40,8 @@ class Grade {
                 nome,
                 macrotemas.titulo as macrotema,
 		macrotemas.cod as cod_macrotema,
-                propostas.confirmada as confirmada
+                propostas.confirmada as confirmada,
+		propostas.tecnica as tecnica
               from grade
                    join propostas  on grade.proposta   = propostas.cod
                    join pessoas    on propostas.pessoa = pessoas.cod
@@ -63,6 +64,7 @@ class Grade {
         $grade[$dia][$sala][$horario]['cod_macrotema'] = $cod_macrotema;
         $grade[$dia][$sala][$horario]['cor'] = Grade::cor($cod_macrotema);
         $grade[$dia][$sala][$horario]['confirmada'] = $confirmada;
+        $grade[$dia][$sala][$horario]['tecnica'] = $tecnica;
         $grade[$dia][$sala][$horario]['copalestrantes'] = Propostas::copalestrantes($db,$cod);
         $grade[$dia][$sala][$horario]['mesa'] = Propostas::mesa($db,$cod);
 
