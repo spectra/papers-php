@@ -34,7 +34,7 @@ if ( ! $proposta ) {
   $smarty->fatal('mustSpecifyProposal');
 }
 
-if (! canReviewTrack($mysql, $user_pcod, $proposta['tcod'])) {
+if (! canReviewTrack($mysql, $user_pcod, $proposta['tema'])) {
   $smarty->fatal('cannotReviewThisTrack');
 }
 
