@@ -136,6 +136,12 @@ scripts PHP sem extensão, por exemplo, para que requisições a "script" sejam
 processadas através do "script.php". Você vai notar que todo o sistema está
 feito com referências aos scripts sem a extensão.)
 
+Atenção: o papers _não funciona_ se você apontar o DocumentRoot direto pra
+dentro de um dos diretórios dele, por exemplo se você fizer:
+        DocumentRoot /usr/share/papers/pub
+Nesse caso o papers não vai conseguir achar o arquivo de configuração sempre
+que você acessar alguma URL que não seja a raiz (/).
+
 Controle de acesso do /admin
 ----------------------------
 
