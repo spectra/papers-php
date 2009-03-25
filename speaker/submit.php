@@ -62,8 +62,15 @@ if ($PERIOD_SUBMISSION) {
   $smarty->assign('acceptedFileTypes', $papers['event']['file_upload_accepted_extensions']);
   $smarty->assign('content', "submit.tpl");
   $smarty->assign('tracks', Tracks::findAllAssoc($mysql, $language));
-  $smarty->assign('proposal_level', array('','Iniciante','Avancado'));
+  $smarty->assign('proposal_level', array('Iniciante','Avancado'));
   $smarty->assign('envolvement_level', array('Criador', 'Mantenedor', 'Tradutor', 'Desenvolvedor', 'Entusiasta', 'Instrutor', 'Usuario', 'Critico', 'Outros'));
+  // TODO: move both level_list arrays i18n to a config file
+  $proposal_level_list = array('en' => array('Indiferente'=> '', 'Iniciante' => 'Begginer', 'Avancado' => 'Advanced'),
+                               'pt-br' => array('Indiferente'=> '','Iniciante' => 'Iniciante', 'Avancado' => 'Avancado')   );
+  $smarty->assign('proposal_level_list', $proposal_level_list);
+  $envolvment_level_list = array('en' => array('Criador' => 'Creator', 'Mantenedor' => 'Mantainer', 'Tradutor' => 'Translator', 'Desenvolvedor' => 'Developer', 'Entusiasta' => 'Enthusiat', 'Instrutor' => 'Instructor/Teacher', 'Usuario' => 'User', 'Critico' => 'Criticist', 'Outros' => 'Other'), 
+                                 'pt-br' => array('Criador' => 'Criador', 'Mantenedor' => 'Mantenedor', 'Tradutor' => 'Tradutor', 'Desenvolvedor' => 'Desenvolvedor', 'Entusiasta' => 'Entusiasta', 'Instrutor' => 'Instrutor/Professor', 'Usuario' => 'Usuario', 'Critico' => 'Critico', 'Outros' => 'Outros')  );
+  $smarty->assign('envolvment_level_list', $envolvment_level_list);
   
 } else {
   $smarty->fatal('notInSubmissionPeriod');

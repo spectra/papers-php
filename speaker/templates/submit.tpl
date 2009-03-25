@@ -151,26 +151,34 @@ function checkFile() {
     <tr>
       <th>{#envolvement#}:<span class='warn'>*</span>  </th>
       <td>
-        {section loop=$envolvement_level name=k}
-            <input type='radio' 
-                   name='nivel_envolvimento' 
-                   value = '{$envolvement_level[k]}' 
-                   {if $envolvement_level[k] == $proposal.nivel_envolvimento}
-                      checked
-                   {/if}/> {$envolvement_level[k]}<br/>
-        {/section}
+          {foreach from=$envolvment_level_list.$language key=level item=label}
+            <input      type='radio'
+                        name= 'nivel_envolvimento'
+                        value='{$level}'
+                        {if  $level == $proposal.nivel_envolvimento}
+                           checked
+                        {/if} /> {$label} <br />
+          {/foreach}
+        
       </td>
     </tr>
     <tr>
       <th>{#proposalLevel#}:<span class='warn'>*</span>
       </th>
       <td>
-        <select name="nivel_proposta" id="nivel_proposta">
-          {html_options output=$proposal_level values=$proposal_level selected=$proposal.nivel_proposta}
-        </select>
+          <select name='nivel_proposta' id='nivel_proposta'>
+          {foreach from=$proposal_level_list.$language key=level item=label} 
+                   <option value='{$level}' label='{$label}'
+                        {if  $level == $proposal.nivel_proposta}
+                           selected
+                        {/if}>
+                       {$label}   
+                   </option>
+          {/foreach}
+          </select>
       </td>
     </tr>
-    <tr>
+<!--    <tr>
       <th valign='top'>{#keywords#}</th>
       <td>
         <div id='loadingKeywords'
@@ -185,6 +193,8 @@ function checkFile() {
         </div>
       </td>
     </tr>
+-->
+
     <tr>
       <th>{#language#}:<span class='warn'>*</span>
       </th>
