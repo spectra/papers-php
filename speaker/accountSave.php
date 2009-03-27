@@ -30,16 +30,17 @@ if ($error) {
   $smarty->assign('person', $_POST);
   $smarty->display('index.tpl');
 }
+else {
+	Persons::create($mysql, $_POST);
+	//echo "<pre>";
+	//print_r($_POST);
+	//echo "</pre>";
 
-Persons::create($mysql, $_POST);
-//echo "<pre>";
-//print_r($_POST);
-//echo "</pre>";
+	// register the e-mail in the session
+	$_SESSION['papersauth'] = $_POST['email'];
 
-// register the e-mail in the session
-$_SESSION['papersauth'] = $_POST['email'];
-
-// $_SESSION['papersauth'] = 'teste';
-header('Location: .');
+	// $_SESSION['papersauth'] = 'teste';
+	header('Location: .');
+}
 
 ?>
