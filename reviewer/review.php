@@ -106,15 +106,17 @@ if ($cod) {
 
     }
 
-    if (! $papers['event']['deny_review_of_track']) {
+    if ($propostas[$mt]) {
+      if (! $papers['event']['deny_review_of_track']) {
+        foreach($propostas[$mt] as $key => $prop) {
+          $proposal_cod = $prop['cod'];
+          $propostas[$mt][$key]['forbidden'] = ! canReviewProposal($mysql, $user_pcod, $prop);
+        }
+      }
       foreach($propostas[$mt] as $key => $prop) {
         $proposal_cod = $prop['cod'];
-        $propostas[$mt][$key]['forbidden'] = ! canReviewProposal($mysql, $user_pcod, $prop);
+        $propostas[$mt][$key]['keywords'] = Proposals::getKeywords($mysql, $proposal_cod, $language);
       }
-    }
-    foreach($propostas[$mt] as $key => $prop) {
-      $proposal_cod = $prop['cod'];
-      $propostas[$mt][$key]['keywords'] = Proposals::getKeywords($mysql, $proposal_cod, $language);
     }
   }
 
@@ -128,9 +130,11 @@ if ($cod) {
   $numeros = array();
   foreach($macrotemas as $macrotema) {
     $mt = $macrotema['cod'];
-    foreach($propostas[$mt] as $prop) {
-      $numeros[$mt]['total']++;
-      $numeros[$mt]['avaliadas'] += $avaliada[$prop['cod']];
+    if ($propostas[$mt]) {
+      foreach($propostas[$mt] as $prop) {
+        $numeros[$mt]['total']++;
+        $numeros[$mt]['avaliadas'] += $avaliada[$prop['cod']];
+      }
     }
   }
 
