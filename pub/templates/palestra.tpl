@@ -37,6 +37,10 @@
     </td>
   </tr>
   <tr>
+    <th>Publico Alvo</th>
+    <td>{$propostaa.publicoalvo}</td>
+  </tr>
+  <tr>
     <th colspan="2">
     Descrição
     </th>
