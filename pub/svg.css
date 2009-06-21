@@ -1,0 +1,72 @@
+
+text, flowPara {
+  font-family: Liberation Sans, Arial, sans-serif;
+  font-size: 10px;
+  text-anchor: middle;
+  text-align: center;
+  text-rendering: geometricPrecision;
+  image-rendering: optimizeQuality;
+}
+
+.dia {
+  text-anchor: start;
+  text-align: left;
+  font-weight: bold;
+  fill: #999;
+  font-size: 25px;
+  letter-spacing: 5px;
+  stroke-width: 2px;
+  stroke: #999;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.hora text,
+.sala text {
+  font-weight: bold;
+  fill: #FFF;
+}
+.sala text {
+  text-anchor: end;
+  text-align: right;
+}
+.hora rect,
+.sala rect {
+  fill: #777;
+}
+
+.palestra rect {
+  fill: url(#grad-palestra);
+}
+.palestra rect.vazio {
+  fill: #F4F4F4;
+}
+
+.tema {
+  text-anchor: start;
+  text-align: left;
+  font-size: 9px;
+}
+
+.ptit {
+  font-weight: bold;
+  font-size: 9.5px;
+}
+
+.pess {
+  font-size: 9px;
+}
+
+.desgerencd, .desferrame, .hardwaresi {
+  font-size: 8.3px;
+}
+
+.negciosimp, .deskitsgrf, .desdemaisl, .gerenciame {
+  font-size: 8.5px;
+}
+
+.negciosimp, .hardwaresi,
+.desferrame, .deskitsgrf, .desdemaisl, .desgerencd,
+.despython, .dessmallta {
+  letter-spacing: -0.5px;
+}
