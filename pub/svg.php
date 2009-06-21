@@ -59,6 +59,7 @@ $dp = 40; # Day position
 foreach ($dias as $dia) {
 ?>
 
+<g class="boxd" id="<?= $dia['descricao'] ?>">
 <text x="115" y="<?= $dp - 10 ?>" class="dia"><?= $dia['descricao'] ?></text>
 
 <?
@@ -135,7 +136,9 @@ foreach ($salas as $sala) {
   }
   $posY++;
 }
-
+?>
+</g><!-- fim class="boxd" id="<?= $dia['descricao'] ?>" -->
+<?
 $dp += $ch * 16;
 }
 ?>
