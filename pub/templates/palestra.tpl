@@ -38,7 +38,7 @@
   </tr>
   <tr>
     <th>Publico Alvo</th>
-    <td>{$propostaa.publicoalvo}</td>
+    <td>{$proposta.publicoalvo}</td>
   </tr>
   <tr>
     <th colspan="2">
