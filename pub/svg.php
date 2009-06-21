@@ -96,7 +96,7 @@ foreach ($salas as $sala) {
   foreach ($horarios as $hora) {
     $palestra = $grade[ $dia['numero'] ][ $sala['numero'] ][ $hora['numero'] ];
     $palSize = getPalSize( $grade, $dia['numero'], $sala['numero'], $hora['numero'] );
-    $palestrantes = Array();
+    $palestrantes = Array( $palestra['nome'] );
     if ( $palestra['copalestrantes'] ) {
       foreach ($palestra['copalestrantes'] as $p) {
         $palestrantes[] = $p['nome'];
