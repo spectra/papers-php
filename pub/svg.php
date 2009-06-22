@@ -49,9 +49,9 @@ function getPalSize( $grade, $dia, $sala, $hora ) {
   xmlns:xlink="http://www.w3.org/1999/xlink"
   width="29.7cm" height="42cm">
 <defs>
-  <linearGradient id="grad-palestra" x1="50%" y1 = "65%" x2 = "50%" y2 = "120%">
-    <stop stop-color="#000" stop-opacity="0.1" offset="0" />
-    <stop stop-color="#000" stop-opacity="0.3" offset="1" />
+  <linearGradient id="grad-palestra" x1="50%" y1 = "65%" x2 = "50%" y2 = "100%">
+    <stop stop-color="#000" stop-opacity="0.08" offset="0" />
+    <stop stop-color="#000" stop-opacity="0.16" offset="1" />
   </linearGradient>
   <style type="text/css"><![CDATA[<? require_once ('svg.css'); ?>]]></style>
 </defs>
