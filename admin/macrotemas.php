@@ -9,7 +9,7 @@ include('include/basic.inc.php');
 
 expires(0);
 
-$smarty->assign('title', 'Número de propostas por macro-tema');
+$smarty->assign('title', 'Macrotemas');
 
 $smarty->assign('user', $user);
 $smarty->assign('linkup', '.');
